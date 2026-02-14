@@ -3,395 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Blackrock Model | Premium Capsule Homes</title>
+    <title>Blackrock Model | Capsule Homes</title>
     
-    <!-- 1. ПОДКЛЮЧАЕМ ШРИФТЫ И ИКОНКИ -->
+    <!-- ШРИФТЫ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <!-- ИКОНКИ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS ANIMATION LIBRARY (Для анимации при скролле) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
-        /* --- 2. ПРЕМИУМ CSS СТИЛИ --- */
         :root {
-            --bg-dark: #0a0a0a;
-            --bg-card: #141414;
-            --text-white: #ffffff;
-            --text-grey: #a0a0a0;
-            --gold: #D4AF37; /* Благородное золото */
-            --gold-glow: rgba(212, 175, 55, 0.3);
-            --glass: rgba(20, 20, 20, 0.7);
+            --bg-deep: #050505;
+            --bg-card: rgba(30, 30, 30, 0.6);
+            --gold: #D4AF37;
+            --gold-light: #F4C430;
+            --text-main: #ffffff;
+            --text-muted: #888888;
+            --blur: 12px;
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-dark);
-            color: var(--text-white);
+        /* --- 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ --- */
+        html, body {
+            margin: 0; padding: 0;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
             font-family: 'Manrope', sans-serif;
-            overflow-x: hidden;
-            padding-bottom: 100px; /* Место под кнопку */
+            overflow-x: hidden; /* Скрываем горизонтальный скролл */
+            scroll-behavior: smooth;
         }
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; margin: 0; }
-        p { line-height: 1.6; color: var(--text-grey); font-size: 15px; margin-top: 5px; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; margin: 0; }
 
-        /* --- СЛАЙДЕР НА ВЕСЬ ЭКРАН --- */
-        .hero-container {
-            position: relative;
-            height: 90vh; /* Почти весь экран */
-            width: 100%;
+        /* --- 2. PRELOADER (ЗАСТАВКА) --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s;
+        }
+        .loader-text {
+            font-family: 'Playfair Display'; font-size: 24px; color: var(--gold);
+            letter-spacing: 2px; margin-bottom: 20px;
+            animation: pulseText 2s infinite;
+        }
+        .loader-line {
+            width: 0; height: 2px; background: var(--gold);
+            animation: loadLine 1.5s ease-out forwards;
+        }
+
+        /* --- 3. HERO SECTION С ЭФФЕКТОМ ZOOM --- */
+        .hero {
+            position: relative; height: 95vh; width: 100%;
             overflow: hidden;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
         }
 
-        .slide {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1s ease-in-out, transform 6s ease;
-            transform: scale(1.05); /* Эффект приближения */
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            transition: transform 0.5s ease-out; /* Плавность для JS */
+            will-change: transform;
+            /* Анимация Кена Бёрнса (медленный зум) */
+            animation: kenBurns 20s infinite alternate; 
         }
 
-        .slide.active { opacity: 1; transform: scale(1); }
-
-        .slide::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 60%;
-            background: linear-gradient(to top, var(--bg-dark), transparent);
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
         }
 
-        /* ТЕКСТ ПОВЕРХ СЛАЙДЕРА */
         .hero-content {
-            position: absolute;
-            bottom: 40px;
-            left: 20px;
-            right: 20px;
-            z-index: 10;
+            position: absolute; bottom: 120px; left: 24px; z-index: 10;
         }
 
-        .model-tag {
-            background: var(--gold);
-            color: #000;
-            padding: 4px 12px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: inline-block;
+        .tag {
+            display: inline-block; padding: 6px 14px;
+            border: 1px solid var(--gold); border-radius: 50px;
+            color: var(--gold); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
             margin-bottom: 15px;
+            backdrop-filter: blur(5px);
         }
 
         .hero-title {
-            font-size: 42px;
-            line-height: 1.1;
-            margin-bottom: 10px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            font-size: 48px; line-height: 1; margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero-price {
-            font-size: 24px;
-            color: var(--gold);
-            font-family: 'Manrope', sans-serif;
-            font-weight: 300;
+        .hero-subtitle {
+            font-size: 16px; color: #ccc; max-width: 80%;
+            opacity: 0; animation: fadeUp 1s ease 0.5s forwards;
         }
 
-        /* ИНДИКАТОРЫ СЛАЙДЕРА */
-        .dots {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 20;
+        /* --- 4. MARQUEE (БЕГУЩАЯ СТРОКА) --- */
+        .marquee-container {
+            background: var(--gold); color: #000;
+            padding: 12px 0; overflow: hidden; white-space: nowrap;
+            transform: rotate(-2deg) scale(1.05); /* Легкий наклон для динамики */
+            margin: -30px 0 40px 0; z-index: 20; position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
-        .dot {
-            width: 8px; height: 8px;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            transition: 0.3s;
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
         }
-        .dot.active { background: var(--text-white); border-color: var(--text-white); }
-
-        /* --- СЕКЦИЯ: ПОЧЕМУ ЭТО КРУТО (GRID) --- */
-        .features-section { padding: 40px 20px; }
-        .section-header { margin-bottom: 30px; }
-        .section-header h2 { font-size: 28px; margin-bottom: 10px; }
         
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+        .marquee-item {
+            font-weight: 800; text-transform: uppercase; font-size: 14px; margin: 0 20px;
+            display: inline-flex; align-items: center; gap: 10px;
         }
 
-        .card {
+        /* --- 5. GRID CARDS (СТЕКЛО) --- */
+        .section { padding: 40px 20px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+        .glass-card {
             background: var(--bg-card);
-            padding: 25px 20px;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 0; /* Острые углы стильнее */
-            text-align: center;
-            transition: 0.3s;
-        }
-        
-        .card i {
-            font-size: 28px;
-            color: var(--gold);
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        .card h3 { font-family: 'Manrope'; font-size: 14px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
-        .card span { display: block; font-size: 12px; color: var(--text-grey); margin-top: 5px; }
-
-        /* --- 3D ВИЗУАЛИЗАЦИЯ / ПЛАНИРОВКА --- */
-        .visual-block {
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 24px;
+            text-align: left;
             position: relative;
-            margin: 40px 0;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .glass-card::before {
+            content: ''; position: absolute; top: -50%; left: -50%;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 60%);
+            opacity: 0; transition: opacity 0.5s;
+        }
+        .glass-card:active::before { opacity: 1; } /* Эффект свечения при нажатии */
+
+        .card-icon { font-size: 28px; color: var(--gold); margin-bottom: 15px; }
+        .card-title { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+        .card-desc { font-size: 12px; color: var(--text-muted); }
+
+        /* --- 6. PARALLAX IMAGE --- */
+        .parallax-section {
+            height: 400px; margin: 40px 0;
+            position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center;
         }
         
-        .visual-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            filter: brightness(0.8);
+        .parallax-bg {
+            position: absolute; top: -20%; left: 0; width: 100%; height: 140%;
+            background-image: url('https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover; background-position: center;
         }
         
-        .visual-overlay {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            backdrop-filter: blur(8px);
-            background: rgba(0,0,0,0.4);
-            padding: 20px;
+        .parallax-content {
+            position: relative; z-index: 2; text-align: center;
+            background: rgba(0,0,0,0.6); padding: 30px;
             border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
         }
 
-        /* --- TIMELINE (ПРОЦЕСС) --- */
-        .process-list {
-            padding: 0 20px;
-            border-left: 1px solid rgba(255,255,255,0.1);
-            margin-left: 30px;
-        }
-
-        .process-item {
-            position: relative;
-            padding-bottom: 40px;
-            padding-left: 20px;
-        }
-
-        .process-item::before {
-            content: '';
-            position: absolute;
-            left: -26px; top: 0;
-            width: 11px; height: 11px;
-            background: var(--bg-dark);
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-        }
-
-        .process-item h3 { font-size: 18px; margin-bottom: 5px; color: var(--text-white); }
-        .process-item p { font-size: 14px; margin: 0; }
-
-        /* --- ЛИПКАЯ КНОПКА --- */
-        .floating-cta {
-            position: fixed;
-            bottom: 30px;
-            left: 5%;
-            width: 90%;
-            background: var(--gold);
-            color: #000;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 25px;
-            border-radius: 60px; /* Pill shape */
-            font-weight: 700;
+        /* --- 7. FLOATING CTA --- */
+        .floating-btn {
+            position: fixed; bottom: 30px; left: 20px; right: 20px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: #000; height: 64px;
+            border-radius: 32px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 8px 0 24px;
             text-decoration: none;
-            box-shadow: 0 10px 30px var(--gold-glow);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
             z-index: 100;
-            transition: transform 0.2s;
-            animation: pulse 2s infinite;
+            transform: translateY(100px); /* Спрятана по умолчанию */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .floating-btn.visible { transform: translateY(0); }
+
+        .btn-text { font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-circle {
+            width: 48px; height: 48px; background: #000; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--gold); font-size: 20px;
+            animation: rotateIcon 5s infinite linear;
         }
 
-        .cta-text { font-size: 16px; text-transform: uppercase; letter-spacing: 1px; }
-        .cta-icon { background: #000; color: var(--gold); width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
-        }
-
-        /* --- АНИМАЦИЯ ПОЯВЛЕНИЯ --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* --- АНИМАЦИИ (KEYFRAMES) --- */
+        @keyframes kenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes loadLine { 0% { width: 0; } 100% { width: 100%; } }
+        @keyframes rotateIcon { 0% { transform: rotate(0deg); } 20% { transform: rotate(15deg); } 40% { transform: rotate(-15deg); } 60% { transform: rotate(5deg); } 100% { transform: rotate(0deg); } }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
     </style>
 </head>
 <body>
 
-    <!-- 1. HERO SLIDER -->
-    <div class="hero-container" id="slider">
-        <!-- ФОТО 1: ЭКСТЕРЬЕР (ФАСАД) -->
-        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1920&auto=format&fit=crop');"></div>
-        <!-- ФОТО 2: ИНТЕРЬЕР ГОСТИНАЯ -->
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1920&auto=format&fit=crop');"></div>
-        <!-- ФОТО 3: ДЕТАЛИ -->
-        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1920&auto=format&fit=crop');"></div>
-
-        <div class="hero-content">
-            <div class="model-tag">Бизнес-класс</div>
-            <h1 class="hero-title">Blackrock<br>Model</h1>
-            <div class="hero-price">от €42,000</div>
-        </div>
-
-        <div class="dots">
-            <div class="dot active"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader-text">CAPSULE HOMES</div>
+        <div style="width: 200px; height: 2px; background: #222; border-radius: 2px;">
+            <div class="loader-line"></div>
         </div>
     </div>
 
-    <!-- 2. GRID FEATURES (ПРЕИМУЩЕСТВА) -->
-    <section class="features-section reveal">
-        <div class="section-header">
-            <h2>Комфорт 5 звёзд</h2>
-            <p>Всё продумано до мелочей. Заезжайте и живите.</p>
-        </div>
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-bg" id="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1920&auto=format&fit=crop');"></div>
+        <div class="hero-overlay"></div>
         
-        <div class="grid">
-            <div class="card">
-                <i class="fa-solid fa-wind"></i>
-                <h3>Надежность</h3>
-                <span>Ветрозащита 12 lvl</span>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-temperature-low"></i>
-                <h3>Тепло</h3>
-                <span>Зимний пакет утепления</span>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-couch"></i>
-                <h3>Мебель</h3>
-                <span>Встроенная кухня и шкафы</span>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-expand"></i>
-                <h3>Простор</h3>
-                <span>Панорамные окна</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. VISUAL BREAK (ПЛАНИРОВКА/РАЗРЕЗ) -->
-    <div class="visual-block reveal">
-        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=1080&auto=format&fit=crop" class="visual-img" alt="Interior Design">
-        <div class="visual-overlay">
-            <h3>Smart Layout</h3>
-            <p>38 кв.м. идеальной эргономики</p>
-            <a href="#" style="color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold); font-size: 14px; margin-top: 10px; display: inline-block;">Смотреть планировку</a>
+        <div class="hero-content">
+            <div class="tag" data-aos="fade-right" data-aos-delay="1000">Premium Edition</div>
+            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="1200">Blackrock<br>Model</h1>
+            <p class="hero-subtitle">Архитектура будущего, доступная сегодня.<br>От €42,000</p>
         </div>
     </div>
 
-    <!-- 4. TIMELINE (ПРОЦЕСС) -->
-    <section class="features-section reveal" style="padding-bottom: 20px;">
-        <div class="section-header">
-            <h2>Путь к дому</h2>
-            <p>Без стройки, пыли и нервов.</p>
+    <!-- MARQUEE (БЕГУЩАЯ СТРОКА) -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item"><i class="fa-solid fa-star"></i> 45 ДНЕЙ ПРОИЗВОДСТВО</span>
+            <span class="marquee-item"><i class="fa-solid fa-bolt"></i> КЛАСС A++</span>
+            <span class="marquee-item"><i class="fa-solid fa-check"></i> ПОД КЛЮЧ</span>
+            <span class="marquee-item"><i class="fa-solid fa-star"></i> 45 ДНЕЙ ПРОИЗВОДСТВО</span>
+            <span class="marquee-item"><i class="fa-solid fa-bolt"></i> КЛАСС A++</span>
+            <span class="marquee-item"><i class="fa-solid fa-check"></i> ПОД КЛЮЧ</span>
+        </div>
+    </div>
+
+    <!-- CARDS SECTION -->
+    <section class="section">
+        <div style="margin-bottom: 30px;" data-aos="fade-up">
+            <h2 style="font-size: 28px; margin-bottom: 10px;">Всё включено</h2>
+            <p style="color: var(--text-muted);">Больше, чем просто стены. Это готовый сценарий жизни.</p>
         </div>
 
-        <div class="process-list">
-            <div class="process-item">
-                <h3>Заказ и Дизайн</h3>
-                <p>Выбираем опции (терраса, умный дом) и подписываем договор.</p>
+        <div class="grid">
+            <div class="glass-card" data-aos="zoom-in" data-aos-delay="100">
+                <i class="fa-solid fa-layer-group card-icon"></i>
+                <div class="card-title">Каркас</div>
+                <div class="card-desc">Оцинкованная сталь + Алюминий</div>
             </div>
-            <div class="process-item">
-                <h3>Производство (45 дней)</h3>
-                <p>Ваш дом собирается в теплом цехе под контролем инженеров.</p>
+            <div class="glass-card" data-aos="zoom-in" data-aos-delay="200">
+                <i class="fa-solid fa-snowflake card-icon"></i>
+                <div class="card-title">Климат</div>
+                <div class="card-desc">Кондиционер + теплый пол</div>
             </div>
-            <div class="process-item" style="border-color: transparent;">
-                <h3 style="color: var(--gold);">Заселение (1 день)</h3>
-                <p>Доставляем, подключаем коммуникации. Дом готов.</p>
+            <div class="glass-card" data-aos="zoom-in" data-aos-delay="300">
+                <i class="fa-solid fa-kitchen-set card-icon"></i>
+                <div class="card-title">Кухня</div>
+                <div class="card-desc">Встроенная мебель и техника</div>
+            </div>
+            <div class="glass-card" data-aos="zoom-in" data-aos-delay="400">
+                <i class="fa-solid fa-wifi card-icon"></i>
+                <div class="card-title">Smart</div>
+                <div class="card-desc">Голосовое управление домом</div>
             </div>
         </div>
     </section>
 
-    <!-- 5. FLOATING CTA (ЛИПКАЯ КНОПКА) -->
-    <a href="https://wa.me/353892136215" class="floating-cta">
-        <span class="cta-text">Узнать детали</span>
-        <span class="cta-icon"><i class="fa-brands fa-whatsapp"></i></span>
+    <!-- PARALLAX IMAGE -->
+    <div class="parallax-section">
+        <div class="parallax-bg" id="parallax-bg"></div>
+        <div class="parallax-content" data-aos="flip-up">
+            <h2>38 м²</h2>
+            <p style="color: #fff; margin: 5px 0 0 0;">Идеальная эргономика</p>
+        </div>
+    </div>
+
+    <!-- SPECS LIST (MINIMALIST) -->
+    <section class="section" style="padding-bottom: 120px;">
+        <h2 style="margin-bottom: 20px;" data-aos="fade-right">Характеристики</h2>
+        
+        <div style="border-top: 1px solid rgba(255,255,255,0.1);" data-aos="fade-up">
+            <div style="display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <span style="color: var(--text-muted);">Длина / Ширина</span>
+                <span style="font-weight: 700;">11.5м x 3.3м</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <span style="color: var(--text-muted);">Ветроустойчивость</span>
+                <span style="font-weight: 700;">Level 12 (Тайфун)</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                <span style="color: var(--text-muted);">Срок службы</span>
+                <span style="font-weight: 700;">30-50 лет</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- STICKY BUTTON -->
+    <a href="https://wa.me/353892136215" class="floating-btn" id="stickyBtn">
+        <span class="btn-text">Получить каталог</span>
+        <div class="btn-circle"><i class="fa-brands fa-whatsapp"></i></div>
     </a>
 
-    <!-- SCRIPT -->
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // --- СЛАЙДЕР С ТАЧЕМ И АВТОМАТОМ ---
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        let current = 0;
-        let touchStartX = 0;
-        let touchEndX = 0;
+        // 1. ИНИЦИАЛИЗАЦИЯ AOS (Анимация при скролле)
+        AOS.init({
+            duration: 800, // Длительность анимации
+            once: true,    // Анимировать только один раз
+            offset: 50     // Начинать анимацию чуть раньше
+        });
 
-        function showSlide(index) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
+        // 2. PRELOADER LOGIC
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('preloader');
+                loader.style.opacity = '0';
+                loader.style.visibility = 'hidden';
+            }, 1500); // 1.5 секунды задержка, чтобы насладиться анимацией
+        });
+
+        // 3. PARALLAX EFFECT (Скрипт для параллакса)
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
             
-            // Зацикливание
-            if (index >= slides.length) current = 0;
-            else if (index < 0) current = slides.length - 1;
-            else current = index;
-
-            slides[current].classList.add('active');
-            dots[current].classList.add('active');
-        }
-
-        // Автоплей
-        setInterval(() => showSlide(current + 1), 5000);
-
-        // Свайпы пальцем
-        const sliderContainer = document.getElementById('slider');
-        
-        sliderContainer.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        sliderContainer.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            if (touchEndX < touchStartX - 50) showSlide(current + 1); // Свайп влево
-            if (touchEndX > touchStartX + 50) showSlide(current - 1); // Свайп вправо
-        }
-
-        // --- АНИМАЦИЯ ПРИ СКРОЛЛЕ (REVEAL) ---
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
+            // Параллакс для средней секции
+            const parallaxBg = document.getElementById('parallax-bg');
+            const speed = 0.5;
+            // Вычисляем смещение только когда элемент виден (упрощенно)
+            if(scrollY > 500) { 
+                parallaxBg.style.transform = `translateY(${(scrollY - 800) * 0.2}px)`; 
             }
-        }
-        window.addEventListener("scroll", reveal);
-        // Запустить один раз при загрузке
-        reveal();
+
+            // Появление кнопки при скролле
+            const btn = document.getElementById('stickyBtn');
+            if (scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        // 4. СМЕНА ФОНА ГЕРОЯ (ПРОСТОЙ СЛАЙДЕР ФОНА)
+        const heroImages = [
+            'https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1920&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1920&auto=format&fit=crop',
+            'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1920&auto=format&fit=crop'
+        ];
+        let imgIndex = 0;
+        const heroBg = document.getElementById('hero-bg');
+        
+        setInterval(() => {
+            imgIndex = (imgIndex + 1) % heroImages.length;
+            // Создаем плавный переход через opacity (можно улучшить, но для простоты меняем url)
+            heroBg.style.backgroundImage = `url('${heroImages[imgIndex]}')`;
+        }, 5000);
+
     </script>
 </body>
 </html>
