@@ -3,365 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Blackrock Model | Capsule Homes</title>
+    <meta name="theme-color" content="#050505">
     
-    <!-- ШРИФТЫ -->
+    <title>Greystone Studio</title>
+    
+    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- ИКОНКИ -->
+    <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- AOS ANIMATION LIBRARY (Для анимации при скролле) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- SWIPER CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <style>
         :root {
-            --bg-deep: #050505;
-            --bg-card: rgba(30, 30, 30, 0.6);
+            --bg: #050505;
+            --card: #121212;
             --gold: #D4AF37;
-            --gold-light: #F4C430;
-            --text-main: #ffffff;
-            --text-muted: #888888;
-            --blur: 12px;
+            --text-main: #F1F1F1;
+            --text-sec: #888;
+            --border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* --- 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ --- */
-        html, body {
-            margin: 0; padding: 0;
-            background-color: var(--bg-deep);
+        body {
+            background-color: var(--bg);
             color: var(--text-main);
             font-family: 'Manrope', sans-serif;
-            overflow-x: hidden; /* Скрываем горизонтальный скролл */
-            scroll-behavior: smooth;
+            margin: 0; padding: 0;
+            overflow-x: hidden;
+            padding-bottom: 100px;
         }
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; margin: 0; }
-
-        /* --- 2. PRELOADER (ЗАСТАВКА) --- */
-        #preloader {
+        /* TEXTURE */
+        .noise {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000;
-            z-index: 9999;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            transition: opacity 0.8s ease, visibility 0.8s;
-        }
-        .loader-text {
-            font-family: 'Playfair Display'; font-size: 24px; color: var(--gold);
-            letter-spacing: 2px; margin-bottom: 20px;
-            animation: pulseText 2s infinite;
-        }
-        .loader-line {
-            width: 0; height: 2px; background: var(--gold);
-            animation: loadLine 1.5s ease-out forwards;
+            pointer-events: none; z-index: 9000; opacity: 0.04;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
         }
 
-        /* --- 3. HERO SECTION С ЭФФЕКТОМ ZOOM --- */
+        h1, h2, h3 { font-family: 'Syncopate', sans-serif; text-transform: uppercase; margin: 0; letter-spacing: 1px; }
+        
+        /* --- 1. HERO --- */
         .hero {
-            position: relative; height: 95vh; width: 100%;
+            height: 85vh; position: relative; display: flex; align-items: flex-end; padding: 25px;
             overflow: hidden;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
         }
-
         .hero-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center;
-            transition: transform 0.5s ease-out; /* Плавность для JS */
-            will-change: transform;
-            /* Анимация Кена Бёрнса (медленный зум) */
-            animation: kenBurns 20s infinite alternate; 
+            object-fit: cover; opacity: 0.8; z-index: 0; filter: brightness(0.7);
         }
+        .hero-content { position: relative; z-index: 2; width: 100%; }
+        .hero-title { font-size: 10vw; line-height: 0.9; margin-bottom: 10px; color: #fff; }
+        .hero-price { font-size: 24px; color: var(--gold); font-family: 'Syncopate'; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .hero-badge { font-size: 10px; border: 1px solid var(--gold); padding: 4px 8px; border-radius: 20px; color: var(--gold); }
 
-        .hero-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+        /* --- 2. PROCESS (TIMELINE) - ВМЕСТО ТЕКСТА --- */
+        .process-row {
+            display: flex; justify-content: space-around; padding: 30px 10px;
+            background: #0a0a0a; border-bottom: var(--border);
         }
+        .process-step { text-align: center; width: 30%; }
+        .p-icon { font-size: 20px; color: var(--gold); margin-bottom: 8px; display: block; }
+        .p-title { font-size: 12px; font-weight: 700; display: block; margin-bottom: 4px; }
+        .p-desc { font-size: 10px; color: #666; display: block; line-height: 1.2; }
 
-        .hero-content {
-            position: absolute; bottom: 120px; left: 24px; z-index: 10;
+        /* --- 3. GALLERY --- */
+        .gallery-sec { padding: 40px 0; }
+        .swiper { width: 100%; height: 500px; padding-bottom: 40px; }
+        .swiper-slide {
+            width: 85%; height: 100%; border-radius: 16px; overflow: hidden;
+            background: #111; border: var(--border); position: relative;
         }
+        .swiper-slide img, .swiper-slide video { width: 100%; height: 100%; object-fit: cover; }
+        .slide-tag {
+            position: absolute; top: 15px; left: 15px;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+            color: #fff; padding: 5px 10px; font-size: 10px; font-weight: 700;
+            border-radius: 4px; z-index: 10; font-family: 'Syncopate';
+        }
+        .swiper-pagination-bullet-active { background: var(--gold); width: 20px; border-radius: 5px; }
 
-        .tag {
-            display: inline-block; padding: 6px 14px;
-            border: 1px solid var(--gold); border-radius: 50px;
-            color: var(--gold); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px;
-            margin-bottom: 15px;
-            backdrop-filter: blur(5px);
-        }
-
-        .hero-title {
-            font-size: 48px; line-height: 1; margin-bottom: 10px;
-            background: linear-gradient(45deg, #fff, #aaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 16px; color: #ccc; max-width: 80%;
-            opacity: 0; animation: fadeUp 1s ease 0.5s forwards;
-        }
-
-        /* --- 4. MARQUEE (БЕГУЩАЯ СТРОКА) --- */
-        .marquee-container {
-            background: var(--gold); color: #000;
-            padding: 12px 0; overflow: hidden; white-space: nowrap;
-            transform: rotate(-2deg) scale(1.05); /* Легкий наклон для динамики */
-            margin: -30px 0 40px 0; z-index: 20; position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+        /* --- 4. HORIZONTAL SCROLL CARDS (УБИРАЕМ СТЕНЫ ТЕКСТА) --- */
+        .h-scroll-sec { padding: 20px 0 40px; }
+        .sec-head { padding: 0 20px 15px; display: flex; justify-content: space-between; align-items: center; }
+        .sec-head h3 { font-size: 16px; color: #fff; }
         
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 20s linear infinite;
+        .scroll-wrap {
+            display: flex; gap: 15px; overflow-x: auto; padding: 0 20px;
+            scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
         }
+        .scroll-wrap::-webkit-scrollbar { display: none; }
         
-        .marquee-item {
-            font-weight: 800; text-transform: uppercase; font-size: 14px; margin: 0 20px;
-            display: inline-flex; align-items: center; gap: 10px;
+        .info-card {
+            flex: 0 0 260px; /* Фиксированная ширина карточки */
+            background: var(--card); border: var(--border);
+            border-radius: 12px; padding: 20px;
+            scroll-snap-align: start;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
+        .ic-icon { font-size: 24px; color: var(--gold); margin-bottom: 15px; }
+        .ic-title { font-size: 14px; font-weight: 700; margin-bottom: 5px; color: #fff; }
+        .ic-desc { font-size: 12px; color: #888; line-height: 1.4; }
 
-        /* --- 5. GRID CARDS (СТЕКЛО) --- */
-        .section { padding: 40px 20px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-
-        .glass-card {
-            background: var(--bg-card);
-            backdrop-filter: blur(var(--blur));
-            -webkit-backdrop-filter: blur(var(--blur));
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 24px;
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s;
+        /* --- 5. GRID SPECS (VISUAL) --- */
+        .grid-specs {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 20px 40px;
         }
-
-        .glass-card::before {
-            content: ''; position: absolute; top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 60%);
-            opacity: 0; transition: opacity 0.5s;
+        .g-item {
+            background: #111; padding: 15px; border-radius: 8px; text-align: center; border: var(--border);
         }
-        .glass-card:active::before { opacity: 1; } /* Эффект свечения при нажатии */
+        .g-val { font-size: 20px; font-weight: 700; color: #fff; font-family: 'Syncopate'; display: block; }
+        .g-lbl { font-size: 10px; color: #666; text-transform: uppercase; margin-top: 5px; display: block; }
 
-        .card-icon { font-size: 28px; color: var(--gold); margin-bottom: 15px; }
-        .card-title { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
-        .card-desc { font-size: 12px; color: var(--text-muted); }
+        /* --- 6. CHECKLIST (WHAT'S INCLUDED) --- */
+        .checklist-sec { background: #111; padding: 30px 20px; }
+        .check-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; }
+        .check-item { display: flex; align-items: center; gap: 15px; }
+        .check-icon { 
+            width: 30px; height: 30px; background: rgba(212, 175, 55, 0.1); 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: var(--gold); font-size: 12px; flex-shrink: 0;
+        }
+        .check-text { font-size: 13px; color: #ccc; }
 
-        /* --- 6. PARALLAX IMAGE --- */
-        .parallax-section {
-            height: 400px; margin: 40px 0;
-            position: relative; overflow: hidden;
-            display: flex; align-items: center; justify-content: center;
-        }
-        
-        .parallax-bg {
-            position: absolute; top: -20%; left: 0; width: 100%; height: 140%;
-            background-image: url('https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover; background-position: center;
-        }
-        
-        .parallax-content {
-            position: relative; z-index: 2; text-align: center;
-            background: rgba(0,0,0,0.6); padding: 30px;
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
-        }
+        /* --- 7. ACCORDION (UPGRADES ONLY) --- */
+        .acc-wrap { padding: 20px; }
+        .acc-item { border-bottom: 1px solid #222; margin-bottom: 10px; }
+        .acc-head { padding: 15px 0; display: flex; justify-content: space-between; cursor: pointer; font-size: 14px; font-weight: 600; }
+        .acc-body { height: 0; overflow: hidden; transition: 0.3s; color: #888; font-size: 13px; }
+        .acc-body ul { padding-left: 15px; margin: 0 0 15px 0; }
+        .acc-item.active .acc-body { height: auto; }
+        .acc-item.active i { transform: rotate(45deg); color: var(--gold); }
 
-        /* --- 7. FLOATING CTA --- */
-        .floating-btn {
-            position: fixed; bottom: 30px; left: 20px; right: 20px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: #000; height: 64px;
-            border-radius: 32px;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 8px 0 24px;
-            text-decoration: none;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-            z-index: 100;
-            transform: translateY(100px); /* Спрятана по умолчанию */
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .floating-btn.visible { transform: translateY(0); }
+        /* --- FOOTER --- */
+        footer { background: #080808; padding: 40px 20px 100px; font-size: 11px; color: #555; border-top: 1px solid #222; }
+        footer a { color: #777; text-decoration: none; display: block; margin-bottom: 5px; }
+        .f-logo { font-family: 'Syncopate'; color: #fff; font-size: 16px; margin-bottom: 20px; display: block; }
 
-        .btn-text { font-weight: 700; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .btn-circle {
-            width: 48px; height: 48px; background: #000; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--gold); font-size: 20px;
-            animation: rotateIcon 5s infinite linear;
+        /* --- STICKY BAR --- */
+        .sticky-bar {
+            position: fixed; bottom: 20px; left: 15px; right: 15px;
+            background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(10px);
+            padding: 10px 20px; border-radius: 50px; border: 1px solid var(--gold);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100; box-shadow: 0 10px 40px rgba(0,0,0,0.8);
         }
-
-        /* --- АНИМАЦИИ (KEYFRAMES) --- */
-        @keyframes kenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        @keyframes loadLine { 0% { width: 0; } 100% { width: 100%; } }
-        @keyframes rotateIcon { 0% { transform: rotate(0deg); } 20% { transform: rotate(15deg); } 40% { transform: rotate(-15deg); } 60% { transform: rotate(5deg); } 100% { transform: rotate(0deg); } }
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .bar-btn {
+            background: var(--gold); color: #000; padding: 10px 20px; border-radius: 30px;
+            font-weight: 700; font-size: 11px; text-transform: uppercase; text-decoration: none;
+            display: flex; gap: 8px; align-items: center;
+        }
 
     </style>
 </head>
 <body>
 
-    <!-- PRELOADER -->
-    <div id="preloader">
-        <div class="loader-text">CAPSULE HOMES</div>
-        <div style="width: 200px; height: 2px; background: #222; border-radius: 2px;">
-            <div class="loader-line"></div>
-        </div>
-    </div>
+    <div class="noise"></div>
 
-    <!-- HERO SECTION -->
-    <div class="hero">
-        <div class="hero-bg" id="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1920&auto=format&fit=crop');"></div>
-        <div class="hero-overlay"></div>
-        
+    <!-- 1. HERO -->
+    <section class="hero">
+        <img src="./hero.avif" class="hero-bg" alt="Hero">
         <div class="hero-content">
-            <div class="tag" data-aos="fade-right" data-aos-delay="1000">Premium Edition</div>
-            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="1200">Blackrock<br>Model</h1>
-            <p class="hero-subtitle">Архитектура будущего, доступная сегодня.<br>От €42,000</p>
-        </div>
-    </div>
-
-    <!-- MARQUEE (БЕГУЩАЯ СТРОКА) -->
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span class="marquee-item"><i class="fa-solid fa-star"></i> 45 ДНЕЙ ПРОИЗВОДСТВО</span>
-            <span class="marquee-item"><i class="fa-solid fa-bolt"></i> КЛАСС A++</span>
-            <span class="marquee-item"><i class="fa-solid fa-check"></i> ПОД КЛЮЧ</span>
-            <span class="marquee-item"><i class="fa-solid fa-star"></i> 45 ДНЕЙ ПРОИЗВОДСТВО</span>
-            <span class="marquee-item"><i class="fa-solid fa-bolt"></i> КЛАСС A++</span>
-            <span class="marquee-item"><i class="fa-solid fa-check"></i> ПОД КЛЮЧ</span>
-        </div>
-    </div>
-
-    <!-- CARDS SECTION -->
-    <section class="section">
-        <div style="margin-bottom: 30px;" data-aos="fade-up">
-            <h2 style="font-size: 28px; margin-bottom: 10px;">Всё включено</h2>
-            <p style="color: var(--text-muted);">Больше, чем просто стены. Это готовый сценарий жизни.</p>
-        </div>
-
-        <div class="grid">
-            <div class="glass-card" data-aos="zoom-in" data-aos-delay="100">
-                <i class="fa-solid fa-layer-group card-icon"></i>
-                <div class="card-title">Каркас</div>
-                <div class="card-desc">Оцинкованная сталь + Алюминий</div>
-            </div>
-            <div class="glass-card" data-aos="zoom-in" data-aos-delay="200">
-                <i class="fa-solid fa-snowflake card-icon"></i>
-                <div class="card-title">Климат</div>
-                <div class="card-desc">Кондиционер + теплый пол</div>
-            </div>
-            <div class="glass-card" data-aos="zoom-in" data-aos-delay="300">
-                <i class="fa-solid fa-kitchen-set card-icon"></i>
-                <div class="card-title">Кухня</div>
-                <div class="card-desc">Встроенная мебель и техника</div>
-            </div>
-            <div class="glass-card" data-aos="zoom-in" data-aos-delay="400">
-                <i class="fa-solid fa-wifi card-icon"></i>
-                <div class="card-title">Smart</div>
-                <div class="card-desc">Голосовое управление домом</div>
+            <h1 class="hero-title">Greystone<br>Studio</h1>
+            <div class="hero-price">
+                € 25,000 <span class="hero-badge">Turnkey</span>
             </div>
         </div>
     </section>
 
-    <!-- PARALLAX IMAGE -->
-    <div class="parallax-section">
-        <div class="parallax-bg" id="parallax-bg"></div>
-        <div class="parallax-content" data-aos="flip-up">
-            <h2>38 м²</h2>
-            <p style="color: #fff; margin: 5px 0 0 0;">Идеальная эргономика</p>
+    <!-- 2. PROCESS (ВМЕСТО ТЕКСТА - ИКОНКИ) -->
+    <div class="process-row">
+        <div class="process-step">
+            <span class="p-icon"><i class="fa-solid fa-industry"></i></span>
+            <span class="p-title">45 Days</span>
+            <span class="p-desc">Production</span>
+        </div>
+        <div class="process-step">
+            <span class="p-icon"><i class="fa-solid fa-truck-fast"></i></span>
+            <span class="p-title">Direct</span>
+            <span class="p-desc">Delivery</span>
+        </div>
+        <div class="process-step">
+            <span class="p-icon"><i class="fa-solid fa-check-circle"></i></span>
+            <span class="p-title">1 Day</span>
+            <span class="p-desc">Install</span>
         </div>
     </div>
 
-    <!-- SPECS LIST (MINIMALIST) -->
-    <section class="section" style="padding-bottom: 120px;">
-        <h2 style="margin-bottom: 20px;" data-aos="fade-right">Характеристики</h2>
+    <!-- 3. GALLERY SWIPER -->
+    <section class="gallery-sec">
+        <div class="sec-head">
+            <h3>Visual Tour</h3>
+            <span style="font-size: 10px; color: #666;">SWIPE <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <!-- VIDEO: Overview -->
+                <div class="swiper-slide">
+                    <div class="slide-tag">OVERVIEW</div>
+                    <video src="https://video.wixstatic.com/video/a04742_d3d1117587104852a7485e79c7b1a2df/720p/mp4/file.mp4" loop muted playsinline controls></video>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-tag">OVERVIEW</div>
+                    <video src="https://video.wixstatic.com/video/a04742_ee10477c66474e4e8d43e64d2cad2968/720p/mp4/file.mp4" loop muted playsinline controls></video>
+                </div>
+                <div class="swiper-slide">
+                    <div class="slide-tag">OVERVIEW</div>
+                    <video src="https://video.wixstatic.com/video/a04742_a37c1416dcdc42c383d48f478181985f/720p/mp4/file.mp4" loop muted playsinline controls></video>
+                </div>
+                <div class="swiper-slide">
+                    <!-- <div class="slide-tag">LAYOUT</div> -->
+                    <img src="https://static.wixstatic.com/media/6fc0d4_98031e7044bc4928aa67eb008e299e55~mv2.png/v1/fill/w_348,h_464,q_90,enc_avif,quality_auto/6fc0d4_98031e7044bc4928aa67eb008e299e55~mv2.png" >
+                </div>
+                <!-- PHOTO: Kitchen -->
+                <div class="swiper-slide">
+                    <!-- <div class="slide-tag">KITCHEN</div> -->
+                    <img src="https://static.wixstatic.com/media/6fc0d4_499dd3d6b8044c8d8f7038f2ef1a6f7b~mv2.png/v1/fill/w_348,h_464,q_90,enc_avif,quality_auto/6fc0d4_499dd3d6b8044c8d8f7038f2ef1a6f7b~mv2.png" alt="Kitchen">
+                </div>
+                <!-- PHOTO: Bedroom -->
+                <div class="swiper-slide">
+                    <!-- <div class="slide-tag">BEDROOM</div> -->
+                    <img src="https://static.wixstatic.com/media/6fc0d4_ec98d00acff542a78b535843c15d8b73~mv2.png/v1/fill/w_348,h_464,q_90,enc_avif,quality_auto/6fc0d4_ec98d00acff542a78b535843c15d8b73~mv2.png" alt="Bedroom">
+                </div>
+                
+                <div class="swiper-slide">
+                    <!-- <div class="slide-tag">BEDROOM</div> -->
+                    <img src="https://static.wixstatic.com/media/6fc0d4_0d465f49237e4cd891d2042de01063f8~mv2.png/v1/fill/w_348,h_464,q_90,enc_avif,quality_auto/6fc0d4_0d465f49237e4cd891d2042de01063f8~mv2.png" alt="Bedroom">
+                </div>
+                                <div class="swiper-slide">
+                    <!-- <div class="slide-tag">BEDROOM</div> -->
+                    <img src="https://static.wixstatic.com/media/6fc0d4_2e99c94734ce4c9595c594628aafa053~mv2.png/v1/fill/w_348,h_464,q_90,enc_avif,quality_auto/6fc0d4_2e99c94734ce4c9595c594628aafa053~mv2.png" alt="Bedroom">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- 4. TECH SPECS (ГОРИЗОНТАЛЬНЫЙ СКРОЛЛ ВМЕСТО СПИСКОВ) -->
+    <section class="h-scroll-sec">
+        <div class="sec-head">
+            <h3>Technical Specs</h3>
+            <span style="font-size: 10px; color: var(--gold);">SCROLL <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
         
-        <div style="border-top: 1px solid rgba(255,255,255,0.1);" data-aos="fade-up">
-            <div style="display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                <span style="color: var(--text-muted);">Длина / Ширина</span>
-                <span style="font-weight: 700;">11.5м x 3.3м</span>
+        <div class="scroll-wrap">
+            <!-- Card 1 -->
+            <div class="info-card">
+                <i class="fa-solid fa-shield-halved ic-icon"></i>
+                <div>
+                    <div class="ic-title">Structure</div>
+                    <div class="ic-desc">Galvanized steel frame & aluminum shell. 30+ years life expectancy.</div>
+                </div>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                <span style="color: var(--text-muted);">Ветроустойчивость</span>
-                <span style="font-weight: 700;">Level 12 (Тайфун)</span>
+            <!-- Card 2 -->
+            <div class="info-card">
+                <i class="fa-solid fa-wind ic-icon"></i>
+                <div>
+                    <div class="ic-title">Resistance</div>
+                    <div class="ic-desc">Level 12 Wind Resistance. Level 7 Earthquake Resistance.</div>
+                </div>
             </div>
-            <div style="display: flex; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                <span style="color: var(--text-muted);">Срок службы</span>
-                <span style="font-weight: 700;">30-50 лет</span>
+            <!-- Card 3 -->
+            <div class="info-card">
+                <i class="fa-solid fa-temperature-full ic-icon"></i>
+                <div>
+                    <div class="ic-title">Insulation</div>
+                    <div class="ic-desc">Fully waterproof, moisture-proof, tempered panoramic glass.</div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="info-card">
+                <i class="fa-solid fa-microchip ic-icon"></i>
+                <div>
+                    <div class="ic-title">Smart Home</div>
+                    <div class="ic-desc">Voice control, smart lock, lighting & curtain automation.</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- STICKY BUTTON -->
-    <a href="https://wa.me/353892136215" class="floating-btn" id="stickyBtn">
-        <span class="btn-text">Получить каталог</span>
-        <div class="btn-circle"><i class="fa-brands fa-whatsapp"></i></div>
-    </a>
+    <!-- 5. DIMENSIONS GRID -->
+    <div class="sec-head" style="margin-bottom: 5px;"><h3>Dimensions</h3></div>
+    <div class="grid-specs">
+        <div class="g-item">
+            <span class="g-val">13 m²</span>
+            <span class="g-lbl">Area</span>
+        </div>
+        <div class="g-item">
+            <span class="g-val">1-2</span>
+            <span class="g-lbl">Persons</span>
+        </div>
+        <div class="g-item">
+            <span class="g-val">5.8 m</span>
+            <span class="g-lbl">Length</span>
+        </div>
+        <div class="g-item">
+            <span class="g-val">2.25 m</span>
+            <span class="g-lbl">Width</span>
+        </div>
+    </div>
 
-    <!-- SCRIPTS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- 6. WHAT'S INCLUDED (CHECKLIST) -->
+    <section class="checklist-sec">
+        <h3 style="color: #fff; font-size: 16px;">What's Included</h3>
+        <p>No hidden costs. Everything you need to live.</p>
+        
+        <div class="check-grid">
+            <div class="check-item">
+                <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                <div class="check-text">Fully equipped (electric & plumbing)</div>
+            </div>
+            <div class="check-item">
+                <div class="check-icon"><i class="fa-solid fa-utensils"></i></div>
+                <div class="check-text">Built-in Kitchen</div>
+            </div>
+            <div class="check-item">
+                <div class="check-icon"><i class="fa-solid fa-bed"></i></div>
+                <div class="check-text">Bedroom with furniture</div>
+            </div>
+            <div class="check-item">
+                <div class="check-icon"><i class="fa-solid fa-shower"></i></div>
+                <div class="check-text">Fitted Bathroom (Shower + Toilet)</div>
+            </div>
+            <div class="check-item">
+                <div class="check-icon"><i class="fa-solid fa-snowflake"></i></div>
+                <div class="check-text">Air Conditioner</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. UPGRADES (ACCORDION - ТОЛЬКО ДЛЯ ДОПОВ) -->
+    <section class="acc-wrap">
+        <h3 style="color: var(--gold); margin-bottom: 20px;">Optional Upgrades</h3>
+        
+        <div class="acc-item">
+            <div class="acc-head" onclick="toggleAcc(this)">Exterior Add-ons <i class="fa-solid fa-plus"></i></div>
+            <div class="acc-body">
+                <ul>
+                    <li>Panoramic balcony / Decking</li>
+                    <li>Pergola / Awning system</li>
+                    <li>Exterior lighting package</li>
+                </ul>
+            </div>
+        </div>
+        <div class="acc-item">
+            <div class="acc-head" onclick="toggleAcc(this)">Interior & Tech <i class="fa-solid fa-plus"></i></div>
+            <div class="acc-body">
+                <ul>
+                    <li>Floor heating system</li>
+                    <li>Smart home upgrade</li>
+                    <li>Premium furniture package</li>
+                </ul>
+            </div>
+        </div>
+        <div class="acc-item">
+            <div class="acc-head" onclick="toggleAcc(this)">Eco & Utility <i class="fa-solid fa-plus"></i></div>
+            <div class="acc-body">
+                <ul>
+                    <li>Solar panel integration</li>
+                    <li>Water heating upgrade</li>
+                    <li>Extra insulation package</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FOOTER -->
+    <footer>
+        <span class="f-logo">Capsule Homes</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+            <div>
+                <strong style="color: #fff; display: block; margin-bottom: 10px;">Contact</strong>
+                <a href="tel:+353892136215">+353 892 136 215</a>
+                <a href="mailto:info@capsulehomes.ie">info@capsulehomes.ie</a>
+            </div>
+            <div>
+                <strong style="color: #fff; display: block; margin-bottom: 10px;">Legal</strong>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+        <p style="opacity: 0.4;">
+            Big Sur Ltd (Co. 753856)<br>
+            Clondalkin, Dublin 22, Ireland<br>
+            VAT: 4426267GH
+        </p>
+    </footer>
+
+    <!-- STICKY BAR -->
+    <div class="sticky-bar">
+        <div>
+            <span style="font-family: 'Syncopate'; font-weight: 700; color: #fff;">€ 25,000</span>
+        </div>
+        <a href="https://wa.me/353892136215" class="bar-btn">
+            WhatsApp <i class="fa-brands fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // 1. ИНИЦИАЛИЗАЦИЯ AOS (Анимация при скролле)
-        AOS.init({
-            duration: 800, // Длительность анимации
-            once: true,    // Анимировать только один раз
-            offset: 50     // Начинать анимацию чуть раньше
-        });
-
-        // 2. PRELOADER LOGIC
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const loader = document.getElementById('preloader');
-                loader.style.opacity = '0';
-                loader.style.visibility = 'hidden';
-            }, 1500); // 1.5 секунды задержка, чтобы насладиться анимацией
-        });
-
-        // 3. PARALLAX EFFECT (Скрипт для параллакса)
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            
-            // Параллакс для средней секции
-            const parallaxBg = document.getElementById('parallax-bg');
-            const speed = 0.5;
-            // Вычисляем смещение только когда элемент виден (упрощенно)
-            if(scrollY > 500) { 
-                parallaxBg.style.transform = `translateY(${(scrollY - 800) * 0.2}px)`; 
-            }
-
-            // Появление кнопки при скролле
-            const btn = document.getElementById('stickyBtn');
-            if (scrollY > 300) {
-                btn.classList.add('visible');
-            } else {
-                btn.classList.remove('visible');
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: "auto",
+            centeredSlides: true,
+            spaceBetween: 15,
+            pagination: { el: ".swiper-pagination", clickable: true },
+            on: {
+                slideChangeTransitionEnd: function () {
+                    document.querySelectorAll('video').forEach(v => v.pause());
+                    let active = document.querySelector('.swiper-slide-active video');
+                    if(active) active.play();
+                }
             }
         });
 
-        // 4. СМЕНА ФОНА ГЕРОЯ (ПРОСТОЙ СЛАЙДЕР ФОНА)
-        const heroImages = [
-            'https://images.unsplash.com/photo-1523217582562-09d0def993a6?q=80&w=1920&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=1920&auto=format&fit=crop',
-            'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1920&auto=format&fit=crop'
-        ];
-        let imgIndex = 0;
-        const heroBg = document.getElementById('hero-bg');
-        
-        setInterval(() => {
-            imgIndex = (imgIndex + 1) % heroImages.length;
-            // Создаем плавный переход через opacity (можно улучшить, но для простоты меняем url)
-            heroBg.style.backgroundImage = `url('${heroImages[imgIndex]}')`;
-        }, 5000);
-
+        function toggleAcc(el) {
+            el.parentElement.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
