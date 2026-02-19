@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#050505">
+    
+    <title>Greystone Studio | Full Technical Specification</title>
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;800&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SWIPER CSS (Фиксированная версия) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <style>
+        :root {
+            --bg: #050505;
+            --card: #121212;
+            --gold: #D4AF37;
+            --gold-bright: #FFD700;
+            --text-main: #F1F1F1;
+            --text-sec: #A0A0A0;
+            --border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family:Arial,Helvetica,sans-serif;
+            margin: 0; padding: 0;
+            line-height: 1.6;
+            font-size: 18px; /* Увеличено для людей 50+ */
+            overflow-x: hidden;
+        }
+
+        .noise {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 9999; opacity: 0.03;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+        }
+
+        h1, h2, h3 { font-family: 'Syncopate', sans-serif; text-transform: uppercase; margin: 0; }
+
+        /* --- 1. HERO --- */
+        .hero {
+            height: 85vh; position: relative; display: flex; align-items: flex-end; padding: 30px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0.6; z-index: 0; filter: brightness(0.5);
+        }
+        .hero-content { position: relative; z-index: 2; width: 100%; }
+        .hero-title { font-size: 10vw; line-height: 0.8; margin-bottom: 20px; color: #fff; }
+        .hero-price { font-size: 32px; color: var(--gold); font-family: 'Syncopate'; font-weight: 700; display: block; }
+        .hero-note { font-size: 14px; color: var(--text-sec); margin-top: 10px; display: block; }
+
+        /* --- 2. BENTO SPECS (ГРИД) --- */
+        .specs-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px;
+            margin-top: 10px; position: relative; z-index: 10;
+        }
+        .spec-card {
+            background: var(--card); border: var(--border); padding: 25px; border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .spec-card i { color: var(--gold); font-size: 24px; margin-bottom: 15px; display: block; }
+        .spec-val { font-size: 22px; font-weight: 800; color: #fff; font-family: 'Syncopate'; display: block; }
+        .spec-lbl { font-size: 11px; color: var(--gold); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+
+        /* --- 3. SLIDER (FIXED) --- */
+        .sec-head { padding: 50px 25px 20px; }
+        .sec-head h3 { font-size: 20px; color: #fff; border-left: 4px solid var(--gold); padding-left: 15px; }
+        .sec-head p { font-size: 15px; color: var(--text-sec); margin-top: 10px; }
+
+        .swiper { width: 100%; height: 500px; padding-bottom: 50px; }
+        .swiper-slide {
+            width: 85%; /* Ширина активного слайда */
+            height: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #111;
+            border: var(--border);
+            position: relative;
+        }
+        .swiper-slide img, .swiper-slide video { 
+            width: 100%; height: 100%; object-fit: cover; display: block; 
+        }
+
+        /* --- 4. DETAILED INCLUSIONS --- */
+        .included-sec { padding: 0 20px; }
+        .included-list {
+            background: var(--card); border-radius: 30px; padding: 35px; border: var(--border);
+        }
+        .inc-item { display: flex; gap: 15px; margin-bottom: 20px; font-size: 16px; align-items: center; }
+        .inc-item i { color: var(--gold); font-size: 20px; flex-shrink: 0; }
+        .inc-item b { color: #fff; }
+
+        /* --- 5. PACKAGES (HORIZONTAL SCROLL) --- */
+        .packages-scroll {
+            display: flex; gap: 20px; overflow-x: auto; padding: 20px;
+            scroll-snap-type: x mandatory; scrollbar-width: none;
+        }
+        .packages-scroll::-webkit-scrollbar { display: none; }
+        
+        .pkg-card {
+            flex: 0 0 310px; background: #161616; padding: 35px; border-radius: 30px; 
+            border: var(--border); scroll-snap-align: start; position: relative;
+        }
+        .pkg-card.premium { border: 2px solid var(--gold); background: #1a1710; }
+        .pkg-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; display: block; }
+        .pkg-name { font-family: 'Syncopate'; font-size: 20px; color: #fff; margin-bottom: 15px; display: block; }
+        .pkg-features { padding: 0; margin: 0; list-style: none; }
+        .pkg-features li { font-size: 14px; color: #ccc; margin-bottom: 10px; display: flex; gap: 10px; }
+        .pkg-features li i { color: var(--gold); margin-top: 4px; font-size: 12px; }
+
+        /* --- 6. TECHNICAL DATA BLOCKS --- */
+        .tech-box { background: #111; margin: 20px; padding: 35px; border-radius: 30px; border: var(--border); }
+        .tech-title { color: var(--gold); font-family: 'Syncopate'; font-size: 14px; margin-bottom: 25px; display: block; }
+        .tech-item { margin-bottom: 30px; }
+        .tech-item h4 { color: #fff; margin: 0 0 10px 0; font-size: 18px; display: flex; align-items: center; gap: 10px; }
+        .tech-item h4 i { color: var(--gold); font-size: 16px; }
+        .tech-item p { color: var(--text-sec); font-size: 18px; margin: 0; }
+
+        /* --- 7. ACCORDION (UPGRADES) --- */
+        .acc-item { background: #111; border: var(--border); border-radius: 20px; margin: 0 20px 10px; overflow: hidden; }
+        .acc-head { padding: 25px; display: flex; justify-content: space-between; font-weight: 700; cursor: pointer; color: #fff; }
+        .acc-body { display: none; padding: 0 25px 25px; color: var(--text-sec); font-size: 18px; }
+        .acc-item.active .acc-body { display: block; }
+        .acc-item.active .acc-head { color: var(--gold); }
+
+        /* --- FOOTER & STICKY --- */
+        footer { background: #080808; padding: 60px 25px 140px; border-top: 1px solid #222; }
+        .f-contact a { color: #fff; text-decoration: none; font-size: 22px; font-weight: 800; display: block; margin-top: 15px; }
+        .sticky-bar {
+            position: fixed; bottom: 20px; left: 15px; right: 15px;
+            background: rgba(15,15,15,0.95); backdrop-filter: blur(15px);
+            padding: 15px 25px; border-radius: 50px; border: 1px solid var(--gold);
+            display: flex; justify-content: space-between; align-items: center; z-index: 10000;
+        }
+        .bar-btn {
+            background: var(--gold); color: #000; padding: 12px 25px; border-radius: 30px;
+            font-weight: 800; font-size: 13px; text-transform: uppercase; text-decoration: none;
+        }
+
+        /* Пометка для Ирландии */
+        .irish-badge {
+            background: rgba(0, 255, 100, 0.05); border: 1px solid rgba(0, 255, 100, 0.2);
+            padding: 15px; border-radius: 15px; color: #8ecf9a; font-size: 14px; margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="noise"></div>
+
+    <!-- 1. HERO -->
+    <section class="hero">
+        <img src="./hero.avif" class="hero-bg" alt="Greystone Studio">
+        <div class="hero-content">
+            <h1 class="hero-title">Greystone<br>Studio</h1>
+            <span class="hero-price">From € 25,000</span>
+            <span class="hero-note">Full turnkey studio. Designed for the Irish climate.</span>
+        </div>
+    </section>
+
+    <!-- 2. QUICK SPECS GRID -->
+    <div class="specs-grid">
+        <div class="spec-card">
+            <i class="fa-solid fa-ruler-combined"></i>
+            <span class="spec-val">13 m²</span>
+            <span class="spec-lbl">Total Area</span>
+        </div>
+        <div class="spec-card">
+            <i class="fa-solid fa-truck"></i>
+            <span class="spec-val">3 Tns</span>
+            <span class="spec-lbl">Total Weight</span>
+        </div>
+        <div class="spec-card">
+            <i class="fa-solid fa-bolt"></i>
+            <span class="spec-val">10 kW</span>
+            <span class="spec-lbl">Power Load</span>
+        </div>
+        <div class="spec-card">
+            <i class="fa-solid fa-calendar-day"></i>
+            <span class="spec-val">1 Day</span>
+            <span class="spec-lbl">Install Time</span>
+        </div>
+    </div>
+
+    <!-- 3. SLIDER -->
+    <div class="sec-head">
+        <h3>Visual Overview</h3>
+        <p>A compact studio for living, working, and relaxing.</p>
+    </div>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><video src="https://video.wixstatic.com/video/a04742_d3d1117587104852a7485e79c7b1a2df/720p/mp4/file.mp4" loop muted playsinline controls></video></div>
+            <div class="swiper-slide"><img src="https://static.wixstatic.com/media/6fc0d4_98031e7044bc4928aa67eb008e299e55~mv2.png/v1/fill/w_348,h_464,q_90,enc_avif,quality_auto/6fc0d4_98031e7044bc4928aa67eb008e299e55~mv2.png"></div>
+            <div class="swiper-slide"><img src="https://static.wixstatic.com/media/6fc0d4_499dd3d6b8044c8d8f7038f2ef1a6f7b~mv2.png/v1/fill/w_348,h_464,q_90,enc_avif,quality_auto/6fc0d4_499dd3d6b8044c8d8f7038f2ef1a6f7b~mv2.png"></div>
+            <div class="swiper-slide"><img src="https://static.wixstatic.com/media/6fc0d4_ec98d00acff542a78b535843c15d8b73~mv2.png/v1/fill/w_348,h_464,q_90,enc_avif,quality_auto/6fc0d4_ec98d00acff542a78b535843c15d8b73~mv2.png"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- 4. WHAT'S INCLUDED (DETAILED) -->
+    <div class="sec-head"><h3>Standard Inclusions</h3></div>
+    <section class="included-sec">
+        <div class="included-list">
+            <div class="inc-item"><i class="fa-solid fa-plug"></i> <span><b>Fully connected:</b> Electricity & plumbing</span></div>
+            <div class="inc-item"><i class="fa-solid fa-utensils"></i> <span><b>Built-in kitchen:</b> Modern cabinets & sink</span></div>
+            <div class="inc-item"><i class="fa-solid fa-bed"></i> <span><b>Sleeping area:</b> Full furniture set</span></div>
+            <div class="inc-item"><i class="fa-solid fa-shower"></i> <span><b>Bathroom:</b> Fitted shower & toilet</span></div>
+            <div class="inc-item"><i class="fa-solid fa-snowflake"></i> <span><b>Ariston</b> Air Conditioner</span></div>
+            <div class="inc-item"><i class="fa-solid fa-shield-heart"></i> <span><b>Irish Standards:</b> Electrical & Safety</span></div>
+        </div>
+    </section>
+
+    <!-- 5. PACKAGES -->
+    <div class="sec-head"><h3>Available Packages</h3></div>
+    <div class="packages-scroll">
+        <div class="pkg-card">
+            <span class="pkg-tag">Practical</span>
+            <span class="pkg-name">Standard</span>
+            <ul class="pkg-features">
+                <li><i class="fa-solid fa-check"></i> All standard inclusions</li>
+                <li><i class="fa-solid fa-check"></i> Factory finish interior</li>
+                <li><i class="fa-solid fa-check"></i> Essential lighting</li>
+            </ul>
+        </div>
+        <div class="pkg-card premium">
+            <span class="pkg-tag">Most Popular</span>
+            <span class="pkg-name">Premium</span>
+            <ul class="pkg-features">
+                <li><i class="fa-solid fa-plus"></i> Standard features +</li>
+                <li><i class="fa-solid fa-check"></i> Upgraded finish materials</li>
+                <li><i class="fa-solid fa-check"></i> Smart-home automation</li>
+                <li><i class="fa-solid fa-check"></i> Luxury bathroom fittings</li>
+            </ul>
+        </div>
+        <div class="pkg-card">
+            <span class="pkg-tag">Ultimate Spec</span>
+            <span class="pkg-name">Luxury</span>
+            <ul class="pkg-features">
+                <li><i class="fa-solid fa-plus"></i> Premium features +</li>
+                <li><i class="fa-solid fa-check"></i> Underfloor heating</li>
+                <li><i class="fa-solid fa-check"></i> Full Appliances (Fridge/WM)</li>
+                <li><i class="fa-solid fa-check"></i> Outdoor Pergola & LED</li>
+                <li><i class="fa-solid fa-check"></i> Designer Rug & Furniture</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 6. TECH SPEC DETAILS -->
+    <div class="tech-box">
+        <span class="tech-title">Engineering & Structure</span>
+        <div class="tech-item">
+            <h4><i class="fa-solid fa-shield"></i> Build Quality</h4>
+            <p>Galvanised steel frame + Aluminium shell. Wind Resistance Level 12. Earthquake Resistance Level 7. 30+ years lifespan.</p>
+        </div>
+        <div class="tech-item">
+            <h4><i class="fa-solid fa-window-maximize"></i> Windows & Glass</h4>
+            <p>Panoramic tempered glass. Double-glazed units with LOW-E energy-efficient coating.</p>
+        </div>
+        <div class="tech-item">
+            <h4><i class="fa-solid fa-microchip"></i> Smart Living</h4>
+            <p>Voice control, automated curtains, lighting scenarios, and full sound insulation.</p>
+        </div>
+        <div class="irish-badge">
+            <i class="fa-solid fa-clover"></i> <b>Designed for Ireland:</b> Warm, dry, and energy-efficient even in humid and windy seasons.
+        </div>
+    </div>
+
+    <!-- 7. UPGRADES -->
+    <div class="sec-head"><h3>Optional Upgrades</h3></div>
+    <div class="acc-item">
+        <div class="acc-head" onclick="this.parentElement.classList.toggle('active')">Exterior Add-ons <i class="fa-solid fa-chevron-down"></i></div>
+        <div class="acc-body">Pergola, outdoor lighting system, decorative panels, and enhanced insulation.</div>
+    </div>
+    <div class="acc-item">
+        <div class="acc-head" onclick="this.parentElement.classList.toggle('active')">Energy & Eco <i class="fa-solid fa-chevron-down"></i></div>
+        <div class="acc-body">Solar panel integration, underfloor heating, and air purification systems.</div>
+    </div>
+
+    <!-- 8. PROCESS -->
+    <div class="sec-head"><h3>Order & Install</h3></div>
+    <div class="tech-box">
+        <p style="font-size: 15px; color: #ccc;">
+            <b>Production:</b> 12 weeks.<br>
+            <b>Installation:</b> Just 1 day.<br><br>
+            Delivered directly from the factory, fully equipped and ready to connect to utilities.
+        </p>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <span style="font-family: 'Syncopate'; color: #fff; font-size: 18px;">Capsule Homes</span>
+        <div class="f-contact">
+            <a href="tel:+353892136215">+353 892 136 215</a>
+            <p style="margin-top: 20px; line-height: 1.4; color: #555;">
+                Big Sur Ltd (Co. 753856)<br>
+                Clondalkin, Dublin 22, Ireland<br>
+                VAT: 4426267GH
+            </p>
+        </div>
+    </footer>
+
+    <!-- STICKY BAR -->
+    <div class="sticky-bar">
+        <div style="font-family: 'Syncopate'; font-weight: 700; color: #fff;">€ 25k</div>
+        <a href="https://wa.me/353892136215" class="bar-btn">WhatsApp</a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: "auto",
+            centeredSlides: true,
+            spaceBetween: 20,
+            pagination: { el: ".swiper-pagination", clickable: true },
+            on: {
+                slideChangeTransitionEnd: function () {
+                    document.querySelectorAll('video').forEach(v => v.pause());
+                    let active = document.querySelector('.swiper-slide-active video');
+                    if(active) active.play();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
