@@ -85,7 +85,7 @@
         .logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--white); }
         .logo span { color: var(--yellow); }
 
-        /* --- HERO SECTION (BLOCK 1) --- */
+        /* --- HERO SECTION (BLOCK 1 - ОБНОВЛЕННЫЙ) --- */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
             overflow: hidden; text-align: center;
@@ -96,26 +96,27 @@
         }
         .hero-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(31,31,31,1) 90%);
+            background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(31,31,31,1) 95%);
             z-index: 1;
         }
-        .hero-content { position: relative; z-index: 10; max-width: 1000px; padding: 0 20px; margin-top: 40px; }
+        .hero-content { position: relative; z-index: 10; max-width: 900px; padding: 0 20px; margin-top: 0; }
         
         .hero-tag {
-            display: inline-block; padding: 8px 16px; border: 1px solid var(--yellow);
-            color: var(--yellow); border-radius: 50px; font-size: 12px; font-weight: 600;
-            text-transform: uppercase; margin-bottom: 25px; letter-spacing: 2px;
+            display: inline-block; padding: 6px 16px; border: 1px solid var(--yellow);
+            color: var(--yellow); border-radius: 50px; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; margin-bottom: 30px; letter-spacing: 2px;
         }
         
         .hero h1 {
-            font-size: clamp(40px, 8vw, 84px); color: var(--white); font-weight: 600;
-            margin-bottom: 20px; letter-spacing: -2px; line-height: 1.05;
+            font-size: clamp(48px, 9vw, 96px); color: var(--white); font-weight: 600;
+            margin-bottom: 25px; letter-spacing: -3px; line-height: 0.95;
         }
-        .hero h1 span { display: block; font-weight: 300; color: rgba(255,255,255,0.9); font-size: 0.6em; margin-bottom: 10px; font-family: 'Playfair Display', serif; font-style: italic; letter-spacing: 0; }
+        .hero h1 span { display: block; font-weight: 300; color: rgba(255,255,255,0.9); font-size: 0.5em; margin-bottom: 10px; font-family: 'Playfair Display', serif; font-style: italic; letter-spacing: 0; }
         
+        /* Упрощенный стиль для подзаголовка */
         .hero-sub {
-            font-size: clamp(16px, 2vw, 20px); color: #ccc; font-weight: 300;
-            max-width: 600px; margin: 0 auto 40px; line-height: 1.6;
+            font-size: clamp(18px, 2vw, 22px); color: #dcdcdc; font-weight: 300;
+            max-width: 550px; margin: 0 auto 45px; line-height: 1.4;
         }
         
         .hero-actions { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
@@ -296,19 +297,18 @@
     <!-- 1. HERO SECTION -->
     <section class="hero">
         <img src="https://static.wixstatic.com/media/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg/v1/fill/w_860,h_794,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg" class="hero-bg">
-            <!-- <source src="https://video.wixstatic.com/video/a04742_b78248285e754260b35f461272f7a7b3/1080p/mp4/file.mp4" type="video/mp4"> -->
-    <!-- </img> -->
         <div class="hero-overlay"></div>
 
         <div class="hero-content fade-up">
-            <span class="hero-tag">Ireland's #1</span>
+            <!-- <span class="hero-tag">Ireland's Choice</span> -->
             <h1>
-                <span>MODERN CAPSULE HOMES</span>
-                INSTALLED IN <span class="serif-italic" style="color:var(--yellow)">ONE DAY</span>
+                CAPSULE HOMES<br>
+                <span class="serif-italic" style="color:var(--yellow); font-size: 1em; margin-top: 10px;">READY IN 24H</span>
             </h1>
+            <!-- ВОТ ЭТОТ ТЕКСТ Я СОКРАТИЛ ДЛЯ ВАС: -->
             <p class="hero-sub">
-                No construction mess. No renovations. Just a fully finished, premium space delivered to your garden.
-                Built for the Irish climate with a 65-year structural warranty.
+                Premium living spaces delivered to your garden.<br>
+                Fully finished. No construction mess.
             </p>
             <div class="hero-actions">
                 <a href="#quiz" class="btn btn-primary">Calculate Cost</a>
@@ -360,7 +360,7 @@
                         </div>
                         <div class="card-actions">
                             <a href="https://wa.me/353892136215" class="btn-card btn-wa">Chat on WhatsApp</a>
-                            <a href="./greystone.html" class="btn-card btn-details">More Details</a>
+                            <a href="./models/greystone.html" class="btn-card btn-details">More Details</a>
                         </div>
                     </div>
                 </div>
