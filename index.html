@@ -22,6 +22,7 @@
             --bg-dark: #141414;
             --yellow: #FFCC00;
             --yellow-hover: #F0B900;
+            --gold-gradient: linear-gradient(180deg, #FAD961 0%, #F76B1C 100%);
             --white: #FFFFFF;
             --grey: #B0B0B0;
             --border: rgba(255, 255, 255, 0.1);
@@ -72,7 +73,7 @@
         }
         .btn-link:hover { color: var(--yellow); }
 
-        /* --- NAVIGATION (GLASS) --- */
+        /* --- NAVIGATION --- */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             padding: 20px 0; transition: 0.3s;
@@ -85,7 +86,7 @@
         .logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--white); }
         .logo span { color: var(--yellow); }
 
-        /* --- HERO SECTION (BLOCK 1 - ОБНОВЛЕННЫЙ) --- */
+        /* --- HERO SECTION --- */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
             overflow: hidden; text-align: center;
@@ -101,19 +102,12 @@
         }
         .hero-content { position: relative; z-index: 10; max-width: 900px; padding: 0 20px; margin-top: 0; }
         
-        .hero-tag {
-            display: inline-block; padding: 6px 16px; border: 1px solid var(--yellow);
-            color: var(--yellow); border-radius: 50px; font-size: 11px; font-weight: 700;
-            text-transform: uppercase; margin-bottom: 30px; letter-spacing: 2px;
-        }
-        
         .hero h1 {
             font-size: clamp(48px, 9vw, 96px); color: var(--white); font-weight: 600;
             margin-bottom: 25px; letter-spacing: -3px; line-height: 0.95;
         }
         .hero h1 span { display: block; font-weight: 300; color: rgba(255,255,255,0.9); font-size: 0.5em; margin-bottom: 10px; font-family: 'Playfair Display', serif; font-style: italic; letter-spacing: 0; }
         
-        /* Упрощенный стиль для подзаголовка */
         .hero-sub {
             font-size: clamp(18px, 2vw, 22px); color: #dcdcdc; font-weight: 300;
             max-width: 550px; margin: 0 auto 45px; line-height: 1.4;
@@ -121,14 +115,13 @@
         
         .hero-actions { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
-        /* --- SCROLL DOWN INDICATOR --- */
         .scroll-indicator {
             position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
             z-index: 10; animation: bounce 2s infinite; opacity: 0.6;
         }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform:translateX(-50%) translateY(0);} 40% {transform:translateX(-50%) translateY(-10px);} 60% {transform:translateX(-50%) translateY(-5px);} }
 
-        /* --- TRUST STRIP (Переход между Hero и Offer) --- */
+        /* --- TRUST STRIP --- */
         .trust-strip {
             background: var(--bg-surface); border-bottom: 1px solid var(--border);
             padding: 30px 0; position: relative; z-index: 5;
@@ -147,45 +140,148 @@
         .sec-title { font-size: clamp(32px, 5vw, 48px); margin-bottom: 20px; }
         .sec-desc { font-size: 18px; color: var(--grey); }
 
-        /* --- FEATURED MODELS (BLOCK 2) --- */
+        /* --- CATALOG CARDS --- */
         .catalog-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 40px; margin-bottom: 60px;
         }
-        
-        /* THE CARD STYLE (From Screenshot) */
         .card {
             background: transparent; border-radius: 20px; display: flex; flex-direction: column;
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); position: relative;
         }
         .card:hover { transform: translateY(-10px); }
-        
         .card-img-wrap {
             width: 100%; height: 300px; border-radius: 20px; overflow: hidden;
             position: relative; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
         }
         .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .card:hover .card-img { transform: scale(1.08); }
-        
         .card-content { padding: 10px; }
         .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
         .model-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 28px; color: var(--yellow); line-height: 1.1; max-width: 70%; }
         .model-meta { font-size: 14px; text-align: right; color: var(--white); font-weight: 500; margin-top: 5px; opacity: 0.9; }
-        
         .card-details { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; min-height: 60px; }
         .model-info { font-size: 13px; color: var(--grey); line-height: 1.5; max-width: 65%; }
         .model-price { font-size: 20px; font-weight: 600; color: var(--white); }
-
         .card-actions { display: grid; gap: 12px; }
         .btn-card {
             width: 100%; padding: 14px; border-radius: 12px; text-align: center;
             font-size: 17px; font-weight: 600; border: none; cursor: pointer; transition: 0.2s;
         }
         .btn-wa { background: var(--yellow); color: #000; }
-        .btn-wa:hover { background: var(--yellow-hover); }
         .btn-details { background: #333; color: #fff; }
-        .btn-details:hover { background: #444; }
+
+        /* --- EXPERT CARD (NEW REDESIGN) --- */
+        .expert-card {
+            position: relative;
+            background: #141414;
+            border-radius: 24px;
+            overflow: hidden;
+            margin: 60px auto;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            max-width: 1100px;
+        }
+
+        /* Фон: Тонкая сетка */
+        .expert-bg-grid {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1; pointer-events: none;
+        }
+
+        /* Свечение */
+        .expert-glow {
+            position: absolute; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.12) 0%, rgba(0,0,0,0) 70%);
+            top: 50%; right: 0; transform: translate(20%, -50%);
+            z-index: 2; pointer-events: none;
+        }
+
+        .expert-content {
+            position: relative; z-index: 5;
+            display: flex; flex-direction: column-reverse; /* Mob: img top or bottom */
+            padding: 0;
+        }
+
+        /* Текстовая часть */
+        .expert-text { padding: 40px 30px 50px; flex: 1; text-align: center; }
+        
+        .expert-label {
+            text-transform: uppercase; font-size: 11px; letter-spacing: 2px;
+            color: var(--yellow); font-weight: 700; display: block; margin-bottom: 15px;
+        }
+
+        .expert-text h2 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin-bottom: 20px; color: var(--white); }
+        
+        .expert-text p {
+            font-size: 16px; line-height: 1.6; color: #999; margin: 0 auto 35px; max-width: 450px;
+        }
+
+        /* Иконки */
+        .expert-badges {
+            display: flex; justify-content: center; gap: 30px; margin-bottom: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px;
+        }
+        .e-badge { display: flex; align-items: center; gap: 12px; text-align: left; }
+        .e-badge i {
+            font-size: 18px; color: var(--yellow); background: rgba(255, 204, 0, 0.1);
+            width: 36px; height: 36px; display: flex; justify-content: center; align-items: center;
+            border-radius: 50%;
+        }
+        .e-badge div { display: flex; flex-direction: column; }
+        .e-badge strong { font-size: 16px; color: #fff; line-height: 1; }
+        .e-badge span { font-size: 10px; color: #777; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Кнопка */
+        .btn-expert {
+            background: var(--white); color: #000; border: none;
+            padding: 16px 32px; border-radius: 50px;
+            font-size: 16px; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .btn-expert:hover {
+            background: var(--yellow); transform: translateX(5px);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+        }
+
+        /* Фото */
+        .expert-visual {
+            position: relative; height: 300px; width: 100%; overflow: hidden;
+            display: flex; justify-content: center; align-items: flex-end;
+        }
+        .expert-img {
+            height: 100%; width: auto; object-fit: contain;
+            filter: brightness(0.9) contrast(1.1);
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+
+        /* DESKTOP */
+        @media (min-width: 900px) {
+            .expert-content { flex-direction: row; align-items: center; height: 450px; }
+            .expert-text { padding: 60px 0 60px 60px; width: 55%; text-align: left; }
+            .expert-text p { margin: 0 0 35px 0; }
+            .expert-badges { justify-content: flex-start; }
+            
+            .expert-visual {
+                width: 45%; height: 100%; position: absolute;
+                right: 0; bottom: 0; justify-content: center;
+            }
+            .expert-img {
+                height: 95%; position: absolute; bottom: 0;
+                mask-image: none; -webkit-mask-image: none; /* Full image on desktop */
+            }
+            /* Fade left side of image container */
+            .expert-visual::before {
+                content: ''; position: absolute; left: 0; top: 0; width: 40%; height: 100%;
+                background: linear-gradient(90deg, #141414 0%, transparent 100%); z-index: 6;
+            }
+        }
 
         /* --- LIFESTYLE GRID --- */
         .life-grid {
@@ -222,8 +318,7 @@
         .video-el { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
         .play-btn {
             width: 90px; height: 90px; background: var(--yellow); border-radius: 50%;
-            cursor: pointer; 
-            display: flex; align-items: center; justify-content: center; 
+            cursor: pointer; display: flex; align-items: center; justify-content: center; 
             z-index: 10; transition: 0.3s; color: #000; font-size: 30px;
             box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7);
             animation: pulse-yellow 2s infinite;
@@ -247,11 +342,9 @@
             border-radius: 30px; padding: 50px; border: 1px solid var(--border);
             box-shadow: 0 20px 80px rgba(0,0,0,0.5);
         }
-        
         .step { display: none; animation: slideIn 0.4s ease forwards; }
         .step.active { display: block; }
         @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
         .quiz-q { font-size: 24px; margin-bottom: 30px; font-weight: 500; }
         .quiz-opts { display: grid; gap: 15px; }
         .q-opt {
@@ -263,7 +356,6 @@
         .q-opt.selected { background: #444; border-color: var(--yellow); }
         .check-circle { width: 20px; height: 20px; border: 2px solid #666; border-radius: 50%; position: relative; }
         .q-opt.selected .check-circle { background: var(--yellow); border-color: var(--yellow); }
-        
         .form-input {
             width: 100%; padding: 18px; background: #1a1a1a; border: 1px solid #333;
             color: #fff; margin-bottom: 15px; border-radius: 12px; font-size: 16px;
@@ -274,7 +366,6 @@
         footer { padding: 80px 0 40px; border-top: 1px solid var(--border); background: #111; text-align: center; }
         .f-brand { font-size: 24px; font-weight: 700; margin-bottom: 20px; display: block; letter-spacing: -1px; }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 { font-size: 42px; }
             .hero-sub { font-size: 16px; }
@@ -298,30 +389,64 @@
     <section class="hero">
         <img src="https://static.wixstatic.com/media/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg/v1/fill/w_860,h_794,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg" class="hero-bg">
         <div class="hero-overlay"></div>
-
         <div class="hero-content fade-up">
-            <!-- <span class="hero-tag">Ireland's Choice</span> -->
-            <h1>
-                CAPSULE HOMES<br>
-                <span class="serif-italic" style="color:var(--yellow); font-size: 1em; margin-top: 10px;">READY IN 24H</span>
-            </h1>
-            <!-- ВОТ ЭТОТ ТЕКСТ Я СОКРАТИЛ ДЛЯ ВАС: -->
-            <p class="hero-sub">
-                Premium living spaces delivered to your garden.<br>
-                Fully finished. No construction mess.
-            </p>
+            <h1>CAPSULE HOMES<br><span class="serif-italic" style="color:var(--yellow); font-size: 1em; margin-top: 10px;">READY IN 24H</span></h1>
+            <p class="hero-sub">Premium living spaces delivered to your garden.<br>Fully finished. No construction mess.</p>
             <div class="hero-actions">
                 <a href="#quiz" class="btn btn-primary">Calculate Cost</a>
                 <a href="#video" class="btn btn-glass">How it works</a>
             </div>
         </div>
+        <div class="scroll-indicator"><i class="fa-solid fa-chevron-down"></i></div>
+    </section>
 
-        <div class="scroll-indicator">
-            <i class="fa-solid fa-chevron-down"></i>
+
+    <!-- NEW SECTION: EXPERT CONSULTATION (REDESIGNED) -->
+    <section class="container fade-up">
+        <div class="expert-card">
+            <!-- Background Elements -->
+            <div class="expert-bg-grid"></div>
+            <div class="expert-glow"></div>
+    
+            <div class="expert-content">
+                <div class="expert-text">
+                    <span class="expert-label">Direct Line</span>
+                    <h2>Expert <br><span class="serif-italic">Consultation</span></h2>
+                    <p>Speak directly with our lead architect. Discuss site access, planning permission, and custom finishes in one call.</p>
+                    
+                    <div class="expert-badges">
+                        <div class="e-badge">
+                            <i class="fa-solid fa-bolt"></i>
+                            <div>
+                                <strong>24h</strong>
+                                <span>Delivery</span>
+                            </div>
+                        </div>
+                        <div class="e-badge">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <div>
+                                <strong>10yr</strong>
+                                <span>Warranty</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <button class="btn-expert" onclick="document.querySelector('#quiz').scrollIntoView({behavior: 'smooth'})">
+                        Book Free Call <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+    
+                <div class="expert-visual">
+                    <!-- Убедитесь, что путь к картинке верный -->
+                    <img src="./assets/IMG_9003 (1) (1).png" alt="Consultant" class="expert-img">
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- 2. TRUST STRIP (Переход) -->
+
+
+    <!-- 2. TRUST STRIP -->
     <div class="trust-strip">
         <div class="container">
             <div class="trust-grid">
@@ -333,18 +458,16 @@
         </div>
     </div>
 
-    <!-- 3. INTRO + MODELS PREVIEW -->
+    <!-- 3. MODELS PREVIEW -->
     <section class="section">
         <div class="container">
             <div class="sec-head fade-up">
                 <h2 class="sec-title">A home without the <span class="serif-italic">stress</span></h2>
-                <p class="sec-desc">We deliver and install fully finished capsule homes. No building works, no long timelines. Your home arrives ready to use.</p>
+                <p class="sec-desc">We deliver and install fully finished capsule homes. Your home arrives ready to use.</p>
             </div>
 
-            <!-- MODELS GRID (Только 2 топ модели) -->
+            <!-- MODELS GRID -->
             <div class="catalog-grid">
-                
-                <!-- CARD 1 -->
                 <div class="card fade-up">
                     <div class="card-img-wrap">
                         <img src="https://static.wixstatic.com/media/a04742_aecef95a0b7648039451f70340422e04~mv2.jpg/v1/fill/w_438,h_310,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ChatGPT%20Image%2016%20%D0%BE%D0%BA%D1%82_edited.jpg" class="card-img" alt="BlackRock">
@@ -360,19 +483,17 @@
                         </div>
                         <div class="card-actions">
                             <a href="https://wa.me/353892136215" class="btn-card btn-wa">Chat on WhatsApp</a>
-                            <a href="./models/greystone.html" class="btn-card btn-details">More Details</a>
+                            <a href="#" class="btn-card btn-details">More Details</a>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-            <!-- LINK TO FULL CATALOG -->
             <div style="text-align: center; margin-top: 50px;">
-                <a href="./catalog.html" class="btn-link">View Full Catalog <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#" class="btn-link">View Full Catalog <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
+
 
     <!-- 4. WHO IS IT FOR -->
     <section class="section" style="background: #191919;">
@@ -487,7 +608,6 @@
 
             <div class="quiz-container fade-up">
                 <form id="quizForm" onsubmit="submitForm(event)">
-                    <!-- STEP 1 -->
                     <div class="step active" data-step="1">
                         <div class="quiz-q">What will you use it for?</div>
                         <div class="quiz-opts">
@@ -497,7 +617,6 @@
                             <label class="q-opt" onclick="selectOpt(this, 1)"><span>Rental / Investment</span><div class="check-circle"></div><input type="radio" name="use" hidden></label>
                         </div>
                     </div>
-                    <!-- STEP 2 -->
                     <div class="step" data-step="2">
                         <div class="quiz-q">Where & When?</div>
                         <input type="text" class="form-input" placeholder="City / County e.g. Dublin 4">
@@ -507,7 +626,6 @@
                             <label class="q-opt" onclick="selectOpt(this, 2)"><span>Later</span><div class="check-circle"></div><input type="radio" hidden></label>
                         </div>
                     </div>
-                    <!-- STEP 3 -->
                     <div class="step" data-step="3">
                         <div class="quiz-q">Your Budget?</div>
                         <div class="quiz-opts">
@@ -517,7 +635,6 @@
                             <label class="q-opt" onclick="selectOpt(this, 3)"><span>€45k+ (Luxury)</span><div class="check-circle"></div><input type="radio" hidden></label>
                         </div>
                     </div>
-                    <!-- STEP 4 -->
                     <div class="step" data-step="4">
                         <div class="quiz-q">Where should we send the quote?</div>
                         <input type="text" class="form-input" placeholder="Your Name" required>
@@ -525,7 +642,6 @@
                         <input type="email" class="form-input" placeholder="Email Address" required>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Get Quote Now</button>
                     </div>
-                    <!-- SUCCESS -->
                     <div class="step" id="success-msg" style="text-align: center; padding: 40px;">
                         <i class="fa-solid fa-check-circle" style="font-size: 60px; color: var(--yellow); margin-bottom: 20px;"></i>
                         <h3>Request Received!</h3>
@@ -598,7 +714,6 @@
             document.getElementById('success-msg').classList.add('active');
         }
         
-        // Trigger animations on load
         window.dispatchEvent(new Event('scroll'));
     </script>
 </body>
