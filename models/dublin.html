@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1F1F1F">
     
-    <title>Dublin 1 bed | Technical Specification</title>
+    <title>Dublin 1 Bed | Technical Specification</title>
     
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +23,7 @@
             --bg: #1F1F1F;
             --card: #262626;
             --yellow: #FFCC00;
+            --yellow-hover: #F0B900;
             --text-main: #FFFFFF;
             --text-sec: #B0B0B0;
             --border: rgba(255, 255, 255, 0.1);
@@ -66,9 +67,9 @@
         .hero-content { position: relative; z-index: 2; width: 100%; }
         .hero-title { font-size: 10vw; line-height: 1; margin-bottom: 20px; color: #fff; }
         .hero-price { font-size: 32px; color: var(--yellow); font-weight: 800; display: block; }
-        .hero-note { font-size: 14px; color: var(--text-sec); margin-top: 10px; display: block; text-transform: none; max-width: 500px; }
+        .hero-note { font-size: 14px; color: var(--text-sec); margin-top: 10px; display: block; text-transform: none; font-weight: 400; }
 
-        /* --- 2. QUICK SPECS GRID --- */
+        /* --- 2. BENTO SPECS --- */
         .specs-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px;
             margin-top: 10px; position: relative; z-index: 10;
@@ -78,12 +79,12 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .spec-card i { color: var(--yellow); font-size: 24px; margin-bottom: 15px; display: block; }
-        .spec-val { font-size: 20px; font-weight: 800; color: #fff; display: block; }
+        .spec-val { font-size: 22px; font-weight: 800; color: #fff; display: block; }
         .spec-lbl { font-size: 11px; color: var(--yellow); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
 
         /* --- 3. SLIDER --- */
         .sec-head { padding: 50px 25px 20px; }
-        .sec-head h3 { font-size: 20px; color: #fff; border-left: 4px solid var(--yellow); padding-left: 15px; }
+        .sec-head h3 { font-size: 20px; color: #fff; border-left: 4px solid var(--yellow); padding-left: 15px; text-transform: uppercase; }
         .sec-head p { font-size: 15px; color: var(--text-sec); margin-top: 10px; text-transform: none; }
 
         .swiper { width: 100%; height: 500px; padding-bottom: 50px; }
@@ -109,24 +110,42 @@
         .inc-item i { color: var(--yellow); font-size: 20px; flex-shrink: 0; }
         .inc-item b { color: #fff; }
 
-        /* --- 5. TECHNICAL DATA BLOCKS --- */
+        /* --- 5. PACKAGES (RESTORED) --- */
+        .packages-scroll {
+            display: flex; gap: 20px; overflow-x: auto; padding: 20px;
+            scroll-snap-type: x mandatory; scrollbar-width: none;
+        }
+        .packages-scroll::-webkit-scrollbar { display: none; }
+        
+        .pkg-card {
+            flex: 0 0 310px; background: #2a2a2a; padding: 35px; border-radius: 30px; 
+            border: 1px solid var(--border); scroll-snap-align: start; position: relative;
+        }
+        .pkg-card.premium { border: 2px solid var(--yellow); background: #333; }
+        .pkg-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; display: block; }
+        .pkg-name { font-size: 20px; color: #fff; margin-bottom: 15px; display: block; font-weight: 700; text-transform: uppercase; }
+        .pkg-features { padding: 0; margin: 0; list-style: none; }
+        .pkg-features li { font-size: 14px; color: #ccc; margin-bottom: 10px; display: flex; gap: 10px; }
+        .pkg-features li i { color: var(--yellow); margin-top: 4px; font-size: 12px; }
+
+        /* --- 6. TECHNICAL DATA --- */
         .tech-box { background: #1a1a1a; margin: 20px; padding: 35px; border-radius: 30px; border: 1px solid var(--border); }
         .tech-title { color: var(--yellow); font-size: 14px; margin-bottom: 25px; display: block; font-weight: 700; text-transform: uppercase; }
         .tech-item { margin-bottom: 30px; }
         .tech-item h4 { color: #fff; margin: 0 0 10px 0; font-size: 18px; display: flex; align-items: center; gap: 10px; text-transform: none; }
         .tech-item h4 i { color: var(--yellow); font-size: 16px; }
-        .tech-item p { color: var(--text-sec); font-size: 16px; margin: 0; }
+        .tech-item p { color: var(--text-sec); font-size: 18px; margin: 0; font-weight: 300; }
 
-        /* --- 6. ACCORDION (UPGRADES) --- */
+        /* --- 7. ACCORDION --- */
         .acc-item { background: var(--card); border: 1px solid var(--border); border-radius: 20px; margin: 0 20px 10px; overflow: hidden; }
-        .acc-head { padding: 25px; display: flex; justify-content: space-between; font-weight: 700; cursor: pointer; color: #fff; font-size: 16px; }
-        .acc-body { display: none; padding: 0 25px 25px; color: var(--text-sec); font-size: 16px; }
+        .acc-head { padding: 25px; display: flex; justify-content: space-between; font-weight: 700; cursor: pointer; color: #fff; }
+        .acc-body { display: none; padding: 0 25px 25px; color: var(--text-sec); font-size: 18px; }
         .acc-item.active .acc-body { display: block; }
         .acc-item.active .acc-head { color: var(--yellow); }
 
-        /* FOOTER & STICKY */
+        /* --- FOOTER & STICKY --- */
         footer { background: #111; padding: 60px 25px 140px; border-top: 1px solid var(--border); }
-        .f-contact a { color: #fff; text-decoration: none; font-size: 18px; font-weight: 800; display: block; margin-top: 10px; }
+        .f-contact a { color: #fff; text-decoration: none; font-size: 22px; font-weight: 800; display: block; margin-top: 15px; }
         .sticky-bar {
             position: fixed; bottom: 20px; left: 15px; right: 15px;
             background: rgba(31,31,31,0.95); backdrop-filter: blur(15px);
@@ -152,12 +171,11 @@
 
     <!-- 1. HERO -->
     <section class="hero">
-        <!-- Я оставил старое изображение как placeholder, так как новая картинка не была предоставлена в виде URL -->
         <img src="https://static.wixstatic.com/media/a04742_b930b367c539489aa11f87824106df43~mv2.png/v1/fill/w_438,h_310,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ChatGPT%20Image%2016%20%D0%BE%D0%BA%D1%82_%202025%20%D0%B3_%2C%2017_05_10.png" class="hero-bg" alt="Dublin 1 bed">
         <div class="hero-content">
             <h1 class="hero-title">Dublin<br><span class="serif-italic">1 Bed</span></h1>
             <span class="hero-price">From € 31,000</span>
-            <span class="hero-note">Built to withstand Irish weather and provide year-round comfort.</span>
+            <span class="hero-note">Built for the Irish climate. Comfortable year-round.</span>
         </div>
     </section>
 
@@ -165,8 +183,8 @@
     <div class="specs-grid">
         <div class="spec-card">
             <i class="fa-solid fa-ruler-combined"></i>
-            <span class="spec-val">19 sq m</span>
-            <span class="spec-lbl">Size & Space</span>
+            <span class="spec-val">19 m²</span>
+            <span class="spec-lbl">Total Area</span>
         </div>
         <div class="spec-card">
             <i class="fa-solid fa-arrows-left-right"></i>
@@ -188,11 +206,10 @@
     <!-- 3. SLIDER -->
     <div class="sec-head">
         <h3>Visual Overview</h3>
-        <p>Smart Homes for Living, Relaxing and Working.</p>
+        <p>Smart Home solution for living, relaxing, or working.</p>
     </div>
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-            <!-- Визуальные материалы оставлены прежними, так как новые URL не предоставлены -->
             <div class="swiper-slide"><video src="https://video.wixstatic.com/video/a04742_d3d1117587104852a7485e79c7b1a2df/720p/mp4/file.mp4" loop muted playsinline controls></video></div>
             <div class="swiper-slide"><img src="https://static.wixstatic.com/media/6fc0d4_98031e7044bc4928aa67eb008e299e55~mv2.png/v1/fill/w_800,h_600,q_90,enc_avif,quality_auto/6fc0d4_98031e7044bc4928aa67eb008e299e55~mv2.png"></div>
             <div class="swiper-slide"><img src="https://static.wixstatic.com/media/6fc0d4_499dd3d6b8044c8d8f7038f2ef1a6f7b~mv2.png/v1/fill/w_800,h_600,q_90,enc_avif,quality_auto/6fc0d4_499dd3d6b8044c8d8f7038f2ef1a6f7b~mv2.png"></div>
@@ -201,66 +218,94 @@
     </div>
 
     <!-- 4. WHAT'S INCLUDED -->
-    <div class="sec-head"><h3>Included in Price</h3></div>
+    <div class="sec-head"><h3>Standard Inclusions</h3></div>
     <section class="included-sec">
         <div class="included-list">
-            <div class="inc-item"><i class="fa-solid fa-bed"></i> <span><b>Bedroom:</b> Ready to use</span></div>
-            <div class="inc-item"><i class="fa-solid fa-utensils"></i> <span><b>Kitchen:</b> Fitted & ready</span></div>
-            <div class="inc-item"><i class="fa-solid fa-restroom"></i> <span><b>Bathroom:</b> Full toilet & shower</span></div>
-            <div class="inc-item"><i class="fa-solid fa-check-circle"></i> <span><b>Finish:</b> Fully insulated structure</span></div>
+            <div class="inc-item"><i class="fa-solid fa-bed"></i> <span><b>Bedroom:</b> Fully ready and fitted</span></div>
+            <div class="inc-item"><i class="fa-solid fa-utensils"></i> <span><b>Kitchen:</b> Fitted cabinets and sink</span></div>
+            <div class="inc-item"><i class="fa-solid fa-restroom"></i> <span><b>Bathroom:</b> Full toilet and fitted shower</span></div>
+            <div class="inc-item"><i class="fa-solid fa-plug"></i> <span><b>Utilities:</b> Electricity and plumbing pre-installed</span></div>
+            <div class="inc-item"><i class="fa-solid fa-check-circle"></i> <span><b>Finish:</b> Fully insulated turnkey structure</span></div>
         </div>
     </section>
 
-    <!-- 5. TECH SPEC DETAILS -->
+    <!-- 5. PACKAGES (RESTORED) -->
+    <div class="sec-head"><h3>Available Packages</h3></div>
+    <div class="packages-scroll">
+        <div class="pkg-card">
+            <span class="pkg-tag">Practical</span>
+            <span class="pkg-name">Standard</span>
+            <ul class="pkg-features">
+                <li><i class="fa-solid fa-check"></i> All standard inclusions</li>
+                <li><i class="fa-solid fa-check"></i> Factory finish interior</li>
+                <li><i class="fa-solid fa-check"></i> Essential lighting</li>
+            </ul>
+        </div>
+        <div class="pkg-card premium">
+            <span class="pkg-tag">Most Popular</span>
+            <span class="pkg-name">Premium</span>
+            <ul class="pkg-features">
+                <li><i class="fa-solid fa-plus"></i> Standard features +</li>
+                <li><i class="fa-solid fa-check"></i> Upgraded finish materials</li>
+                <li><i class="fa-solid fa-check"></i> Smart-home automation</li>
+                <li><i class="fa-solid fa-check"></i> Luxury bathroom fittings</li>
+            </ul>
+        </div>
+        <div class="pkg-card">
+            <span class="pkg-tag">Ultimate Spec</span>
+            <span class="pkg-name">Luxury</span>
+            <ul class="pkg-features">
+                <li><i class="fa-solid fa-plus"></i> Premium features +</li>
+                <li><i class="fa-solid fa-check"></i> Underfloor heating</li>
+                <li><i class="fa-solid fa-check"></i> Full Appliances</li>
+                <li><i class="fa-solid fa-check"></i> Outdoor Pergola & LED</li>
+                <li><i class="fa-solid fa-check"></i> Designer Rug & Furniture</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 6. TECH SPEC DETAILS -->
     <div class="tech-box">
         <span class="tech-title">Engineering & Structure</span>
         <div class="tech-item">
             <h4><i class="fa-solid fa-shield"></i> Safe and Durable</h4>
-            <p>12 level wind resistance. 7 level earthquake resistance. 30 years life expectancy.</p>
+            <p>12 level wind resistance. 7 level earthquake resistance. Galvanized steel frame and aluminum shell. 30+ years lifespan.</p>
         </div>
         <div class="tech-item">
             <h4><i class="fa-solid fa-window-maximize"></i> Structure</h4>
-            <p>Galvanized steel frame and aluminum shell. Tempered glass panoramic windows. Fully insulated, waterproof, and moisture-proof structure. Stainless steel doors.</p>
+            <p>Panoramic tempered glass windows. Fully insulated, waterproof, and moisture-proof structure. Stainless steel fittings.</p>
         </div>
         <div class="tech-item">
-            <h4><i class="fa-solid fa-microchip"></i> Smart Additions</h4>
-            <p>Intelligent voice control and smart lock. Energy-efficient system with lighting and curtain automation. Full sound insulation for total privacy.</p>
+            <h4><i class="fa-solid fa-microchip"></i> Smart Living</h4>
+            <p>Intelligent voice control, smart lock, automated curtains, and lighting scenarios. Full sound insulation.</p>
         </div>
         <div class="irish-badge">
-            <i class="fa-solid fa-clover" style="color:var(--yellow)"></i> <b>Energy-Efficient Living:</b> Warm, dry, and cost-effective all year round — designed to reduce energy bills and maximise comfort in any season.
+            <i class="fa-solid fa-clover" style="color:var(--yellow)"></i> <b>Energy-Efficient Living:</b> Warm, dry, and cost-effective all year round — designed for the Irish climate.
         </div>
     </div>
 
-    <!-- 6. UPGRADES -->
+    <!-- 7. UPGRADES -->
     <div class="sec-head"><h3>Optional Upgrades</h3></div>
-    
     <div class="acc-item">
         <div class="acc-head" onclick="this.parentElement.classList.toggle('active')">Exterior Options <i class="fa-solid fa-chevron-down"></i></div>
         <div class="acc-body">Extended panoramic balcony or decking area. Pergola or awning system. Exterior lighting package.</div>
     </div>
-    
     <div class="acc-item">
         <div class="acc-head" onclick="this.parentElement.classList.toggle('active')">Interior Add-ons <i class="fa-solid fa-chevron-down"></i></div>
-        <div class="acc-body">Premium furniture package. Built-in wardrobe and storage system. Smart home upgrade (extended voice control, climate automation). Floor heating system.</div>
+        <div class="acc-body">Premium furniture package. Built-in wardrobe and storage system. Smart home upgrade. Floor heating system.</div>
     </div>
-
     <div class="acc-item">
-        <div class="acc-head" onclick="this.parentElement.classList.toggle('active')">Utility Enhancements <i class="fa-solid fa-chevron-down"></i></div>
-        <div class="acc-body">Solar panel integration. Water heating system upgrade. Additional insulation package for extreme weather.</div>
+        <div class="acc-head" onclick="this.parentElement.classList.toggle('active')">Utility & Eco <i class="fa-solid fa-chevron-down"></i></div>
+        <div class="acc-body">Solar panel integration. Water heating system upgrade. Air purification system. Additional insulation package.</div>
     </div>
 
-    <div class="acc-item">
-        <div class="acc-head" onclick="this.parentElement.classList.toggle('active')">Comfort & Lifestyle <i class="fa-solid fa-chevron-down"></i></div>
-        <div class="acc-body">Sound system integration. Air purification system. Decorative interior wall panels and LED ambiance lighting.</div>
-    </div>
-
-    <!-- 7. PROCESS -->
+    <!-- 8. PROCESS -->
     <div class="sec-head"><h3>Order & Install</h3></div>
     <div class="tech-box">
         <p style="font-size: 15px; color: #ccc;">
             <b>Production:</b> 45 days.<br>
             <b>Installation:</b> Just 1 day.<br><br>
-            Delivered directly from the factory, fully equipped and ready to connect to your utilities. No construction waste, no delays — only comfort and peace of mind from day one.
+            Delivered directly from the factory, fully equipped and ready to connect to your utilities. No construction waste, no delays.
         </p>
     </div>
 
@@ -269,12 +314,9 @@
         <span style="color: #fff; font-size: 24px; font-weight: 700;">CAPSULE<span style="color:var(--yellow)">HOMES</span></span>
         <div class="f-contact">
             <a href="tel:+353892136215">+353 89 213 6215</a>
-            <a href="tel:+35319015231">+353 1 901 5231</a>
-            <a href="mailto:info@capsulehomes.ie" style="font-size: 16px; font-weight: 400; color: var(--yellow);">info@capsulehomes.ie</a>
-            <p style="margin-top: 20px; line-height: 1.4; color: var(--text-sec); font-size: 13px;">
+            <p style="margin-top: 20px; line-height: 1.4; color: var(--text-sec); font-size: 14px;">
                 Big Sur Ltd (Co. 753856)<br>
                 Clondalkin, Dublin 22, Ireland<br>
-                D22 VY89<br>
                 VAT: 4426267GH
             </p>
         </div>
