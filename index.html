@@ -3,8 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Capsule Homes Ireland | Modern Living</title>
     
+    <!-- === ПОЛНАЯ SEO ОПТИМИЗАЦИЯ === -->
+    <title>Capsule Homes Ireland | Premium Modular Living</title>
+    <meta name="description" content="Turnkey modular capsule homes, garden offices, and granny flats delivered to your garden in Ireland. Ready in 24 hours. Zero construction mess.">
+    <meta name="keywords" content="modular homes Ireland, garden rooms Dublin, garden office, granny flat Ireland, turnkey homes, pod homes, capsule homes">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourwebsite.ie/">
+    
+    <!-- Open Graph (для красивых ссылок в WhatsApp/Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.ie/">
+    <meta property="og:title" content="Premium Modular Homes in Ireland | Capsule Homes">
+    <meta property="og:description" content="Fully finished modular spaces delivered to your garden. Ready to use in 24 hours.">
+    <meta property="og:image" content="https://static.wixstatic.com/media/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg">
+
+    <!-- JSON-LD SCHEMA MARKUP (Микроразметка для Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "name": "Capsule Homes Ireland",
+          "image": "https://static.wixstatic.com/media/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg",
+          "telephone": "+353892136215",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dublin",
+            "addressCountry": "IE"
+          },
+          "url": "https://yourwebsite.ie/"
+        },
+        {
+          "@type": "Product",
+          "name": "Greystone Studio Capsule Home",
+          "description": "13 sq m premium turnkey modular studio with kitchen and bathroom.",
+          "brand": {
+            "@type": "Brand",
+            "name": "Capsule Homes"
+          },
+          "offers": {
+            "@type": "Offer",
+            "url": "https://yourwebsite.ie/",
+            "priceCurrency": "EUR",
+            "price": "25000",
+            "availability": "https://schema.org/InStock"
+          }
+        }
+      ]
+    }
+    </script>
+    <!-- === КОНЕЦ SEO === -->
+
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
@@ -15,7 +66,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <style>
-        /* --- VARIABLES & RESET --- */
+        /* --- ОРИГИНАЛЬНЫЕ VARIABLES & RESET --- */
         :root {
             --bg-body: #1F1F1F;
             --bg-surface: #262626;
@@ -50,7 +101,7 @@
         .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* --- BUTTONS --- */
+        /* --- ОРИГИНАЛЬНЫЕ BUTTONS --- */
         .btn {
             display: inline-flex; justify-content: center; align-items: center;
             padding: 18px 36px; border-radius: 12px;
@@ -72,7 +123,7 @@
         }
         .btn-link:hover { color: var(--yellow); }
 
-        /* --- NAVIGATION --- */
+        /* --- ОРИГИНАЛЬНАЯ NAVIGATION --- */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             padding: 20px 0; transition: 0.3s;
@@ -85,7 +136,7 @@
         .logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--white); }
         .logo span { color: var(--yellow); }
 
-        /* --- HERO SECTION --- */
+        /* --- ОРИГИНАЛЬНЫЙ HERO SECTION --- */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
             overflow: hidden; text-align: center;
@@ -120,7 +171,99 @@
         }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform:translateX(-50%) translateY(0);} 40% {transform:translateX(-50%) translateY(-10px);} 60% {transform:translateX(-50%) translateY(-5px);} }
 
-        /* --- TRUST STRIP --- */
+        /* ========================================================
+           🔥 НОВЫЙ ЖИВОЙ EXPERT БЛОК (СЕО + КОНВЕРСИЯ) 🔥
+           ======================================================== */
+        .expert-flow {
+            position: relative;
+            padding: 100px 0;
+            background: radial-gradient(circle at right center, rgba(255, 204, 0, 0.05) 0%, transparent 60%);
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+        
+        .expert-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* ТЕКСТ И ПРОДАЖА */
+        .expert-copy { position: relative; z-index: 2; }
+        
+        /* Пульсирующий бейдж */
+        .live-status {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2);
+            color: #4ade80; padding: 6px 16px; border-radius: 100px;
+            font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+        .live-dot {
+            width: 8px; height: 8px; background: #4ade80; border-radius: 50%;
+            box-shadow: 0 0 10px #4ade80; animation: pulse-green 2s infinite;
+        }
+        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); } 70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+
+        .expert-copy h2 { font-size: clamp(40px, 6vw, 60px); line-height: 1.05; margin-bottom: 25px; font-weight: 600; }
+        .expert-copy p { max-width: 480px; margin-bottom: 40px; font-size: 18px; line-height: 1.6; }
+
+        .expert-features {
+            display: flex; gap: 30px; margin-bottom: 40px;
+            padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .e-feat i { font-size: 20px; color: var(--yellow); margin-bottom: 10px; display: block; }
+        .e-feat strong { font-size: 24px; color: #fff; font-weight: 700; display: block; line-height: 1; }
+        .e-feat span { font-size: 12px; color: var(--grey); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* ЖИВОЕ ФОТО (Вырывается за рамки) */
+        .expert-visual { position: relative; display: flex; justify-content: center; }
+        
+        .expert-glow-bg {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80%; height: 80%; background: var(--yellow);
+            border-radius: 50%; filter: blur(120px); opacity: 0.15; z-index: 0;
+        }
+
+        .expert-img-wrapper {
+            position: relative; z-index: 1;
+            /* Эффект растворения внизу */
+            mask-image: linear-gradient(to top, transparent 0%, black 20%);
+            -webkit-mask-image: linear-gradient(to top, transparent 0%, black 20%);
+        }
+        .expert-img-wrapper img {
+            width: 100%; max-width: 450px; height: auto; object-fit: contain;
+            filter: drop-shadow(0 -20px 40px rgba(0,0,0,0.5));
+            transform: scale(1.05); /* Легкий выход за пределы */
+        }
+
+        /* Парящий виджет (Glassmorphism) */
+        .floating-contact {
+            position: absolute; bottom: 15%; left: 0; z-index: 10;
+            background: rgba(38, 38, 38, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            padding: 15px 20px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; gap: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .fc-icon { width: 45px; height: 45px; background: var(--yellow); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #000; font-size: 20px; }
+        .fc-text span { display: block; font-size: 11px; color: var(--grey); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+        .fc-text b { font-size: 15px; font-weight: 600; color: #fff; }
+
+        @media (min-width: 900px) {
+            .expert-grid { grid-template-columns: 1fr 1fr; }
+            .expert-img-wrapper img { max-width: 550px; }
+            .floating-contact { left: -10%; }
+        }
+        @media (max-width: 768px) {
+            .expert-copy h2 { font-size: 42px; }
+            .floating-contact { left: 5%; bottom: 5%; transform: scale(0.9); }
+            .expert-flow { padding: 60px 0 0 0; }
+        }
+
+        /* --- ОРИГИНАЛЬНЫЙ TRUST STRIP --- */
         .trust-strip {
             background: var(--bg-surface); border-bottom: 1px solid var(--border);
             padding: 30px 0; position: relative; z-index: 5;
@@ -133,150 +276,13 @@
         .trust-item i { color: var(--yellow); font-size: 24px; }
         .trust-item span { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- SECTIONS COMMON --- */
+        /* --- ОРИГИНАЛЬНЫЕ СЕКЦИИ COMMON --- */
         .section { padding: 100px 0; border-bottom: 1px solid var(--border); }
         .sec-head { text-align: center; max-width: 700px; margin: 0 auto 60px; }
         .sec-title { font-size: clamp(32px, 5vw, 48px); margin-bottom: 20px; }
         .sec-desc { font-size: 18px; color: var(--grey); }
 
-
-        /* --- EXPERT CARD (FIXED & POLISHED) --- */
-        .expert-card {
-            position: relative;
-            background: #141414; /* Плотный темный фон */
-            border-radius: 24px;
-            overflow: hidden;
-            margin: 60px auto;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
-            max-width: 1100px;
-            display: flex;
-            flex-direction: column; /* Mob: Фото сверху, текст снизу */
-        }
-
-        /* 1. ФОН: СЕТКА */
-        .expert-bg-grid {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 0; pointer-events: none;
-        }
-
-        /* 2. СВЕЧЕНИЕ (За фото) */
-        .expert-glow {
-            position: absolute; width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(255, 204, 0, 0.15) 0%, rgba(0,0,0,0) 70%);
-            top: 30%; left: 50%; transform: translate(-50%, -50%);
-            z-index: 1; pointer-events: none;
-        }
-
-        /* 3. ФОТОГРАФИЯ */
-        .expert-visual {
-            position: relative;
-            height: 420px; /* Высокое фото для мобильных */
-            width: 100%;
-            overflow: hidden;
-            display: flex; justify-content: center; align-items: flex-end;
-            z-index: 2;
-            margin-bottom: -100px; /* !ВАЖНО: Тянем текст вверх на фото */
-        }
-        
-        /* ГРАДИЕНТ ПОВЕРХ ФОТО (Плавный переход в #141414) */
-        .expert-visual::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; width: 100%; height: 60%;
-            background: linear-gradient(to bottom, transparent 0%, #141414 85%, #141414 100%);
-            z-index: 3; pointer-events: none;
-        }
-
-        .expert-img {
-            height: 100%; width: auto; object-fit: contain;
-            filter: contrast(1.1) brightness(0.95) saturate(0.9); /* Киношный вид */
-            position: relative; z-index: 2;
-        }
-
-        /* 4. КОНТЕНТ (ТЕКСТ) */
-        .expert-content {
-            position: relative; z-index: 10;
-            padding: 0 30px 50px; text-align: center;
-        }
-
-        .expert-label {
-            text-transform: uppercase; font-size: 10px; letter-spacing: 3px;
-            color: var(--yellow); font-weight: 700; display: block; margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8);
-        }
-
-        .expert-content h2 {
-            font-size: clamp(36px, 8vw, 52px); line-height: 1.05; margin-bottom: 20px;
-            color: var(--white); text-shadow: 0 10px 30px rgba(0,0,0,0.8);
-        }
-
-        .expert-content p {
-            font-size: 16px; line-height: 1.6; color: #b0b0b0; 
-            margin: 0 auto 35px; max-width: 450px;
-        }
-
-        /* ИКОНКИ */
-        .expert-badges {
-            display: flex; justify-content: center; gap: 30px; margin-bottom: 40px;
-            border-top: 1px solid rgba(255,255,255,0.08); padding-top: 30px;
-        }
-        .e-badge { display: flex; align-items: center; gap: 12px; text-align: left; }
-        .e-badge i {
-            font-size: 16px; color: #000; background: var(--yellow);
-            width: 32px; height: 32px; display: flex; justify-content: center; align-items: center;
-            border-radius: 50%; box-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
-        }
-        .e-badge div { display: flex; flex-direction: column; }
-        .e-badge strong { font-size: 18px; color: #fff; line-height: 1; font-weight: 700; }
-        .e-badge span { font-size: 10px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
-
-        /* КНОПКА (Белая премиум) */
-        .btn-expert {
-            background: var(--white); color: #000; border: none;
-            padding: 18px 32px; border-radius: 50px; width: 100%; max-width: 320px;
-            font-size: 16px; font-weight: 700; cursor: pointer;
-            transition: all 0.3s ease; display: inline-flex; justify-content: center; align-items: center; gap: 10px;
-            text-transform: uppercase; letter-spacing: 1px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .btn-expert:hover {
-            background: var(--yellow); transform: translateY(-3px);
-            box-shadow: 0 10px 40px rgba(255, 204, 0, 0.3);
-        }
-
-        /* DESKTOP ВЕРСИЯ */
-        @media (min-width: 900px) {
-            .expert-card { flex-direction: row; align-items: center; height: 500px; text-align: left; }
-            
-            /* Фото уходит вправо */
-            .expert-visual {
-                width: 50%; height: 100%; position: absolute; right: 0; bottom: 0;
-                margin-bottom: 0; /* Сброс */
-            }
-            .expert-visual::after {
-                /* Градиент слева направо для десктопа */
-                width: 60%; height: 100%; left: 0; top: 0;
-                background: linear-gradient(90deg, #141414 10%, transparent 100%);
-            }
-            .expert-img { height: 95%; position: absolute; bottom: 0; right: 50px; }
-
-            /* Текст уходит влево */
-            .expert-content { 
-                width: 55%; padding: 60px 0 60px 60px; text-align: left; margin-top: 0; 
-            }
-            .expert-content p { margin: 0 0 35px 0; }
-            .expert-badges { justify-content: flex-start; }
-            .btn-expert { width: auto; }
-            .expert-glow { top: 50%; right: 0; left: auto; transform: translate(30%, -50%); }
-        }
-
-
-        /* --- CATALOG CARDS --- */
+        /* --- ОРИГИНАЛЬНЫЕ CATALOG CARDS --- */
         .catalog-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 40px; margin-bottom: 60px;
@@ -307,7 +313,7 @@
         .btn-wa { background: var(--yellow); color: #000; }
         .btn-details { background: #333; color: #fff; }
 
-        /* --- LIFESTYLE GRID --- */
+        /* --- ОРИГИНАЛЬНЫЙ LIFESTYLE GRID --- */
         .life-grid {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;
         }
@@ -319,7 +325,7 @@
         .life-icon { color: var(--yellow); font-size: 32px; margin-bottom: 20px; }
         .life-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
 
-        /* --- TRENDS --- */
+        /* --- ОРИГИНАЛЬНЫЕ TRENDS --- */
         .trend-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;
             counter-reset: trend-counter;
@@ -332,7 +338,7 @@
         }
         .trend-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; color: var(--white); }
 
-        /* --- VIDEO BLOCK --- */
+        /* --- ОРИГИНАЛЬНЫЙ VIDEO BLOCK --- */
         .video-wrapper {
             position: relative; border-radius: 30px; overflow: hidden;
             width: 100%; aspect-ratio: 16/9; max-height: 600px;
@@ -348,9 +354,8 @@
             animation: pulse-yellow 2s infinite;
         }
         .play-btn:hover { transform: scale(1.1); }
-        @keyframes pulse-yellow { 0% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0.7); } 70% { box-shadow: 0 0 0 20px rgba(255, 204, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 204, 0, 0); } }
-
-        /* --- REVIEWS --- */
+        
+        /* --- ОРИГИНАЛЬНЫЕ REVIEWS --- */
         .review-card {
             background: var(--bg-surface); padding: 40px; border-radius: 20px;
             border: 1px solid var(--border); height: auto;
@@ -359,7 +364,7 @@
         .r-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; line-height: 1.6; margin-bottom: 20px; color: #ddd; }
         .r-auth { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey); }
 
-        /* --- QUIZ --- */
+        /* --- ОРИГИНАЛЬНЫЙ QUIZ --- */
         .quiz-section { background: var(--bg-dark); }
         .quiz-container {
             background: var(--bg-surface); max-width: 800px; margin: 0 auto;
@@ -386,7 +391,7 @@
         }
         .form-input:focus { outline: none; border-color: var(--yellow); }
 
-        /* --- FOOTER --- */
+        /* --- ОРИГИНАЛЬНЫЙ FOOTER --- */
         footer { padding: 80px 0 40px; border-top: 1px solid var(--border); background: #111; text-align: center; }
         .f-brand { font-size: 24px; font-weight: 700; margin-bottom: 20px; display: block; letter-spacing: -1px; }
 
@@ -411,7 +416,7 @@
 
     <!-- 1. HERO SECTION -->
     <section class="hero">
-        <img src="https://static.wixstatic.com/media/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg/v1/fill/w_860,h_794,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg" class="hero-bg">
+        <img src="https://static.wixstatic.com/media/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg/v1/fill/w_860,h_794,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg" class="hero-bg" alt="Modular Home Exterior">
         <div class="hero-overlay"></div>
         <div class="hero-content fade-up">
             <h1>CAPSULE HOMES<br><span class="serif-italic" style="color:var(--yellow); font-size: 1em; margin-top: 10px;">READY IN 24H</span></h1>
@@ -424,55 +429,66 @@
         <div class="scroll-indicator"><i class="fa-solid fa-chevron-down"></i></div>
     </section>
 
-
-    <!-- NEW EXPERT SECTION (FIXED) -->
-    <section class="container fade-up">
-        <div class="expert-card">
-            <!-- Фон: Сетка и Свечение -->
-            <div class="expert-bg-grid"></div>
-            <div class="expert-glow"></div>
-    
-            <!-- Фото (с градиентом в #141414) -->
-            <div class="expert-visual">
-                <img src="./assets/main.png" alt="Consultant" class="expert-img">
-            </div>
-
-            <!-- Контент (Текст) -->
-            <div class="expert-content">
-                <span class="expert-label">Direct Line</span>
-                <h2>Expert <br><span class="serif-italic">Consultation</span></h2>
-                <p>Speak directly with our lead architect. Discuss site access, planning permission, and custom finishes in one call.</p>
+    <!-- 2. НОВЫЙ ЖИВОЙ БЛОК ЭКСПЕРТА -->
+    <section class="expert-flow">
+        <div class="container">
+            <div class="expert-grid">
                 
-                <div class="expert-badges">
-                    <div class="e-badge">
-                        <i class="fa-solid fa-bolt"></i>
-                        <div>
+                <!-- Левая часть: Копирайтинг -->
+                <div class="expert-copy fade-up">
+                    <div class="live-status">
+                        <div class="live-dot"></div>
+                        Direct Line
+                    </div>
+                    
+                    <h2>Expert <span class="serif-italic">Consultation</span></h2>
+                    <p>Speak directly with our lead architect. Discuss site access, planning permissions, and custom finishes in one fast call.</p>
+                    
+                    <!-- <div class="expert-features">
+                        <div class="e-feat">
+                            <i class="fa-solid fa-bolt"></i>
                             <strong>24h</strong>
                             <span>Delivery</span>
                         </div>
-                    </div>
-                    <div class="e-badge">
-                        <i class="fa-solid fa-shield-halved"></i>
-                        <div>
-                            <strong>10yr</strong>
+                        <div class="e-feat">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <strong>10 Yr</strong>
                             <span>Warranty</span>
                         </div>
+                    </div> -->
+
+                    <button class="btn btn-primary" onclick="document.querySelector('#quiz').scrollIntoView({behavior: 'smooth'})">
+                        Book Free Call <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
+                    </button>
+                </div>
+
+                <!-- Правая часть: Фото вырывается из сетки -->
+                <div class="expert-visual fade-up">
+                    <div class="expert-glow-bg"></div>
+                    
+                    <!-- Плавающий виджет -->
+                    <div class="floating-contact">
+                        <div class="fc-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div class="fc-text">
+                            <span>Avg. Response: 5 Min</span>
+                            <b>Online Now</b>
+                        </div>
+                    </div>
+
+                    <!-- Само фото (замени на свое фото без фона) -->
+                    <div class="expert-img-wrapper">
+                        <img src="./assets/main.png" alt="Lead Architect Capsule Homes" onerror="this.src='https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.png'">
                     </div>
                 </div>
 
-                <button class="btn-expert" onclick="document.querySelector('#quiz').scrollIntoView({behavior: 'smooth'})">
-                    Book Free Call <i class="fa-solid fa-arrow-right"></i>
-                </button>
             </div>
         </div>
     </section>
 
-
-
-    <!-- 2. TRUST STRIP -->
+    <!-- 3. TRUST STRIP -->
     <div class="trust-strip">
         <div class="container">
-            <div class="trust-grid">
+            <div class="trust-grid fade-up">
                 <div class="trust-item"><i class="fa-solid fa-clock"></i><span>1 Day Install</span></div>
                 <div class="trust-item"><i class="fa-solid fa-ban"></i><span>No Construction</span></div>
                 <div class="trust-item"><i class="fa-solid fa-check-double"></i><span>Fully Finished</span></div>
@@ -481,7 +497,7 @@
         </div>
     </div>
 
-    <!-- 3. MODELS PREVIEW -->
+    <!-- 4. MODELS PREVIEW -->
     <section class="section">
         <div class="container">
             <div class="sec-head fade-up">
@@ -493,7 +509,7 @@
             <div class="catalog-grid">
                 <div class="card fade-up">
                     <div class="card-img-wrap">
-                        <img src="https://static.wixstatic.com/media/a04742_aecef95a0b7648039451f70340422e04~mv2.jpg/v1/fill/w_438,h_310,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ChatGPT%20Image%2016%20%D0%BE%D0%BA%D1%82_edited.jpg" class="card-img" alt="BlackRock">
+                        <img src="https://static.wixstatic.com/media/a04742_aecef95a0b7648039451f70340422e04~mv2.jpg/v1/fill/w_438,h_310,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ChatGPT%20Image%2016%20%D0%BE%D0%BA%D1%82_edited.jpg" class="card-img" alt="BlackRock Model">
                     </div>
                     <div class="card-content">
                         <div class="card-header">
@@ -517,8 +533,7 @@
         </div>
     </section>
 
-
-    <!-- 4. WHO IS IT FOR -->
+    <!-- 5. WHO IS IT FOR -->
     <section class="section" style="background: #191919;">
         <div class="container">
             <div class="sec-head fade-up">
@@ -549,7 +564,7 @@
         </div>
     </section>
 
-    <!-- 5. VIDEO -->
+    <!-- 6. VIDEO -->
     <section class="section" id="video">
         <div class="container">
             <div class="video-wrapper fade-up" onclick="toggleVideo(this)">
@@ -562,7 +577,7 @@
         </div>
     </section>
 
-    <!-- 6. TRENDS -->
+    <!-- 7. TRENDS -->
     <section class="section">
         <div class="container">
             <div class="sec-head">
@@ -589,7 +604,7 @@
         </div>
     </section>
 
-    <!-- 7. REVIEWS -->
+    <!-- 8. REVIEWS -->
     <section class="section" style="background: #191919;">
         <div class="container">
             <h2 class="sec-title" style="text-align: center; margin-bottom: 50px;">Client Stories</h2>
@@ -621,7 +636,7 @@
         </div>
     </section>
 
-    <!-- 8. QUIZ -->
+    <!-- 9. QUIZ -->
     <section class="section quiz-section" id="quiz">
         <div class="container">
             <div class="sec-head">
