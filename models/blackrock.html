@@ -121,22 +121,71 @@
             flex: 0 0 310px; background: #2a2a2a; padding: 35px; border-radius: 30px; 
             border: 1px solid var(--border); scroll-snap-align: start; position: relative;
         }
-        .pkg-card.premium { border: 2px solid var(--yellow); background: #333; }
+        .pkg-card.premium { border: 2px solid var(--yellow); background: linear-gradient(145deg, #333333, #2a2a2a);     box-shadow: 0 10px 40px rgba(255, 204, 0, 0.15);}
+        .pkg-card.luxury {
+    background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
+    border: 1px solid rgba(255, 204, 0, 0.4);
+    box-shadow: 0 15px 60px rgba(0,0,0,0.6);
+}
+
+.pkg-card.luxury .pkg-name {
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.pkg-card.luxury .pkg-tag {
+    color: var(--yellow);
+    font-weight: 900;
+}
         .pkg-tag { font-size: 10px; font-weight: 800; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; display: block; }
         .pkg-name { font-size: 20px; color: #fff; margin-bottom: 15px; display: block; font-weight: 700; text-transform: uppercase; }
         .pkg-features { padding: 0; margin: 0; list-style: none; }
-        .pkg-features li { font-size: 14px; color: #ccc; margin-bottom: 10px; display: flex; gap: 10px; }
+        .pkg-features li { font-size: 17px; color: #ccc; margin-bottom: 10px; display: flex; gap: 10px; }
         .pkg-features li i { color: var(--yellow); margin-top: 4px; font-size: 12px; }
 
         /* --- 6. TECHNICAL DATA --- */
-        .tech-box { background: #1a1a1a; margin: 20px; padding: 35px; border-radius: 30px; border: 1px solid var(--border); }
-        .tech-title { color: var(--yellow); font-size: 14px; margin-bottom: 25px; display: block; font-weight: 700; text-transform: uppercase; }
-        .tech-item { margin-bottom: 30px; }
-        .tech-item h4 { color: #fff; margin: 0 0 10px 0; font-size: 18px; display: flex; align-items: center; gap: 10px; text-transform: none; }
-        .tech-item h4 i { color: var(--yellow); font-size: 16px; }
-        .tech-item p { color: var(--text-sec); font-size: 16px; margin: 0; font-weight: 300; }
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* gap: 25px; */
+}
 
-        /* --- 7. ACCORDION --- */
+.tech-card {
+    margin: 5px;
+    background: #222;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 30px;
+    height: 150px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: 0.3s ease;
+}
+
+.tech-card i {
+    color: var(--yellow);
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.tech-title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--yellow);
+    white-space: nowrap; /* всегда 1 строка */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tech-card p {
+    color: var(--text-main);
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+/* --- 7. ACCORDION --- */
         .acc-item { background: var(--card); border: 1px solid var(--border); border-radius: 20px; margin: 0 20px 10px; overflow: hidden; }
         .acc-head { padding: 25px; display: flex; justify-content: space-between; font-weight: 700; cursor: pointer; color: #fff; }
         .acc-body { display: none; padding: 0 25px 25px; color: var(--text-sec); font-size: 16px; }
@@ -174,7 +223,7 @@
         <img src="https://static.wixstatic.com/media/a04742_b78248285e754260b35f461272f7a7b3~mv2.jpg/v1/fill/w_438,h_310,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2025-11-16%2000_38_35.jpg" class="hero-bg" alt="BlackRock 1">
         <div class="hero-content">
             <h1 class="hero-title">BlackRock<br><span class="serif-italic">1 | 2 beds</span></h1>
-            <span class="hero-price">From € 42,000</span>
+            <span class="hero-price">From € 42k</span>
             <span class="hero-note">Smart Homes for Living, Relaxing and Working.</span>
         </div>
     </section>
@@ -252,7 +301,7 @@
                 <li><i class="fa-solid fa-check"></i> Luxury bathroom fittings</li>
             </ul>
         </div>
-        <div class="pkg-card">
+        <div class="pkg-card luxury">
             <span class="pkg-tag">Ultimate Spec</span>
             <span class="pkg-name">Luxury</span>
             <ul class="pkg-features">
@@ -266,25 +315,56 @@
     </div>
 
     <!-- 6. TECH SPEC DETAILS -->
-    <div class="tech-box">
-        <span class="tech-title">Engineering & Structure</span>
-        <div class="tech-item">
-            <h4><i class="fa-solid fa-shield"></i> Safe and Durable</h4>
-            <p>Galvanized steel frame and aluminum shell. Wind resistance Level 12. Earthquake resistance Level 7. 30+ years life expectancy.</p>
+<div class="tech-box">
+
+    <div class="tech-grid">
+
+        <div class="tech-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span class="tech-title">Steel Frame</span>
+            <p>Galvanized steel<br>Aluminum shell<br>30+ year lifespan</p>
         </div>
-        <div class="tech-item">
-            <h4><i class="fa-solid fa-window-maximize"></i> Structure</h4>
-            <p>Tempered glass panoramic windows. Fully insulated, waterproof, and moisture-proof structure. Stainless steel doors and fittings.</p>
+
+        <div class="tech-card">
+            <i class="fa-solid fa-wind"></i>
+            <span class="tech-title">Structural Rating</span>
+            <p>Wind Level 12<br>Earthquake Level 7</p>
         </div>
-        <div class="tech-item">
-            <h4><i class="fa-solid fa-microchip"></i> Smart Living</h4>
-            <p>Intelligent voice control and smart lock. Energy-efficient system with lighting and curtain automation. Full sound insulation.</p>
+
+        <div class="tech-card">
+            <i class="fa-solid fa-window-maximize"></i>
+            <span class="tech-title">Panoramic Glass</span>
+            <p>Tempered glass<br>Thermal insulation</p>
         </div>
-        <div class="irish-badge">
-            <i class="fa-solid fa-clover" style="color:var(--yellow)"></i> <b>Energy-Efficient Living:</b> Warm, dry, and cost-effective all year round — designed for the Irish climate.
+
+        <div class="tech-card">
+            <i class="fa-solid fa-droplet"></i>
+            <span class="tech-title">Weatherproof</span>
+            <p>Waterproof<br>Moisture-proof<br>Stainless fittings</p>
         </div>
+
+        <div class="tech-card">
+            <i class="fa-solid fa-microchip"></i>
+            <span class="tech-title">Smart Living</span>
+            <p>Voice control<br>Smart lock<br>Home automation</p>
+        </div>
+
+        <div class="tech-card">
+            <i class="fa-solid fa-volume-high"></i>
+            <span class="tech-title">Comfort</span>
+            <p>Energy efficient<br>Full sound insulation</p>
+        </div>
+
     </div>
 
+    <div class="irish-badge">
+        <i class="fa-solid fa-clover" style="color:var(--yellow)"></i> 
+        Designed for the Irish climate — warm, dry & efficient year-round.
+    </div>
+
+</div>
+
+    </div>
     <!-- 7. UPGRADES -->
     <div class="sec-head"><h3>Optional Upgrades</h3></div>
     
@@ -307,7 +387,7 @@
     <div class="sec-head"><h3>Order & Install</h3></div>
     <div class="tech-box">
         <p style="font-size: 15px; color: #ccc;">
-            <b>Production:</b> 45 days.<br>
+            <b>Production:</b> From 13 weeks.<br>
             <b>Installation:</b> Just 1 day.<br><br>
             Delivered directly from the factory, fully equipped and ready to connect to your utilities. No construction waste, no delays.
         </p>
