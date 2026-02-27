@@ -55,7 +55,7 @@
             --card: #292929;
             --yellow: #FFCC00;
             --text-main: #FFFFFF;
-            --text-sec: #E0E0E0; /* Светло-серый для читаемости */
+            --text-sec: #E0E0E0;
             --border: rgba(255, 255, 255, 0.15);
         }
 
@@ -67,14 +67,14 @@
             font-family: 'Inter', sans-serif;
             margin: 0; padding: 0;
             line-height: 1.6;
-            font-size: 19px; /* Увеличенный базовый шрифт */
+            font-size: 19px;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
         .serif-italic { font-family: 'Playfair Display', serif; font-style: italic; color: var(--yellow); }
 
-        .noise { display: none; } /* Убрали шум для чистоты */
+        .noise { display: none; }
 
         h1, h2, h3, h4 { font-weight: 800; text-transform: uppercase; margin: 0; letter-spacing: -0.5px; }
 
@@ -100,8 +100,8 @@
 
         /* --- COMMON HEADERS --- */
         .sec-head { padding: 60px 20px 25px; }
-        .sec-head h2, .sec-head h3 { font-size: 24px; color: #fff; border-left: 5px solid var(--yellow); padding-left: 15px; }
-        .sec-head p { font-size: 18px; color: var(--text-sec); margin-top: 12px; font-weight: 400; }
+        .sec-head h2, .sec-head h3 { font-size: 26px; color: #fff; border-left: 5px solid var(--yellow); padding-left: 15px; }
+        .sec-head p { font-size: 19px; color: var(--text-sec); margin-top: 12px; font-weight: 400; line-height: 1.5; }
 
         /* --- 2. SPECS GRID --- */
         .specs-grid {
@@ -153,7 +153,109 @@
         }
         .pkg-features li i { color: var(--yellow); margin-top: 5px; font-size: 16px; }
 
-        /* --- 6. TECH GRID --- */
+        /* =========================================================
+           🔥 6. ЭФФЕКТ CINEMATIC SCROLL (БЕЗ СЛАЙДЕРОВ, APPLE-STYLE)
+           ========================================================= */
+        .lumyna-wrapper {
+            position: relative;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: #151515;
+        }
+
+        .scroll-hint {
+            text-align: center; color: var(--yellow); font-size: 14px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
+        }
+        .scroll-hint i { font-size: 24px; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+
+        /* Блок, который "залипает" на экране */
+        .le-sticky-visual {
+            position: sticky;
+            top: 20px; /* Отступ от верха экрана при скролле */
+            height: 40vh; /* Занимает 40% экрана */
+            width: 100%;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
+            z-index: 1;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            background: #000;
+        }
+        /* Картинки внутри залипающего блока */
+        .le-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out, transform 3s ease;
+            transform: scale(1.05);
+        }
+        .le-img.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Область с текстом, которая прокручивается поверх залипающего блока */
+        .le-scrolling-text {
+            position: relative;
+            z-index: 2;
+            margin-top: -10vh; /* Карточки слегка заезжают на картинку */
+            padding-bottom: 20vh; /* Отступ внизу, чтобы последняя карточка доехала */
+        }
+
+        /* Пространство для каждой карточки */
+        .le-card {
+            min-height: 60vh; /* Даем много места для прокрутки каждой карточки */
+            display: flex;
+            align-items: center; /* Центрируем карточку по вертикали */
+        }
+
+        /* Сама карточка с текстом */
+        .le-card-inner {
+            background: rgba(30, 30, 30, 0.95);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 35px 25px;
+            width: 100%;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: scale(0.9) translateY(20px);
+            opacity: 0.4; /* Полупрозрачная пока не в фокусе */
+        }
+        
+        /* СОСТОЯНИЕ АКТИВНОЙ КАРТОЧКИ (когда она в центре экрана) */
+        .le-card-inner.active {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            border-color: var(--yellow); /* Загорается желтым */
+            box-shadow: 0 15px 50px rgba(255, 204, 0, 0.15);
+        }
+
+        .le-num {
+            color: var(--yellow); font-size: 16px; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px;
+        }
+        .le-title {
+            font-size: 26px; color: #fff; margin-bottom: 15px; line-height: 1.2;
+        }
+        .le-desc {
+            font-size: 19px; color: #ddd; line-height: 1.5; margin: 0;
+        }
+
+        /* Десктопная адаптация (чтобы картинка была слева, текст справа) */
+        @media (min-width: 900px) {
+            .lumyna-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+            .le-sticky-visual { height: 70vh; top: 100px; }
+            .le-scrolling-text { margin-top: 0; padding-bottom: 10vh; }
+            .le-card { min-height: 50vh; }
+        }
+
+        /* --- 7. TECH GRID --- */
         .tech-box { background: #252525; margin: 0 20px; padding: 30px 20px; border-radius: 25px; border: 1px solid var(--border); }
         .tech-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 400px) { .tech-grid { grid-template-columns: 1fr 1fr; } }
@@ -170,7 +272,7 @@
             padding: 20px; border-radius: 20px; color: #fff; font-size: 16px; margin-top: 25px; line-height: 1.5; font-weight: 500;
         }
 
-        /* --- 7. UPGRADES --- */
+        /* --- 8. UPGRADES --- */
         .upgrades-grid { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 0 20px; }
         .upgrade-card {
             background: #2a2a2a; border: 1px solid var(--border); border-radius: 24px; padding: 30px;
@@ -187,7 +289,7 @@
             content: '+'; position: absolute; left: 0; color: var(--yellow); font-weight: bold; font-size: 20px; top: -2px;
         }
 
-        /* --- 8. TIMELINE --- */
+        /* --- 9. TIMELINE --- */
         .timeline-box { background: #252525; margin: 0 20px; padding: 40px 25px; border-radius: 25px; border: 1px solid var(--border); position: relative; }
         .timeline { position: relative; padding-left: 30px; }
         .timeline::before { content: ''; position: absolute; left: 6px; top: 5px; bottom: 5px; width: 2px; background: rgba(255,255,255,0.1); }
@@ -220,13 +322,6 @@
             background: var(--yellow); color: #000; padding: 14px 30px; border-radius: 30px;
             font-weight: 800; font-size: 16px; text-transform: uppercase; text-decoration: none;
         }
-        
-        /* Старые аккордеоны (если остались) - фикс для них */
-        .acc-item { background: #252525; border: 1px solid var(--border); border-radius: 20px; margin: 0 20px 10px; }
-        .acc-head { padding: 25px; display: flex; justify-content: space-between; font-weight: 800; font-size: 20px; cursor: pointer; color: #fff; }
-        .acc-body { display: none; padding: 0 25px 25px; color: #eee; font-size: 18px; line-height: 1.5; }
-        .acc-item.active .acc-body { display: block; }
-        .acc-item.active .acc-head { color: var(--yellow); }
     </style>
 
 </head>
@@ -339,9 +434,97 @@
             </div>
         </section>
 
-        <!-- 6. TECH SPEC DETAILS (GRID) -->
+        <!-- ==============================================
+             🔥 6. ЭКСПЛОЕР МАТЕРИАЛОВ (CINEMATIC SCROLL) 🔥
+             ============================================== -->
         <section>
-            <div class="sec-head"><h2>Engineering & Structure</h2></div>
+            <div class="sec-head">
+                <h2>Material Anatomy</h2>
+                <p>Scroll down to reveal the 7 premium layers inside the walls.</p>
+            </div>
+
+            <div class="lumyna-wrapper">
+                
+                <div class="scroll-hint"><i class="fa-solid fa-arrow-down"></i> Scroll slowly</div>
+
+                <!-- ЗАЛИПАЮЩИЙ БЛОК С КАРТИНКАМИ -->
+                <div class="le-sticky-visual">
+                    <!-- СЮДА ВСТАВЛЯЕШЬ ССЫЛКИ НА СВОИ КАРТИНКИ -->
+                    <img src="../assets/alumineumPanel.png" class="le-img active" id="img-1">
+                    <img src="../assets/LowEGlass.webp" class="le-img" id="img-2">
+                    <img src="../assets/AluminumFrame.png" class="le-img" id="img-3">
+                    <img src="../assets/FiberboardFloor.png" class="le-img" id="img-4">
+                    <img src="../assets/InsulationLayer.png" class="le-img" id="img-5">
+                    <img src="../assets/FiberCementWall.png" class="le-img" id="img-6">
+                    <img src="../assets/BambooCharcoal.png" class="le-img" id="img-7">
+                </div>
+
+                <!-- ПРОКРУЧИВАЕМЫЕ КАРТОЧКИ С ТЕКСТОМ -->
+                <div class="le-scrolling-text">
+                    
+                    <div class="le-card" data-id="1">
+                        <div class="le-card-inner active">
+                            <span class="le-num">01 / 07</span>
+                            <h3 class="le-title">Aluminum Honeycomb</h3>
+                            <p class="le-desc">An 8mm high-tech ceiling panel. It’s incredibly lightweight but won’t bend or deform, keeping the frame perfectly safe.</p>
+                        </div>
+                    </div>
+
+                    <div class="le-card" data-id="2">
+                        <div class="le-card-inner">
+                            <span class="le-num">02 / 07</span>
+                            <h3 class="le-title">LOW-E Double Glazing</h3>
+                            <p class="le-desc">Acts as a thermal mirror. It reflects your heating back inside during winter, and blocks loud street noise completely.</p>
+                        </div>
+                    </div>
+
+                    <div class="le-card" data-id="3">
+                        <div class="le-card-inner">
+                            <span class="le-num">03 / 07</span>
+                            <h3 class="le-title">Aviation Aluminum Frame</h3>
+                            <p class="le-desc">A 2mm thick skeleton holding it all together. 100% rust-proof, designed to block cold air from ever entering the home.</p>
+                        </div>
+                    </div>
+
+                    <div class="le-card" data-id="4">
+                        <div class="le-card-inner">
+                            <span class="le-num">04 / 07</span>
+                            <h3 class="le-title">Fiberboard Floor</h3>
+                            <p class="le-desc">A solid, non-flammable base. Your floor will never bounce or sink, even after years of constant daily use.</p>
+                        </div>
+                    </div>
+
+                    <div class="le-card" data-id="5">
+                        <div class="le-card-inner">
+                            <span class="le-num">05 / 07</span>
+                            <h3 class="le-title">10cm Insulation Layer</h3>
+                            <p class="le-desc">A massive 10cm protective shield. It guarantees a perfectly quiet space and keeps the temperature exactly how you set it.</p>
+                        </div>
+                    </div>
+
+                    <div class="le-card" data-id="6">
+                        <div class="le-card-inner">
+                            <span class="le-num">06 / 07</span>
+                            <h3 class="le-title">Fiber Cement Wall</h3>
+                            <p class="le-desc">An 8-10mm stone-like exterior. Completely fireproof and waterproof, retaining its strength for decades.</p>
+                        </div>
+                    </div>
+
+                    <div class="le-card" data-id="7">
+                        <div class="le-card-inner">
+                            <span class="le-num">07 / 07</span>
+                            <h3 class="le-title">Bamboo Charcoal Finish</h3>
+                            <p class="le-desc">An eco-friendly interior board. 100% mold-resistant and waterproof—so you can clean it with just a quick wipe.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. ОРИГИНАЛЬНЫЙ ТЕХНИЧЕСКИЙ ГРИД -->
+        <section>
+            <div class="sec-head"><h2>Engineering details</h2></div>
             <div class="tech-box">
                 <div class="tech-grid">
                     <div class="tech-card"><i class="fa-solid fa-shield-halved"></i><span class="tech-title">Frame</span><p>Galvanized steel<br>Aluminum shell</p></div>
@@ -357,7 +540,7 @@
             </div>
         </section>
 
-        <!-- 7. UPGRADES (CARDS) -->
+        <!-- 8. UPGRADES (CARDS) -->
         <section>
             <div class="sec-head"><h2>Optional Upgrades</h2></div>
             <div class="upgrades-grid">
@@ -395,7 +578,7 @@
             </div>
         </section>
 
-        <!-- 8. PROCESS (TIMELINE) -->
+        <!-- 9. PROCESS (TIMELINE) -->
         <section>
             <div class="sec-head"><h2>Process & Timeline</h2></div>
             <div class="timeline-box">
@@ -454,6 +637,7 @@
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
+        // Слайдер наверху (как и был)
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: "auto",
             centeredSlides: true,
@@ -466,6 +650,33 @@
                     if(active) active.play();
                 }
             }
+        });
+
+        // СКРИПТ ДЛЯ ПРЕМИУМ ЭФФЕКТА СКРОЛЛА (Apple-style)
+        document.addEventListener("DOMContentLoaded", () => {
+            // Создаем наблюдатель за прокруткой (Intersection Observer)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Если карточка заехала в середину экрана
+                    if(entry.isIntersecting) {
+                        const id = entry.target.getAttribute('data-id');
+                        
+                        // 1. Меняем картинку в "залипшем" блоке
+                        document.querySelectorAll('.le-img').forEach(img => img.classList.remove('active'));
+                        document.getElementById('img-' + id).classList.add('active');
+
+                        // 2. Делаем активной (подсвечиваем) нужную текстовую карточку
+                        document.querySelectorAll('.le-card-inner').forEach(card => card.classList.remove('active'));
+                        entry.target.querySelector('.le-card-inner').classList.add('active');
+                    }
+                });
+            }, {
+                // Срабатывает только когда карточка достигает центральной части экрана
+                rootMargin: "-40% 0px -40% 0px"
+            });
+
+            // Навешиваем наблюдатель на все наши карточки материалов
+            document.querySelectorAll('.le-card').forEach(card => observer.observe(card));
         });
     </script>
 </body>

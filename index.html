@@ -6,7 +6,7 @@
     
     <!-- === ПОЛНАЯ SEO ОПТИМИЗАЦИЯ === -->
     <title>Capsule Homes Ireland | Premium Modular Living</title>
-    <meta name="description" content="Turnkey modular capsule homes, garden offices, and granny flats delivered to your garden in Ireland. Ready in 24 hours. Zero construction mess.">
+    <meta name="description" content="Turnkey modular capsule homes, garden offices, and granny flats delivered to your garden in Ireland. Ready in 1 day. Zero construction mess.">
     <meta name="keywords" content="modular homes Ireland, garden rooms Dublin, garden office, granny flat Ireland, turnkey homes, pod homes, capsule homes">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://yourwebsite.ie/">
@@ -15,7 +15,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yourwebsite.ie/">
     <meta property="og:title" content="Premium Modular Homes in Ireland | Capsule Homes">
-    <meta property="og:description" content="Fully finished modular spaces delivered to your garden. Ready to use in 24 hours.">
+    <meta property="og:description" content="Fully finished modular spaces delivered to your garden. Ready to use in 1 day.">
     <meta property="og:image" content="https://static.wixstatic.com/media/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg">
 
     <!-- JSON-LD SCHEMA MARKUP (Микроразметка для Google) -->
@@ -356,13 +356,33 @@
         .play-btn:hover { transform: scale(1.1); }
         
         /* --- ОРИГИНАЛЬНЫЕ REVIEWS --- */
+        .reviewSwiper { 
+            padding-bottom: 50px !important; /* Отступ для пагинации */
+        }
         .review-card {
             background: var(--bg-surface); padding: 40px; border-radius: 20px;
             border: 1px solid var(--border); height: auto;
         }
         .stars { color: var(--yellow); margin-bottom: 20px; letter-spacing: 2px; font-size: 14px; }
         .r-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; line-height: 1.6; margin-bottom: 20px; color: #ddd; }
-        .r-auth { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey); }
+        
+        /* Стили для фото в отзывах */
+        .r-author-box { display: flex; align-items: center; gap: 15px; }
+        .r-avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
+        .r-auth { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey); display: block; }
+
+        /* Стили для точек (пагинации) слайдера */
+        .swiper-pagination-bullet {
+            background: rgba(255, 255, 255, 0.3);
+            width: 10px;
+            height: 10px;
+            transition: 0.3s ease;
+        }
+        .swiper-pagination-bullet-active {
+            background: var(--yellow);
+            width: 25px;
+            border-radius: 5px;
+        }
 
         /* --- ОРИГИНАЛЬНЫЙ QUIZ --- */
         .quiz-section { background: var(--bg-dark); }
@@ -386,7 +406,7 @@
         .check-circle { width: 20px; height: 20px; border: 2px solid #666; border-radius: 50%; position: relative; }
         .q-opt.selected .check-circle { background: var(--yellow); border-color: var(--yellow); }
         .form-input {
-            width: 100%; padding: 18px; background: #1a1a1a; border: 1px solid #333;
+            width: auto; padding: 18px; background: #1a1a1a; border: 1px solid #333;
             color: #fff; margin-bottom: 15px; border-radius: 12px; font-size: 16px;
         }
         .form-input:focus { outline: none; border-color: var(--yellow); }
@@ -419,10 +439,10 @@
         <img src="https://static.wixstatic.com/media/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg/v1/fill/w_860,h_794,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg" class="hero-bg" alt="Modular Home Exterior">
         <div class="hero-overlay"></div>
         <div class="hero-content fade-up">
-            <h1>CAPSULE HOMES<br><span class="serif-italic" style="color:var(--yellow); font-size: 1em; margin-top: 10px;">READY IN 24H</span></h1>
+            <h1>CAPSULE HOMES<br><span class="serif-italic" style="color:var(--yellow); font-size: 1em; margin-top: 10px;">READY <span style="display: inline;">in</span> 1 DAY</span></h1>
             <p class="hero-sub">Premium living spaces delivered to your garden.<br>Fully finished. No construction mess.</p>
             <div class="hero-actions">
-                <a href="#quiz" class="btn btn-primary">Calculate Cost</a>
+                <a href="./catalog.html" class="btn btn-primary">View Models</a>
                 <a href="#video" class="btn btn-glass">How it works</a>
             </div>
         </div>
@@ -444,19 +464,6 @@
                     <h2>Expert <span class="serif-italic">Consultation</span></h2>
                     <p>Speak directly with our lead architect. Discuss site access, planning permissions, and custom finishes in one fast call.</p>
                     
-                    <!-- <div class="expert-features">
-                        <div class="e-feat">
-                            <i class="fa-solid fa-bolt"></i>
-                            <strong>24h</strong>
-                            <span>Delivery</span>
-                        </div>
-                        <div class="e-feat">
-                            <i class="fa-solid fa-shield-halved"></i>
-                            <strong>10 Yr</strong>
-                            <span>Warranty</span>
-                        </div>
-                    </div> -->
-
                     <button class="btn btn-primary" onclick="document.querySelector('#quiz').scrollIntoView({behavior: 'smooth'})">
                         Book Free Call <i class="fa-solid fa-arrow-right" style="margin-left: 10px;"></i>
                     </button>
@@ -522,7 +529,7 @@
                         </div>
                         <div class="card-actions">
                             <a href="https://wa.me/353892136215" class="btn-card btn-wa">Chat on WhatsApp</a>
-                            <a href="#" class="btn-card btn-details">More Details</a>
+                            <a href="./models/greystone.html" class="btn-card btn-details">More Details</a>
                         </div>
                     </div>
                 </div>
@@ -614,24 +621,35 @@
                         <div class="review-card">
                             <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <p class="r-text">"I needed an office quickly. From ordering to sitting at my desk took less than 3 months. The quality is hotel-standard."</p>
-                            <span class="r-auth">Sarah M., Dublin</span>
+                            <div class="r-author-box">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M." class="r-avatar">
+                                <span class="r-auth">Sarah M., Dublin</span>
+                            </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="review-card">
                             <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <p class="r-text">"It’s about speed, clarity and control — no surprises, no long timelines. Exactly what we needed for our garden."</p>
-                            <span class="r-auth">Patrick O., Cork</span>
+                            <div class="r-author-box">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Patrick O." class="r-avatar">
+                                <span class="r-auth">Patrick O., Cork</span>
+                            </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
                         <div class="review-card">
                             <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <p class="r-text">"The insulation is fantastic. We use it as a guest house and everyone comments on how warm it is."</p>
-                            <span class="r-auth">Liam K., Galway</span>
+                            <div class="r-author-box">
+                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Liam K." class="r-avatar">
+                                <span class="r-auth">Liam K., Galway</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- ДОБАВЛЕНА ПАГИНАЦИЯ (ТОЧКИ) -->
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
@@ -657,8 +675,8 @@
                     </div>
                     <div class="step" data-step="2">
                         <div class="quiz-q">Where & When?</div>
-                        <input type="text" class="form-input" placeholder="City / County e.g. Dublin 4">
                         <div class="quiz-opts">
+                            <input type="text" class="form-input" placeholder="City / County e.g. Dublin 4">
                             <label class="q-opt" onclick="selectOpt(this, 2)"><span>1–3 months</span><div class="check-circle"></div><input type="radio" hidden></label>
                             <label class="q-opt" onclick="selectOpt(this, 2)"><span>3–6 months</span><div class="check-circle"></div><input type="radio" hidden></label>
                             <label class="q-opt" onclick="selectOpt(this, 2)"><span>Later</span><div class="check-circle"></div><input type="radio" hidden></label>
@@ -675,9 +693,12 @@
                     </div>
                     <div class="step" data-step="4">
                         <div class="quiz-q">Where should we send the quote?</div>
-                        <input type="text" class="form-input" placeholder="Your Name" required>
-                        <input type="tel" class="form-input" placeholder="Phone Number" required>
-                        <input type="email" class="form-input" placeholder="Email Address" required>
+                        <div class="forms" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px;">
+                            <input type="text" class="form-input" placeholder="Your Name" required>
+                            <input type="tel" class="form-input" placeholder="Phone Number" required>
+                            <input type="email" class="form-input" placeholder="Email Address" required>
+
+                        </div>
                         <button type="submit" class="btn btn-primary" style="width: 100%;">Get Quote Now</button>
                     </div>
                     <div class="step" id="success-msg" style="text-align: center; padding: 40px;">
@@ -699,7 +720,8 @@
                 Designed in Ireland.
             </p>
             <div style="color: #666; font-size: 14px;">
-                <a href="tel:+353892136215" style="color: #fff; margin-bottom: 10px; display: inline-block;">+353 892 136 215</a><br>
+                <a href="tel:+353892136215" style="color: #fff; margin-bottom: 10px; display: inline-block;">+353 89 213 6215 <br>+353 1 901 5231
+</a><br>
                 Dublin, Ireland
             </div>
         </div>
@@ -722,10 +744,18 @@
             });
         });
 
-        // Review Slider
+        // Review Slider (ДОБАВЛЕНА НАСТРОЙКА ПАГИНАЦИИ)
         new Swiper(".reviewSwiper", {
-            slidesPerView: 1, spaceBetween: 30,
-            breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+            slidesPerView: 1, 
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: { 
+                768: { slidesPerView: 2 }, 
+                1024: { slidesPerView: 3 } 
+            }
         });
 
         // Video
@@ -748,10 +778,45 @@
         }
         function submitForm(e) {
             e.preventDefault();
-            document.querySelector(`.step[data-step="4"]`).classList.remove('active');
-            document.getElementById('success-msg').classList.add('active');
-        }
-        
+
+            const steps = document.querySelectorAll('.step');
+            
+            const use = document.querySelector('input[name="use"]:checked')?.parentElement.innerText.trim();
+            const city = document.querySelector('input[placeholder="City / County e.g. Dublin 4"]').value;
+            const timeline = document.querySelectorAll('.step[data-step="2"] .q-opt.selected span')[0]?.innerText;
+            const budget = document.querySelectorAll('.step[data-step="3"] .q-opt.selected span')[0]?.innerText;
+
+            const name = document.querySelector('input[placeholder="Your Name"]').value;
+            const phone = document.querySelector('input[placeholder="Phone Number"]').value;
+            const email = document.querySelector('input[placeholder="Email Address"]').value;
+
+            const message = `
+        🏠 NEW QUIZ LEAD
+
+        📌 Use: ${use}
+        📍 Location: ${city}
+        ⏳ Timeline: ${timeline}
+        💰 Budget: ${budget}
+
+        👤 Name: ${name}
+        📞 Phone: ${phone}
+        📧 Email: ${email}
+        `;
+
+            fetch("https://api.telegram.org/botYOUR_TOKEN/sendMessage", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    chat_id: "YOUR_CHAT_ID",
+                    text: message
+                })
+            }).then(() => {
+                document.querySelector(`.step[data-step="4"]`).classList.remove('active');
+                document.getElementById('success-msg').classList.add('active');
+            });
+        }        
         window.dispatchEvent(new Event('scroll'));
     </script>
 </body>
