@@ -10,7 +10,6 @@
     <meta name="description" content="Greystone Studio: A 13m² turnkey garden room. Features kitchen, bathroom, and sleeping area. Installed in 1 day. Prices from €25,000.">
     <meta name="keywords" content="Greystone studio, garden room Ireland, tiny home office, modular pod, granny flat Dublin, affordable workspace">
     <meta name="author" content="Capsule Homes Ireland">
-    <link rel="canonical" href="https://yourwebsite.com/greystone-studio">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Greystone Studio Garden Room">
@@ -18,26 +17,6 @@
     <meta property="og:image" content="https://static.wixstatic.com/media/a04742_aecef95a0b7648039451f70340422e04~mv2.jpg">
     <meta property="og:type" content="product">
     <meta property="og:locale" content="en_IE">
-
-    <!-- Schema.org Markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      "name": "Greystone Studio Capsule Home",
-      "image": "https://static.wixstatic.com/media/a04742_aecef95a0b7648039451f70340422e04~mv2.jpg",
-      "description": "13 sq.m compact studio with kitchen and bathroom. Engineered for Irish weather.",
-      "brand": { "@type": "Brand", "name": "Capsule Homes" },
-      "offers": {
-        "@type": "Offer",
-        "url": "https://yourwebsite.com/greystone-studio",
-        "priceCurrency": "EUR",
-        "price": "25000",
-        "availability": "https://schema.org/PreOrder",
-        "itemCondition": "https://schema.org/NewCondition"
-      }
-    }
-    </script>
     
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,7 +28,7 @@
     <!-- SWIPER CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <style>
-        /* --- VARIABLES (UPDATED FOR HIGH CONTRAST) --- */
+        /* --- VARIABLES --- */
         :root {
             --bg: #1F1F1F;
             --card: #292929;
@@ -73,9 +52,6 @@
         }
 
         .serif-italic { font-family: 'Playfair Display', serif; font-style: italic; color: var(--yellow); }
-
-        .noise { display: none; }
-
         h1, h2, h3, h4 { font-weight: 800; text-transform: uppercase; margin: 0; letter-spacing: -0.5px; }
 
         .breadcrumbs {
@@ -144,115 +120,169 @@
         }
         .pkg-card.premium { border: 2px solid var(--yellow); background: #333; }
         .pkg-card.luxury { background: #111; border: 1px solid #555; }
-        
         .pkg-tag { font-size: 13px; font-weight: 800; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; display: block; }
         .pkg-name { font-size: 24px; color: #fff; margin-bottom: 20px; display: block; font-weight: 800; text-transform: uppercase; }
         .pkg-features { padding: 0; margin: 0; list-style: none; }
-        .pkg-features li { 
-            font-size: 18px; color: #eee; margin-bottom: 15px; display: flex; gap: 12px; align-items: flex-start; line-height: 1.4;
-        }
+        .pkg-features li { font-size: 18px; color: #eee; margin-bottom: 15px; display: flex; gap: 12px; align-items: flex-start; line-height: 1.4; }
         .pkg-features li i { color: var(--yellow); margin-top: 5px; font-size: 16px; }
 
         /* =========================================================
-           🔥 6. ЭФФЕКТ CINEMATIC SCROLL (БЕЗ СЛАЙДЕРОВ, APPLE-STYLE)
+           🔥 6. ЭКСПЛОЕР МАТЕРИАЛОВ (ИНТЕРАКТИВНЫЙ ПРЕМИУМ) 🔥
            ========================================================= */
-        .lumyna-wrapper {
-            position: relative;
-            padding: 20px;
-            margin-top: 40px;
+        .premium-materials {
+            background: #111;
+            padding-bottom: 60px;
             border-top: 1px solid rgba(255,255,255,0.05);
-            background: #151515;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-top: 40px;
         }
 
-        .scroll-hint {
-            text-align: center; color: var(--yellow); font-size: 14px; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px;
-            display: flex; flex-direction: column; align-items: center; gap: 10px;
-        }
-        .scroll-hint i { font-size: 24px; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
-
-        /* Блок, который "залипает" на экране */
-        .le-sticky-visual {
-            position: sticky;
-            top: 20px; /* Отступ от верха экрана при скролле */
-            height: 40vh; /* Занимает 40% экрана */
-            width: 100%;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.1);
-            z-index: 1;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            background: #000;
-        }
-        /* Картинки внутри залипающего блока */
-        .le-img {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.6s ease-in-out, transform 3s ease;
-            transform: scale(1.05);
-        }
-        .le-img.active {
-            opacity: 1;
-            transform: scale(1);
+        .pm-container {
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        /* Область с текстом, которая прокручивается поверх залипающего блока */
-        .le-scrolling-text {
-            position: relative;
-            z-index: 2;
-            margin-top: -10vh; /* Карточки слегка заезжают на картинку */
-            padding-bottom: 20vh; /* Отступ внизу, чтобы последняя карточка доехала */
-        }
-
-        /* Пространство для каждой карточки */
-        .le-card {
-            min-height: 60vh; /* Даем много места для прокрутки каждой карточки */
+        /* Список слоев (Аккордеон на мобилке, Меню на ПК) */
+        .pm-list {
             display: flex;
-            align-items: center; /* Центрируем карточку по вертикали */
+            flex-direction: column;
         }
 
-        /* Сама карточка с текстом */
-        .le-card-inner {
-            background: rgba(30, 30, 30, 0.95);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 35px 25px;
+        .pm-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+
+        .pm-item:first-child { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+        .pm-header {
+            display: flex;
+            align-items: center;
+            padding: 30px 0;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pm-num {
+            font-size: 16px;
+            font-weight: 800;
+            color: #555; /* Изначально тусклый */
+            margin-right: 20px;
+            transition: color 0.3s;
+        }
+
+        .pm-title {
+            font-size: 22px;
+            color: #888; /* Изначально тусклый */
+            font-weight: 600;
+            text-transform: none;
+            transition: color 0.3s;
+            flex-grow: 1;
+        }
+
+        .pm-icon {
+            color: #555;
+            font-size: 18px;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s;
+        }
+
+        /* Контент внутри аккордеона */
+        .pm-content {
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, padding 0.4s ease;
+        }
+
+        .pm-desc {
+            font-size: 18px;
+            color: #ccc;
+            line-height: 1.6;
+            margin: 0 0 30px 0;
+            padding-left: 36px; /* Выравнивание под текст заголовка */
+        }
+
+        .pm-img-wrap {
             width: 100%;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: scale(0.9) translateY(20px);
-            opacity: 0.4; /* Полупрозрачная пока не в фокусе */
+            height: 250px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
         }
-        
-        /* СОСТОЯНИЕ АКТИВНОЙ КАРТОЧКИ (когда она в центре экрана) */
-        .le-card-inner.active {
-            transform: scale(1) translateY(0);
+
+        .pm-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.1);
+            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* СТЕЙТ АКТИВНОГО ЭЛЕМЕНТА */
+        .pm-item.active .pm-header {
+            transform: translateX(10px); /* Слегка сдвигается вправо */
+        }
+        .pm-item.active .pm-num { color: var(--yellow); }
+        .pm-item.active .pm-title { color: #fff; font-weight: 800; }
+        .pm-item.active .pm-icon {
+            color: var(--yellow);
+            transform: rotate(180deg);
+        }
+        .pm-item.active .pm-content {
+            max-height: 800px; /* Достаточно для картинки и текста */
             opacity: 1;
-            border-color: var(--yellow); /* Загорается желтым */
-            box-shadow: 0 15px 50px rgba(255, 204, 0, 0.15);
+        }
+        .pm-item.active .pm-img-wrap img {
+            transform: scale(1); /* Эффект зума при открытии */
         }
 
-        .le-num {
-            color: var(--yellow); font-size: 16px; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px;
-        }
-        .le-title {
-            font-size: 26px; color: #fff; margin-bottom: 15px; line-height: 1.2;
-        }
-        .le-desc {
-            font-size: 19px; color: #ddd; line-height: 1.5; margin: 0;
-        }
+        /* БЛОК ДЛЯ ПК (СКРЫТ НА МОБИЛКАХ) */
+        .pm-showcase { display: none; }
+        .desktop-only { display: none; }
 
-        /* Десктопная адаптация (чтобы картинка была слева, текст справа) */
         @media (min-width: 900px) {
-            .lumyna-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-            .le-sticky-visual { height: 70vh; top: 100px; }
-            .le-scrolling-text { margin-top: 0; padding-bottom: 10vh; }
-            .le-card { min-height: 50vh; }
+            .pm-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: flex-start;
+            }
+            .mobile-only { display: none; }
+            .desktop-only { display: block; }
+            
+            .pm-desc { padding-left: 0; }
+            .pm-header:hover .pm-title { color: #ddd; }
+
+            /* Правая часть - "Витрина" */
+            .pm-showcase {
+                position: sticky;
+                top: 100px;
+                height: 70vh;
+                min-height: 500px;
+                border-radius: 24px;
+                overflow: hidden;
+                border: 1px solid rgba(255,255,255,0.1);
+                box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+                background: #000;
+            }
+
+            .pm-showcase img {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%; height: 100%;
+                object-fit: cover;
+                opacity: 0;
+                transform: scale(1.1);
+                filter: blur(5px);
+                transition: opacity 0.6s ease, transform 1.5s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
+            }
+
+            .pm-showcase img.active {
+                opacity: 1;
+                transform: scale(1);
+                filter: blur(0);
+            }
         }
 
         /* --- 7. TECH GRID --- */
@@ -282,12 +312,8 @@
         .up-icon { font-size: 32px; color: var(--yellow); margin-bottom: 15px; display: block; }
         .up-title { font-size: 22px; color: #fff; font-weight: 800; margin-bottom: 15px; display: block; text-transform: uppercase; }
         .up-list { list-style: none; padding: 0; margin: 0; }
-        .up-list li {
-            font-size: 18px; color: #eee; margin-bottom: 12px; padding-left: 25px; position: relative;
-        }
-        .up-list li::before {
-            content: '+'; position: absolute; left: 0; color: var(--yellow); font-weight: bold; font-size: 20px; top: -2px;
-        }
+        .up-list li { font-size: 18px; color: #eee; margin-bottom: 12px; padding-left: 25px; position: relative; }
+        .up-list li::before { content: '+'; position: absolute; left: 0; color: var(--yellow); font-weight: bold; font-size: 20px; top: -2px; }
 
         /* --- 9. TIMELINE --- */
         .timeline-box { background: #252525; margin: 0 20px; padding: 40px 25px; border-radius: 25px; border: 1px solid var(--border); position: relative; }
@@ -323,11 +349,8 @@
             font-weight: 800; font-size: 16px; text-transform: uppercase; text-decoration: none;
         }
     </style>
-
 </head>
 <body>
-
-    <div class="noise"></div>
 
     <main>
         <a href="../catalog.html" class="breadcrumbs">Catalog <i class="fa-solid fa-chevron-right" style="font-size: 10px; margin: 0 5px;"></i> Greystone</a>
@@ -434,95 +457,121 @@
             </div>
         </section>
 
-        <!-- ==============================================
-             🔥 6. ЭКСПЛОЕР МАТЕРИАЛОВ (CINEMATIC SCROLL) 🔥
-             ============================================== -->
-        <section>
+        <!-- =========================================================
+             🔥 6. ЭКСПЛОЕР МАТЕРИАЛОВ (ИНТЕРАКТИВНЫЙ КОНФИГУРАТОР) 🔥
+             ========================================================= -->
+        <section class="premium-materials">
             <div class="sec-head">
-                <h2>Material Anatomy</h2>
-                <p>Scroll down to reveal the 7 premium layers inside the walls.</p>
+                <h2>Engineered Perfection</h2>
+                <p>Tap a layer below to explore the high-tech materials inside the walls.</p>
             </div>
 
-            <div class="lumyna-wrapper">
+            <div class="pm-container">
                 
-                <div class="scroll-hint"><i class="fa-solid fa-arrow-down"></i> Scroll slowly</div>
-
-                <!-- ЗАЛИПАЮЩИЙ БЛОК С КАРТИНКАМИ -->
-                <div class="le-sticky-visual">
-                    <!-- СЮДА ВСТАВЛЯЕШЬ ССЫЛКИ НА СВОИ КАРТИНКИ -->
-                    <img src="../assets/alumineumPanel.png" class="le-img active" id="img-1">
-                    <img src="../assets/LowEGlass.webp" class="le-img" id="img-2">
-                    <img src="../assets/AluminumFrame.png" class="le-img" id="img-3">
-                    <img src="../assets/FiberboardFloor.png" class="le-img" id="img-4">
-                    <img src="../assets/InsulationLayer.png" class="le-img" id="img-5">
-                    <img src="../assets/FiberCementWall.png" class="le-img" id="img-6">
-                    <img src="../assets/BambooCharcoal.png" class="le-img" id="img-7">
-                </div>
-
-                <!-- ПРОКРУЧИВАЕМЫЕ КАРТОЧКИ С ТЕКСТОМ -->
-                <div class="le-scrolling-text">
+                <!-- ЛЕВАЯ ЧАСТЬ: ИНТЕРАКТИВНЫЙ СПИСОК -->
+                <div class="pm-list">
                     
-                    <div class="le-card" data-id="1">
-                        <div class="le-card-inner active">
-                            <span class="le-num">01 / 07</span>
-                            <h3 class="le-title">Aluminum Honeycomb</h3>
-                            <p class="le-desc">An 8mm high-tech ceiling panel. It’s incredibly lightweight but won’t bend or deform, keeping the frame perfectly safe.</p>
+                    <div class="pm-item active" data-id="1">
+                        <div class="pm-header">
+                            <span class="pm-num">01</span>
+                            <h3 class="pm-title">Aluminum Honeycomb</h3>
+                            <i class="fa-solid fa-chevron-down pm-icon"></i>
+                        </div>
+                        <div class="pm-content">
+                            <div class="pm-img-wrap mobile-only"><img src="../assets/alumineumPanel.png" alt="Layer 1"></div>
+                            <p class="pm-desc">An 8mm high-tech ceiling panel. It’s incredibly lightweight but won’t bend or deform, keeping the entire frame structurally safe.</p>
                         </div>
                     </div>
 
-                    <div class="le-card" data-id="2">
-                        <div class="le-card-inner">
-                            <span class="le-num">02 / 07</span>
-                            <h3 class="le-title">LOW-E Double Glazing</h3>
-                            <p class="le-desc">Acts as a thermal mirror. It reflects your heating back inside during winter, and blocks loud street noise completely.</p>
+                    <div class="pm-item" data-id="2">
+                        <div class="pm-header">
+                            <span class="pm-num">02</span>
+                            <h3 class="pm-title">LOW-E Double Glazing</h3>
+                            <i class="fa-solid fa-chevron-down pm-icon"></i>
+                        </div>
+                        <div class="pm-content">
+                            <div class="pm-img-wrap mobile-only"><img src="../assets/LowEGlass.webp" alt="Layer 2"></div>
+                            <p class="pm-desc">Acts as a thermal mirror. It reflects your heating back inside during winter, and blocks loud street noise completely.</p>
                         </div>
                     </div>
 
-                    <div class="le-card" data-id="3">
-                        <div class="le-card-inner">
-                            <span class="le-num">03 / 07</span>
-                            <h3 class="le-title">Aviation Aluminum Frame</h3>
-                            <p class="le-desc">A 2mm thick skeleton holding it all together. 100% rust-proof, designed to block cold air from ever entering the home.</p>
+                    <div class="pm-item" data-id="3">
+                        <div class="pm-header">
+                            <span class="pm-num">03</span>
+                            <h3 class="pm-title">Aviation Aluminum Frame</h3>
+                            <i class="fa-solid fa-chevron-down pm-icon"></i>
+                        </div>
+                        <div class="pm-content">
+                            <div class="pm-img-wrap mobile-only"><img src="../assets/AluminumFrame.png" alt="Layer 3"></div>
+                            <p class="pm-desc">A 2mm thick skeleton holding it all together. 100% rust-proof, designed to block cold air from ever entering the home.</p>
                         </div>
                     </div>
 
-                    <div class="le-card" data-id="4">
-                        <div class="le-card-inner">
-                            <span class="le-num">04 / 07</span>
-                            <h3 class="le-title">Fiberboard Floor</h3>
-                            <p class="le-desc">A solid, non-flammable base. Your floor will never bounce or sink, even after years of constant daily use.</p>
+                    <div class="pm-item" data-id="4">
+                        <div class="pm-header">
+                            <span class="pm-num">04</span>
+                            <h3 class="pm-title">Fiberboard Floor</h3>
+                            <i class="fa-solid fa-chevron-down pm-icon"></i>
+                        </div>
+                        <div class="pm-content">
+                            <div class="pm-img-wrap mobile-only"><img src="../assets/FiberboardFloor.png" alt="Layer 4"></div>
+                            <p class="pm-desc">A solid, non-flammable base. Your floor will never bounce or sink, even after years of constant daily use.</p>
                         </div>
                     </div>
 
-                    <div class="le-card" data-id="5">
-                        <div class="le-card-inner">
-                            <span class="le-num">05 / 07</span>
-                            <h3 class="le-title">10cm Insulation Layer</h3>
-                            <p class="le-desc">A massive 10cm protective shield. It guarantees a perfectly quiet space and keeps the temperature exactly how you set it.</p>
+                    <div class="pm-item" data-id="5">
+                        <div class="pm-header">
+                            <span class="pm-num">05</span>
+                            <h3 class="pm-title">10cm Insulation Layer</h3>
+                            <i class="fa-solid fa-chevron-down pm-icon"></i>
+                        </div>
+                        <div class="pm-content">
+                            <div class="pm-img-wrap mobile-only"><img src="../assets/InsulationLayer.png" alt="Layer 5"></div>
+                            <p class="pm-desc">A massive 10cm protective shield. It guarantees a perfectly quiet space and keeps the temperature exactly how you set it.</p>
                         </div>
                     </div>
 
-                    <div class="le-card" data-id="6">
-                        <div class="le-card-inner">
-                            <span class="le-num">06 / 07</span>
-                            <h3 class="le-title">Fiber Cement Wall</h3>
-                            <p class="le-desc">An 8-10mm stone-like exterior. Completely fireproof and waterproof, retaining its strength for decades.</p>
+                    <div class="pm-item" data-id="6">
+                        <div class="pm-header">
+                            <span class="pm-num">06</span>
+                            <h3 class="pm-title">Fiber Cement Wall</h3>
+                            <i class="fa-solid fa-chevron-down pm-icon"></i>
+                        </div>
+                        <div class="pm-content">
+                            <div class="pm-img-wrap mobile-only"><img src="../assets/FiberCementWall.png" alt="Layer 6"></div>
+                            <p class="pm-desc">An 8-10mm stone-like exterior. Completely fireproof and waterproof, retaining its strength and looks for decades.</p>
                         </div>
                     </div>
 
-                    <div class="le-card" data-id="7">
-                        <div class="le-card-inner">
-                            <span class="le-num">07 / 07</span>
-                            <h3 class="le-title">Bamboo Charcoal Finish</h3>
-                            <p class="le-desc">An eco-friendly interior board. 100% mold-resistant and waterproof—so you can clean it with just a quick wipe.</p>
+                    <div class="pm-item" data-id="7">
+                        <div class="pm-header">
+                            <span class="pm-num">07</span>
+                            <h3 class="pm-title">Bamboo Charcoal Finish</h3>
+                            <i class="fa-solid fa-chevron-down pm-icon"></i>
+                        </div>
+                        <div class="pm-content">
+                            <div class="pm-img-wrap mobile-only"><img src="../assets/BambooCharcoal.png" alt="Layer 7"></div>
+                            <p class="pm-desc">An eco-friendly interior board. 100% mold-resistant and waterproof—so you can clean it with just a quick wipe.</p>
                         </div>
                     </div>
 
                 </div>
+
+                <!-- ПРАВАЯ ЧАСТЬ: ВИТРИНА ДЛЯ ПК -->
+                <div class="pm-showcase desktop-only">
+                    <img src="../assets/alumineumPanel.png" class="active" id="pm-img-1" alt="Layer 1">
+                    <img src="../assets/LowEGlass.webp" id="pm-img-2" alt="Layer 2">
+                    <img src="../assets/AluminumFrame.png" id="pm-img-3" alt="Layer 3">
+                    <img src="../assets/FiberboardFloor.png" id="pm-img-4" alt="Layer 4">
+                    <img src="../assets/InsulationLayer.png" id="pm-img-5" alt="Layer 5">
+                    <img src="../assets/FiberCementWall.png" id="pm-img-6" alt="Layer 6">
+                    <img src="../assets/BambooCharcoal.png" id="pm-img-7" alt="Layer 7">
+                </div>
+
             </div>
         </section>
 
-        <!-- 7. ОРИГИНАЛЬНЫЙ ТЕХНИЧЕСКИЙ ГРИД -->
+        <!-- 7. ТЕХНИЧЕСКИЙ ГРИД -->
         <section>
             <div class="sec-head"><h2>Engineering details</h2></div>
             <div class="tech-box">
@@ -637,7 +686,7 @@
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // Слайдер наверху (как и был)
+        // СЛАЙДЕР ВИЗУАЛА (верхний блок)
         var swiper = new Swiper(".mySwiper", {
             slidesPerView: "auto",
             centeredSlides: true,
@@ -652,31 +701,32 @@
             }
         });
 
-        // СКРИПТ ДЛЯ ПРЕМИУМ ЭФФЕКТА СКРОЛЛА (Apple-style)
+        // СКРИПТ ДЛЯ ПРЕМИАЛЬНОГО АККОРДЕОНА / КОНФИГУРАТОРА
         document.addEventListener("DOMContentLoaded", () => {
-            // Создаем наблюдатель за прокруткой (Intersection Observer)
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    // Если карточка заехала в середину экрана
-                    if(entry.isIntersecting) {
-                        const id = entry.target.getAttribute('data-id');
-                        
-                        // 1. Меняем картинку в "залипшем" блоке
-                        document.querySelectorAll('.le-img').forEach(img => img.classList.remove('active'));
-                        document.getElementById('img-' + id).classList.add('active');
+            const items = document.querySelectorAll('.pm-item');
+            const desktopImgs = document.querySelectorAll('.pm-showcase img');
 
-                        // 2. Делаем активной (подсвечиваем) нужную текстовую карточку
-                        document.querySelectorAll('.le-card-inner').forEach(card => card.classList.remove('active'));
-                        entry.target.querySelector('.le-card-inner').classList.add('active');
-                    }
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    
+                    // Если кликнули на уже открытый - ничего не делаем (оставляем открытым)
+                    if(item.classList.contains('active')) return;
+
+                    // 1. Закрываем все элементы списка
+                    items.forEach(i => i.classList.remove('active'));
+                    
+                    // 2. Скрываем все картинки в десктопной витрине
+                    desktopImgs.forEach(img => img.classList.remove('active'));
+
+                    // 3. Открываем кликнутый элемент
+                    item.classList.add('active');
+
+                    // 4. Показываем нужную картинку в десктопной витрине
+                    const id = item.getAttribute('data-id');
+                    const targetImg = document.getElementById('pm-img-' + id);
+                    if(targetImg) targetImg.classList.add('active');
                 });
-            }, {
-                // Срабатывает только когда карточка достигает центральной части экрана
-                rootMargin: "-40% 0px -40% 0px"
             });
-
-            // Навешиваем наблюдатель на все наши карточки материалов
-            document.querySelectorAll('.le-card').forEach(card => observer.observe(card));
         });
     </script>
 </body>
