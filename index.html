@@ -11,14 +11,13 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://yourwebsite.ie/">
     
-    <!-- Open Graph (для красивых ссылок в WhatsApp/Facebook) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yourwebsite.ie/">
     <meta property="og:title" content="Premium Modular Homes in Ireland | Capsule Homes">
     <meta property="og:description" content="Fully finished modular spaces delivered to your garden. Ready to use in 1 day.">
     <meta property="og:image" content="https://static.wixstatic.com/media/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg">
+    <meta name="google-site-verification" content="4sUGEhOHtlaldmRiTX6-1zWJM8r3e-12_sLUCSMsRVI" />
 
-    <!-- JSON-LD SCHEMA MARKUP (Микроразметка для Google) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -54,19 +53,14 @@
       ]
     }
     </script>
-    <!-- === КОНЕЦ SEO === -->
 
-    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
     
-    <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- SWIPER -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
     <style>
-        /* --- ОРИГИНАЛЬНЫЕ VARIABLES & RESET --- */
         :root {
             --bg-body: #1F1F1F;
             --bg-surface: #262626;
@@ -97,11 +91,9 @@
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         .serif-italic { font-family: 'Playfair Display', serif; font-style: italic; color: var(--yellow); }
         
-        /* --- UTILS & ANIMATION --- */
         .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* --- ОРИГИНАЛЬНЫЕ BUTTONS --- */
         .btn {
             display: inline-flex; justify-content: center; align-items: center;
             padding: 18px 36px; border-radius: 12px;
@@ -123,7 +115,6 @@
         }
         .btn-link:hover { color: var(--yellow); }
 
-        /* --- ОРИГИНАЛЬНАЯ NAVIGATION --- */
         .navbar {
             position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
             padding: 20px 0; transition: 0.3s;
@@ -136,7 +127,6 @@
         .logo { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; color: var(--white); }
         .logo span { color: var(--yellow); }
 
-        /* --- ОРИГИНАЛЬНЫЙ HERO SECTION --- */
         .hero {
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
             overflow: hidden; text-align: center;
@@ -171,9 +161,6 @@
         }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform:translateX(-50%) translateY(0);} 40% {transform:translateX(-50%) translateY(-10px);} 60% {transform:translateX(-50%) translateY(-5px);} }
 
-        /* ========================================================
-           🔥 НОВЫЙ ЖИВОЙ EXPERT БЛОК (СЕО + КОНВЕРСИЯ) 🔥
-           ======================================================== */
         .expert-flow {
             position: relative;
             padding: 100px 0;
@@ -189,10 +176,8 @@
             align-items: center;
         }
 
-        /* ТЕКСТ И ПРОДАЖА */
         .expert-copy { position: relative; z-index: 2; }
         
-        /* Пульсирующий бейдж */
         .live-status {
             display: inline-flex; align-items: center; gap: 10px;
             background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2);
@@ -217,7 +202,6 @@
         .e-feat strong { font-size: 24px; color: #fff; font-weight: 700; display: block; line-height: 1; }
         .e-feat span { font-size: 12px; color: var(--grey); text-transform: uppercase; letter-spacing: 1px; }
 
-        /* ЖИВОЕ ФОТО (Вырывается за рамки) */
         .expert-visual { position: relative; display: flex; justify-content: center; }
         
         .expert-glow-bg {
@@ -238,7 +222,6 @@
             transform: scale(1.05); /* Легкий выход за пределы */
         }
 
-        /* Парящий виджет (Glassmorphism) */
         .floating-contact {
             position: absolute; bottom: 15%; left: 0; z-index: 10;
             background: rgba(38, 38, 38, 0.7); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
@@ -263,7 +246,6 @@
             .expert-flow { padding: 60px 0 0 0; }
         }
 
-        /* --- ОРИГИНАЛЬНЫЙ TRUST STRIP --- */
         .trust-strip {
             background: var(--bg-surface); border-bottom: 1px solid var(--border);
             padding: 30px 0; position: relative; z-index: 5;
@@ -276,13 +258,11 @@
         .trust-item i { color: var(--yellow); font-size: 24px; }
         .trust-item span { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- ОРИГИНАЛЬНЫЕ СЕКЦИИ COMMON --- */
         .section { padding: 100px 0; border-bottom: 1px solid var(--border); }
         .sec-head { text-align: center; max-width: 700px; margin: 0 auto 60px; }
         .sec-title { font-size: clamp(32px, 5vw, 48px); margin-bottom: 20px; }
         .sec-desc { font-size: 18px; color: var(--grey); }
 
-        /* --- ОРИГИНАЛЬНЫЕ CATALOG CARDS --- */
         .catalog-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 40px; margin-bottom: 60px;
@@ -313,7 +293,6 @@
         .btn-wa { background: var(--yellow); color: #000; }
         .btn-details { background: #333; color: #fff; }
 
-        /* --- ОРИГИНАЛЬНЫЙ LIFESTYLE GRID --- */
         .life-grid {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;
         }
@@ -325,7 +304,6 @@
         .life-icon { color: var(--yellow); font-size: 32px; margin-bottom: 20px; }
         .life-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
 
-        /* --- ОРИГИНАЛЬНЫЕ TRENDS --- */
         .trend-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;
             counter-reset: trend-counter;
@@ -338,7 +316,6 @@
         }
         .trend-title { font-size: 20px; font-weight: 600; margin-bottom: 10px; color: var(--white); }
 
-        /* --- ОРИГИНАЛЬНЫЙ VIDEO BLOCK --- */
         .video-wrapper {
             position: relative; border-radius: 30px; overflow: hidden;
             width: 100%; aspect-ratio: 16/9; max-height: 600px;
@@ -355,9 +332,8 @@
         }
         .play-btn:hover { transform: scale(1.1); }
         
-        /* --- ОРИГИНАЛЬНЫЕ REVIEWS --- */
         .reviewSwiper { 
-            padding-bottom: 50px !important; /* Отступ для пагинации */
+            padding-bottom: 50px !important; 
         }
         .review-card {
             background: var(--bg-surface); padding: 40px; border-radius: 20px;
@@ -366,12 +342,10 @@
         .stars { color: var(--yellow); margin-bottom: 20px; letter-spacing: 2px; font-size: 14px; }
         .r-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; line-height: 1.6; margin-bottom: 20px; color: #ddd; }
         
-        /* Стили для фото в отзывах */
         .r-author-box { display: flex; align-items: center; gap: 15px; }
         .r-avatar { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
         .r-auth { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--grey); display: block; }
 
-        /* Стили для точек (пагинации) слайдера */
         .swiper-pagination-bullet {
             background: rgba(255, 255, 255, 0.3);
             width: 10px;
@@ -384,7 +358,6 @@
             border-radius: 5px;
         }
 
-        /* --- ОРИГИНАЛЬНЫЙ QUIZ --- */
         .quiz-section { background: var(--bg-dark); }
         .quiz-container {
             background: var(--bg-surface); max-width: 800px; margin: 0 auto;
@@ -411,7 +384,6 @@
         }
         .form-input:focus { outline: none; border-color: var(--yellow); }
 
-        /* --- ОРИГИНАЛЬНЫЙ FOOTER --- */
         footer { padding: 80px 0 40px; border-top: 1px solid var(--border); background: #111; text-align: center; }
         .f-brand { font-size: 24px; font-weight: 700; margin-bottom: 20px; display: block; letter-spacing: -1px; }
 
@@ -426,7 +398,6 @@
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="container nav-inner">
             <a href="#" class="logo">CAPSULE<span>HOMES</span></a>
@@ -434,7 +405,6 @@
         </div>
     </nav>
 
-    <!-- 1. HERO SECTION -->
     <section class="hero">
         <img src="https://static.wixstatic.com/media/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg/v1/fill/w_860,h_794,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a04742_d866267d99f94f968320fb359b12a552~mv2.jpg" class="hero-bg" alt="Modular Home Exterior">
         <div class="hero-overlay"></div>
@@ -449,12 +419,10 @@
         <div class="scroll-indicator"><i class="fa-solid fa-chevron-down"></i></div>
     </section>
 
-    <!-- 2. НОВЫЙ ЖИВОЙ БЛОК ЭКСПЕРТА -->
     <section class="expert-flow">
         <div class="container">
             <div class="expert-grid">
                 
-                <!-- Левая часть: Копирайтинг -->
                 <div class="expert-copy fade-up">
                     <div class="live-status">
                         <div class="live-dot"></div>
@@ -469,11 +437,9 @@
                     </button>
                 </div>
 
-                <!-- Правая часть: Фото вырывается из сетки -->
                 <div class="expert-visual fade-up">
                     <div class="expert-glow-bg"></div>
                     
-                    <!-- Плавающий виджет -->
                     <div class="floating-contact">
                         <div class="fc-icon"><i class="fa-brands fa-whatsapp"></i></div>
                         <div class="fc-text">
@@ -482,7 +448,6 @@
                         </div>
                     </div>
 
-                    <!-- Само фото (замени на свое фото без фона) -->
                     <div class="expert-img-wrapper">
                         <img src="./assets/main.png" alt="Lead Architect Capsule Homes" onerror="this.src='https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_1280.png'">
                     </div>
@@ -492,7 +457,6 @@
         </div>
     </section>
 
-    <!-- 3. TRUST STRIP -->
     <div class="trust-strip">
         <div class="container">
             <div class="trust-grid fade-up">
@@ -504,7 +468,6 @@
         </div>
     </div>
 
-    <!-- 4. MODELS PREVIEW -->
     <section class="section">
         <div class="container">
             <div class="sec-head fade-up">
@@ -512,7 +475,6 @@
                 <p class="sec-desc">We deliver and install fully finished capsule homes. Your home arrives ready to use.</p>
             </div>
 
-            <!-- MODELS GRID -->
             <div class="catalog-grid">
                 <div class="card fade-up">
                     <div class="card-img-wrap">
@@ -540,7 +502,6 @@
         </div>
     </section>
 
-    <!-- 5. WHO IS IT FOR -->
     <section class="section" style="background: #191919;">
         <div class="container">
             <div class="sec-head fade-up">
@@ -571,7 +532,6 @@
         </div>
     </section>
 
-    <!-- 6. VIDEO -->
     <section class="section" id="video">
         <div class="container">
             <div class="video-wrapper fade-up" onclick="toggleVideo(this)">
@@ -584,7 +544,6 @@
         </div>
     </section>
 
-    <!-- 7. TRENDS -->
     <section class="section">
         <div class="container">
             <div class="sec-head">
@@ -611,7 +570,6 @@
         </div>
     </section>
 
-    <!-- 8. REVIEWS -->
     <section class="section" style="background: #191919;">
         <div class="container">
             <h2 class="sec-title" style="text-align: center; margin-bottom: 50px;">Client Stories</h2>
@@ -648,13 +606,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- ДОБАВЛЕНА ПАГИНАЦИЯ (ТОЧКИ) -->
                 <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
 
-    <!-- 9. QUIZ -->
     <section class="section quiz-section" id="quiz">
         <div class="container">
             <div class="sec-head">
@@ -711,7 +667,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="container">
             <span class="f-brand">CAPSULE<span style="color:var(--yellow)">HOMES</span></span>
@@ -727,16 +682,13 @@
         </div>
     </footer>
 
-    <!-- LOGIC -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if(window.scrollY > 50) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
             
-            // Fade Up Animation
             document.querySelectorAll('.fade-up').forEach(el => {
                 if(el.getBoundingClientRect().top < window.innerHeight - 100) {
                     el.classList.add('visible');
@@ -744,7 +696,6 @@
             });
         });
 
-        // Review Slider (ДОБАВЛЕНА НАСТРОЙКА ПАГИНАЦИИ)
         new Swiper(".reviewSwiper", {
             slidesPerView: 1, 
             spaceBetween: 30,
@@ -758,7 +709,6 @@
             }
         });
 
-        // Video
         function toggleVideo(c) {
             const v = c.querySelector('video');
             if(v.paused) {
@@ -767,7 +717,6 @@
             }
         }
 
-        // Quiz
         function selectOpt(el, s) {
             el.parentElement.querySelectorAll('.q-opt').forEach(o => o.classList.remove('selected'));
             el.classList.add('selected'); el.querySelector('input').checked = true;
