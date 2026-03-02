@@ -4,22 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1F1F1F">
-    
-    <!-- ================= SEO OPTIMIZATION ================= -->
     <title>BlackRock 1 | 2-Bed Smart Prefab House Ireland</title>
     <meta name="description" content="Discover BlackRock 1: A premium 38m² turnkey capsule home. 2 beds, smart technology, and installed in just 1 day. Designed perfectly for the Irish climate. Prices from €42,000.">
     <meta name="keywords" content="capsule homes, prefab houses Ireland, modular homes Dublin, turnkey smart home, tiny house, BlackRock capsule">
     <meta name="author" content="Capsule Homes Ireland">
     <link rel="canonical" href="https://yourwebsite.com/blackrock-1">
-
-    <!-- Open Graph -->
     <meta property="og:title" content="BlackRock 1 Premium Capsule Home">
     <meta property="og:description" content="Smart Homes for Living, Relaxing and Working. Fully installed in 1 day. From €42k.">
     <meta property="og:image" content="https://static.wixstatic.com/media/a04742_b78248285e754260b35f461272f7a7b3~mv2.jpg">
     <meta property="og:type" content="product">
     <meta property="og:locale" content="en_IE">
-
-    <!-- Schema.org Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org/",
@@ -38,53 +32,38 @@
       }
     }
     </script>
-    
-    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
-    
-    <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- SWIPER CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <style>
-        /* --- VARIABLES (UPDATED FOR HIGH CONTRAST) --- */
         :root {
             --bg: #1F1F1F;
             --card: #292929;
             --yellow: #FFCC00;
             --text-main: #FFFFFF;
-            --text-sec: #E0E0E0; /* Светло-серый для читаемости */
+            --text-sec: #E0E0E0;
             --border: rgba(255, 255, 255, 0.15);
         }
-
         * { box-sizing: border-box; }
-
         body {
             background-color: var(--bg);
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             margin: 0; padding: 0;
             line-height: 1.6;
-            font-size: 19px; /* Увеличенный базовый шрифт */
+            font-size: 19px;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
-
         .serif-italic { font-family: 'Playfair Display', serif; font-style: italic; color: var(--yellow); }
-
-        .noise { display: none; } /* Убрали шум для чистоты */
-
+        .noise { display: none; }
         h1, h2, h3, h4 { font-weight: 800; text-transform: uppercase; margin: 0; letter-spacing: -0.5px; }
-
         .breadcrumbs {
             font-size: 18px; color: var(--text-sec); margin-bottom: 20px; display: block;
             text-decoration: underline; text-underline-offset: 5px;
             position: absolute; top: 30px; left: 20px; z-index: 10;
         }
-
-        /* --- 1. HERO --- */
         .hero {
             height: 85vh; position: relative; display: flex; align-items: flex-end; padding: 30px 20px;
             overflow: hidden;
@@ -94,16 +73,16 @@
             object-fit: cover; opacity: 0.5; z-index: 0; filter: brightness(0.4);
         }
         .hero-content { position: relative; z-index: 2; width: 100%; }
+        .hero-label { 
+            background: var(--yellow); color: #000; padding: 6px 14px; font-weight: 800; 
+            font-size: 12px; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 25px; border-radius: 4px;
+        }
         .hero-title { font-size: 11vw; line-height: 1; margin-bottom: 15px; color: #fff; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
         .hero-price { font-size: 36px; color: var(--yellow); font-weight: 900; display: block; margin-bottom: 10px; }
         .hero-note { font-size: 18px; color: #fff; display: block; text-transform: none; font-weight: 500; max-width: 95%; line-height: 1.4; }
-
-        /* --- COMMON HEADERS --- */
         .sec-head { padding: 60px 20px 25px; }
         .sec-head h2, .sec-head h3 { font-size: 24px; color: #fff; border-left: 5px solid var(--yellow); padding-left: 15px; }
         .sec-head p { font-size: 18px; color: var(--text-sec); margin-top: 12px; font-weight: 400; }
-
-        /* --- 2. SPECS GRID --- */
         .specs-grid {
             display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 20px;
             margin-top: 10px; position: relative; z-index: 10;
@@ -115,24 +94,18 @@
         .spec-card i { color: var(--yellow); font-size: 28px; margin-bottom: 10px; display: block; }
         .spec-val { font-size: 24px; font-weight: 800; color: #fff; display: block; }
         .spec-lbl { font-size: 13px; color: #ddd; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; margin-top: 5px; display: block; }
-
-        /* --- 3. SLIDER --- */
         .swiper { width: 100%; height: 500px; padding-bottom: 50px; }
         .swiper-slide {
             width: 90%; height: 100%; border-radius: 24px; overflow: hidden;
             background: #111; border: 1px solid var(--border); position: relative;
         }
         .swiper-slide img, .swiper-slide video { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-        /* --- 4. INCLUSIONS --- */
         .included-sec { padding: 0 20px; }
         .included-list { background: var(--card); border-radius: 25px; padding: 30px 20px; border: 1px solid var(--border); }
         .inc-item { display: flex; gap: 15px; margin-bottom: 25px; font-size: 18px; align-items: flex-start; line-height: 1.4; }
         .inc-item i { color: var(--yellow); font-size: 22px; flex-shrink: 0; margin-top: 3px; }
         .inc-item b { color: #fff; font-weight: 700; margin-right: 5px; }
         .inc-item span { color: var(--text-sec); }
-
-        /* --- 5. PACKAGES --- */
         .packages-scroll {
             display: flex; gap: 15px; overflow-x: auto; padding: 20px;
             scroll-snap-type: x mandatory; scrollbar-width: none;
@@ -144,7 +117,6 @@
         }
         .pkg-card.premium { border: 2px solid var(--yellow); background: #333; }
         .pkg-card.luxury { background: #111; border: 1px solid #555; }
-        
         .pkg-tag { font-size: 13px; font-weight: 800; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; display: block; }
         .pkg-name { font-size: 24px; color: #fff; margin-bottom: 20px; display: block; font-weight: 800; text-transform: uppercase; }
         .pkg-features { padding: 0; margin: 0; list-style: none; }
@@ -152,12 +124,77 @@
             font-size: 18px; color: #eee; margin-bottom: 15px; display: flex; gap: 12px; align-items: flex-start; line-height: 1.4;
         }
         .pkg-features li i { color: var(--yellow); margin-top: 5px; font-size: 16px; }
-
-        /* --- 6. TECH GRID --- */
+        .stack-section {
+            background: #000;
+            padding: 0; 
+            position: relative;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-top: 40px;
+        }
+        .stack-intro {
+            padding: 80px 25px 50px;
+            text-align: center;
+        }
+        .stack-intro span { color: var(--yellow); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; display: block; margin-bottom: 15px; }
+        .stack-intro h2 { font-size: 42px; margin-bottom: 15px; color: #fff; }
+        .stack-intro p { color:#888; max-width: 500px; margin: 0 auto; font-size: 16px; }
+        .stack-area {
+            position: relative;
+            padding-bottom: 20vh;
+        }
+        .stack-card {
+            position: sticky; 
+            top: 100px;
+            width: 90%;
+            max-width: 600px;
+            height: 65vh; 
+            margin: 0 auto 15vh;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #121212;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 -20px 60px rgba(0,0,0,0.9);
+            display: flex; flex-direction: column;
+            transform-origin: center top; 
+            transition: transform 0.1s linear, filter 0.1s linear; 
+        }
+        .stack-card:last-child { margin-bottom: 0; }
+        .card-visual {
+            flex: 2;
+            position: relative;
+            overflow: hidden;
+            background: #000;
+        }
+        .card-visual img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        .stack-card:hover .card-visual img { transform: scale(1.05); }
+        .card-info {
+            flex: 1;
+            padding: 30px;
+            background: #181818;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex; flex-direction: column; justify-content: center;
+            position: relative;
+        }
+        .card-num {
+            font-size: 80px; font-weight: 900; color: rgba(255,255,255,0.04);
+            position: absolute; top: 10px; right: 20px; line-height: 1; pointer-events: none;
+        }
+        .card-title { font-size: 24px; color: #fff; margin-bottom: 10px; z-index: 1; text-transform: none; }
+        .card-desc { font-size: 16px; color: #aaa; line-height: 1.5; margin: 0; z-index: 1; }
+        @media (min-width: 900px) {
+            .stack-card { top: 80px; height: 75vh; margin-bottom: 25vh; }
+            .card-info { flex-direction: row; align-items: center; justify-content: space-between; padding: 40px; text-align: left; }
+            .card-title { width: 40%; font-size: 32px; margin-bottom: 0; }
+            .card-desc { width: 50%; font-size: 18px; }
+            .card-num { top: -40px; }
+        }
         .tech-box { background: #252525; margin: 0 20px; padding: 30px 20px; border-radius: 25px; border: 1px solid var(--border); }
         .tech-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
         @media (min-width: 400px) { .tech-grid { grid-template-columns: 1fr 1fr; } }
-        
         .tech-card {
             background: #333; border: 1px solid #444; border-radius: 20px; padding: 25px;
             display: flex; flex-direction: column; height: 100%;
@@ -169,8 +206,6 @@
             background: rgba(255, 204, 0, 0.1); border: 2px solid var(--yellow);
             padding: 20px; border-radius: 20px; color: #fff; font-size: 16px; margin-top: 25px; line-height: 1.5; font-weight: 500;
         }
-
-        /* --- 7. UPGRADES --- */
         .upgrades-grid { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 0 20px; }
         .upgrade-card {
             background: #2a2a2a; border: 1px solid var(--border); border-radius: 24px; padding: 30px;
@@ -186,8 +221,6 @@
         .up-list li::before {
             content: '+'; position: absolute; left: 0; color: var(--yellow); font-weight: bold; font-size: 20px; top: -2px;
         }
-
-        /* --- 8. TIMELINE --- */
         .timeline-box { background: #252525; margin: 0 20px; padding: 40px 25px; border-radius: 25px; border: 1px solid var(--border); position: relative; }
         .timeline { position: relative; padding-left: 30px; }
         .timeline::before { content: ''; position: absolute; left: 6px; top: 5px; bottom: 5px; width: 2px; background: rgba(255,255,255,0.1); }
@@ -198,8 +231,6 @@
         .t-content h4 { font-size: 20px; color: #fff; margin-bottom: 8px; text-transform: uppercase; }
         .t-content span { font-size: 17px; color: #ddd; display: block; line-height: 1.5; }
         .highlight-yellow { color: var(--yellow); font-weight: 800; }
-
-        /* --- FOOTER & STICKY --- */
         footer { background: #111; padding: 60px 25px 160px; border-top: 1px solid var(--border); }
         .f-contact a { 
             color: #fff; text-decoration: none; font-size: 24px; font-weight: 700; 
@@ -208,7 +239,6 @@
         }
         .f-contact a i { color: var(--yellow); font-size: 24px; }
         .f-address { margin-top: 30px; font-size: 16px; color: #ccc; line-height: 1.6; }
-
         .sticky-bar {
             position: fixed; bottom: 20px; left: 15px; right: 15px;
             background: #111; padding: 15px 25px; border-radius: 50px; border: 2px solid var(--yellow);
@@ -220,34 +250,26 @@
             background: var(--yellow); color: #000; padding: 14px 30px; border-radius: 30px;
             font-weight: 800; font-size: 16px; text-transform: uppercase; text-decoration: none;
         }
-        
-        /* Старые аккордеоны (если остались) - фикс для них */
         .acc-item { background: #252525; border: 1px solid var(--border); border-radius: 20px; margin: 0 20px 10px; }
         .acc-head { padding: 25px; display: flex; justify-content: space-between; font-weight: 800; font-size: 20px; cursor: pointer; color: #fff; }
         .acc-body { display: none; padding: 0 25px 25px; color: #eee; font-size: 18px; line-height: 1.5; }
         .acc-item.active .acc-body { display: block; }
         .acc-item.active .acc-head { color: var(--yellow); }
     </style>
-
 </head>
 <body>
-
     <div class="noise"></div>
-
     <main>
         <a href="../catalog.html" class="breadcrumbs">Catalog <i class="fa-solid fa-chevron-right" style="font-size: 10px; margin: 0 5px;"></i> BlackRock</a>
-
-        <!-- 1. HERO -->
         <header class="hero">
             <img src="https://static.wixstatic.com/media/a04742_b78248285e754260b35f461272f7a7b3~mv2.jpg/v1/fill/w_438,h_310,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2025-11-16%2000_38_35.jpg" class="hero-bg" alt="BlackRock 1 Capsule Home">
             <div class="hero-content">
+                <span class="hero-label">Premium Model</span>
                 <h1 class="hero-title">BlackRock<br><span class="serif-italic">1 | 2 beds</span></h1>
                 <span class="hero-price">From € 42k</span>
                 <span class="hero-note">Smart Homes for Living, Relaxing and Working.</span>
             </div>
         </header>
-
-        <!-- 2. QUICK SPECS -->
         <section class="specs-grid">
             <div class="spec-card">
                 <i class="fa-solid fa-ruler-combined"></i>
@@ -270,8 +292,6 @@
                 <span class="spec-lbl">Install Time</span>
             </div>
         </section>
-
-        <!-- 3. SLIDER -->
         <section>
             <div class="sec-head">
                 <h2>Visual Overview</h2>
@@ -287,8 +307,6 @@
                 <div class="swiper-pagination"></div>
             </div>
         </section>
-
-        <!-- 4. INCLUSIONS -->
         <section>
             <div class="sec-head"><h2>Standard Inclusions</h2></div>
             <div class="included-sec">
@@ -301,8 +319,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- 5. PACKAGES -->
         <section>
             <div class="sec-head"><h2>Available Packages</h2></div>
             <div class="packages-scroll">
@@ -338,8 +354,65 @@
                 </div>
             </div>
         </section>
-
-        <!-- 6. TECH SPEC DETAILS -->
+        <section class="stack-section">
+            <div class="stack-intro">
+                <span>X-Ray Vision</span>
+                <h2>Material Anatomy</h2>
+                <p>Scroll down to peel back the layers. See why BlackRock is built to last 65+ years.</p>
+            </div>
+            <div class="stack-area">
+                <div class="stack-card">
+                    <div class="card-visual">
+                        <img src="../assets/alumineumPanel.png" alt="Ceiling Panel">
+                    </div>
+                    <div class="card-info">
+                        <span class="card-num">01</span>
+                        <h3 class="card-title">Aluminum Honeycomb</h3>
+                        <p class="card-desc">Aerospace-grade ceiling panel. 8mm thick, ultra-lightweight, and impossible to deform.</p>
+                    </div>
+                </div>
+                <div class="stack-card">
+                    <div class="card-visual">
+                        <img src="../assets/LowEGlass.webp" alt="Low-E Glass">
+                    </div>
+                    <div class="card-info">
+                        <span class="card-num">02</span>
+                        <h3 class="card-title">LOW-E Mirror Glass</h3>
+                        <p class="card-desc">Reflects heat back inside during winter. Blocks 99% of UV rays. Absolute privacy from the outside.</p>
+                    </div>
+                </div>
+                <div class="stack-card">
+                    <div class="card-visual">
+                        <img src="../assets/AviationAluminium.png" alt="Aluminum Facade">
+                    </div>
+                    <div class="card-info">
+                        <span class="card-num">03</span>
+                        <h3 class="card-title">Aviation Aluminum Façade</h3>
+                        <p class="card-desc">10–20mm thick exterior shell. Factory spray-coated to last 65 years without fading. Rust-proof, waterproof, and ultra-lightweight.</p>
+                    </div>
+                </div>
+                <div class="stack-card">
+                    <div class="card-visual">
+                        <img src="../assets/InsulationLayer.png" alt="Insulation">
+                    </div>
+                    <div class="card-info">
+                        <span class="card-num">04</span>
+                        <h3 class="card-title">Polyurethane Shield</h3>
+                        <p class="card-desc">100mm of high-density insulation. Keeps it warm in Irish winters and cool in summer.</p>
+                    </div>
+                </div>
+                <div class="stack-card">
+                    <div class="card-visual">
+                        <img src="../assets/FiberCementWall.png" alt="Internal Wall">
+                    </div>
+                    <div class="card-info">
+                        <span class="card-num">05</span>
+                        <h3 class="card-title">Fiber Cement Layer</h3>
+                        <p class="card-desc">Fireproof (Class A) and waterproof internal structural layer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section>
             <div class="sec-head"><h2>Technical Specifications</h2></div>
             <div class="tech-box">
@@ -356,12 +429,9 @@
                 </div>
             </div>
         </section>
-
-        <!-- 7. NEW VISUAL UPGRADES (GRID) -->
         <section>
             <div class="sec-head"><h2>Optional Upgrades</h2></div>
             <div class="upgrades-grid">
-                
                 <div class="upgrade-card">
                     <i class="fa-solid fa-tree up-icon"></i>
                     <span class="up-title">Exterior Pack</span>
@@ -371,7 +441,6 @@
                         <li>Outdoor LED Lighting</li>
                     </ul>
                 </div>
-
                 <div class="upgrade-card">
                     <i class="fa-solid fa-couch up-icon"></i>
                     <span class="up-title">Interior & Comfort</span>
@@ -381,7 +450,6 @@
                         <li>Built-in Wardrobe Storage</li>
                     </ul>
                 </div>
-
                 <div class="upgrade-card">
                     <i class="fa-solid fa-solar-panel up-icon"></i>
                     <span class="up-title">Utility & Tech</span>
@@ -391,16 +459,12 @@
                         <li>Air Purification System</li>
                     </ul>
                 </div>
-
             </div>
         </section>
-
-        <!-- 8. NEW VISUAL TIMELINE (ORDER) -->
         <section>
             <div class="sec-head"><h2>Process & Timeline</h2></div>
             <div class="timeline-box">
                 <div class="timeline">
-                    
                     <div class="t-step done">
                         <div class="t-dot"></div>
                         <div class="t-content">
@@ -408,7 +472,6 @@
                             <span>Choose your model and package. We handle the paperwork and logistics.</span>
                         </div>
                     </div>
-
                     <div class="t-step">
                         <div class="t-dot"></div>
                         <div class="t-content">
@@ -416,7 +479,6 @@
                             <span>Your home is built in our factory. Precision engineering takes approx. <span style="color:#fff">13 weeks</span>.</span>
                         </div>
                     </div>
-
                     <div class="t-step">
                         <div class="t-dot"></div>
                         <div class="t-content">
@@ -424,14 +486,10 @@
                             <span>Delivery to your site and full installation in <span class="highlight-yellow" style="font-size:18px">JUST 1 DAY</span>. Plug & Play.</span>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
-
     </main>
-
-    <!-- FOOTER -->
     <footer>
         <span style="color: #fff; font-size: 24px; font-weight: 700;">CAPSULE<span style="color:var(--yellow)">HOMES</span></span>
         <div class="f-contact">
@@ -444,14 +502,10 @@
             </address>
         </div>
     </footer>
-
-    <!-- STICKY BAR -->
     <div class="sticky-bar">
         <div style="font-weight: 700; color: #fff; font-size: 20px;">€ 42k</div>
         <a href="https://wa.me/353892136215" class="bar-btn">WhatsApp</a>
     </div>
-
-    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
@@ -466,6 +520,34 @@
                     if(active) active.play();
                 }
             }
+        });
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll('.stack-card');
+            const handleScroll = () => {
+                const viewportHeight = window.innerHeight;
+                cards.forEach((card, index) => {
+                    if(index === cards.length - 1) return;
+                    const nextCard = cards[index + 1];
+                    const nextRect = nextCard.getBoundingClientRect();
+                    const nextTop = nextRect.top;
+                    const startFade = viewportHeight;
+                    const endFade = 100;
+                    if (nextTop < startFade) {
+                        let progress = (nextTop - endFade) / (startFade - endFade);
+                        if (progress < 0) progress = 0;
+                        if (progress > 1) progress = 1;
+                        const effect = 1 - progress;
+                        const scale = 1 - (effect * 0.15);
+                        const brightness = 1 - (effect * 0.7);
+                        card.style.transform = `scale(${scale})`;
+                        card.style.filter = `brightness(${brightness})`;
+                    } else {
+                        card.style.transform = `scale(1)`;
+                        card.style.filter = `brightness(1)`;
+                    }
+                });
+            };
+            window.addEventListener('scroll', handleScroll, { passive: true });
         });
     </script>
 </body>
