@@ -684,6 +684,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
+        // 1. Анимации при скролле и навигация
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
             if(window.scrollY > 50) nav.classList.add('scrolled');
@@ -696,6 +697,7 @@
             });
         });
 
+        // 2. Инициализация слайдера отзывов
         new Swiper(".reviewSwiper", {
             slidesPerView: 1, 
             spaceBetween: 30,
@@ -709,6 +711,7 @@
             }
         });
 
+        // 3. Воспроизведение видео
         function toggleVideo(c) {
             const v = c.querySelector('video');
             if(v.paused) {
@@ -717,6 +720,7 @@
             }
         }
 
+        // 4. Логика квиза (выбор вариантов)
         function selectOpt(el, s) {
             el.parentElement.querySelectorAll('.q-opt').forEach(o => o.classList.remove('selected'));
             el.classList.add('selected'); el.querySelector('input').checked = true;
@@ -725,47 +729,74 @@
                 document.querySelector(`.step[data-step="${s+1}"]`).classList.add('active');
             }, 300);
         }
+
+        // 5. ОТПРАВКА ФОРМЫ (БЕЗОПАСНАЯ ВЕРСИЯ)
         function submitForm(e) {
             e.preventDefault();
 
-            const steps = document.querySelectorAll('.step');
-            
-            const use = document.querySelector('input[name="use"]:checked')?.parentElement.innerText.trim();
-            const city = document.querySelector('input[placeholder="City / County e.g. Dublin 4"]').value;
-            const timeline = document.querySelectorAll('.step[data-step="2"] .q-opt.selected span')[0]?.innerText;
-            const budget = document.querySelectorAll('.step[data-step="3"] .q-opt.selected span')[0]?.innerText;
+            // Собираем данные из полей ввода
+            const use = document.querySelector('input[name="use"]:checked')?.parentElement.innerText.trim() || '-';
+            const city = document.querySelector('input[placeholder="City / County e.g. Dublin 4"]').value || '-';
+            const timeline = document.querySelectorAll('.step[data-step="2"] .q-opt.selected span')[0]?.innerText || '-';
+            const budget = document.querySelectorAll('.step[data-step="3"] .q-opt.selected span')[0]?.innerText || '-';
 
-            const name = document.querySelector('input[placeholder="Your Name"]').value;
-            const phone = document.querySelector('input[placeholder="Phone Number"]').value;
-            const email = document.querySelector('input[placeholder="Email Address"]').value;
+            const name = document.querySelector('input[placeholder="Your Name"]').value || '-';
+            const phone = document.querySelector('input[placeholder="Phone Number"]').value || '-';
+            const email = document.querySelector('input[placeholder="Email Address"]').value || '-';
 
+            // Формируем красивое сообщение для Телеграма
             const message = `
-        🏠 NEW QUIZ LEAD
+🏠 NEW QUIZ LEAD
 
-        📌 Use: ${use}
-        📍 Location: ${city}
-        ⏳ Timeline: ${timeline}
-        💰 Budget: ${budget}
+📌 Use: ${use}
+📍 Location: ${city}
+⏳ Timeline: ${timeline}
+💰 Budget: ${budget}
 
-        👤 Name: ${name}
-        📞 Phone: ${phone}
-        📧 Email: ${email}
-        `;
+👤 Name: ${name}
+📞 Phone: ${phone}
+📧 Email: ${email}
+`;
 
-            fetch("https://api.telegram.org/botYOUR_TOKEN/sendMessage", {
+            // Меняем текст кнопки на "Отправка..." чтобы пользователь не жал 10 раз
+            const submitBtn = document.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerText;
+            submitBtn.innerText = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Отправляем данные на наш скрытый сервер Netlify
+            fetch("/.netlify/functions/send-telegram", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    chat_id: "YOUR_CHAT_ID",
-                    text: message
+                    message: message // Передаем только текст сообщения, без токенов!
                 })
-            }).then(() => {
-                document.querySelector(`.step[data-step="4"]`).classList.remove('active');
-                document.getElementById('success-msg').classList.add('active');
+            })
+            .then((response) => {
+                if(response.ok) {
+                    // Если успешно - показываем галочку
+                    document.querySelector(`.step[data-step="4"]`).classList.remove('active');
+                    document.getElementById('success-msg').classList.add('active');
+                } else {
+                    // Если ошибка сервера
+                    alert('Произошла ошибка при отправке. Пожалуйста, напишите нам в WhatsApp.');
+                }
+            })
+            .catch((error) => {
+                // Если нет интернета или другая ошибка
+                console.error('Ошибка:', error);
+                alert('Произошла ошибка при отправке. Попробуйте позже.');
+            })
+            .finally(() => {
+                // Возвращаем кнопку в нормальное состояние
+                submitBtn.innerText = originalBtnText;
+                submitBtn.disabled = false;
             });
         }        
+        
+        // Запускаем проверку скролла при загрузке страницы
         window.dispatchEvent(new Event('scroll'));
     </script>
 </body>
