@@ -100,72 +100,37 @@
         }
         .pkg-features li:last-child { border: none; }
         .pkg-features li i { color: var(--yellow); margin-top: 4px; font-size: 14px; }
-        .stack-section {
+        
+        /* === TECH SPECS BLUEPRINT CSS === */
+        .blueprint-section {
             background: #000;
-            padding: 0; 
-            position: relative;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-        }
-        .stack-intro {
-            padding: 100px 25px 50px;
-            text-align: center;
-        }
-        .stack-intro span { color: var(--yellow); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; display: block; margin-bottom: 15px; }
-        .stack-intro h2 { font-size: 42px; margin-bottom: 15px; color: #fff; }
-        .stack-area {
+            padding-bottom: 60px;
             position: relative;
-            padding-bottom: 20vh;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
-        .stack-card {
-            position: sticky; 
-            top: 100px;
-            width: 90%;
-            max-width: 600px;
-            height: 65vh; 
-            margin: 0 auto 15vh;
-            border-radius: 24px;
-            overflow: hidden;
-            background: #121212;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 -20px 60px rgba(0,0,0,0.9);
-            display: flex; flex-direction: column;
-            transform-origin: center top; 
-            transition: transform 0.1s linear, filter 0.1s linear; 
+        .bp-grid {
+            display: grid; grid-template-columns: 1fr; gap: 20px; padding: 0 25px;
         }
-        .stack-card:last-child { margin-bottom: 0; }
-        .card-visual {
-            flex: 2;
-            position: relative;
-            overflow: hidden;
-            background: #000;
+        @media (min-width: 768px) { .bp-grid { grid-template-columns: 1fr 1fr; } }
+        @media (min-width: 1024px) { .bp-grid { grid-template-columns: 1fr 1fr 1fr; } }
+        .bp-card {
+            background: #0a0a0a; border: 1px solid var(--border); border-radius: 12px;
+            padding: 25px; position: relative; overflow: hidden;
+            transition: 0.3s;
         }
-        .card-visual img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.7s ease;
-        }
-        .stack-card:hover .card-visual img { transform: scale(1.05); }
-        .card-info {
-            flex: 1;
-            padding: 30px;
-            background: #181818;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            display: flex; flex-direction: column; justify-content: center;
-            position: relative;
-        }
-        .card-num {
-            font-size: 80px; font-weight: 900; color: rgba(255,255,255,0.04);
-            position: absolute; top: 10px; right: 20px; line-height: 1; pointer-events: none;
-        }
-        .card-title { font-size: 24px; color: #fff; margin-bottom: 10px; z-index: 1; }
-        .card-desc { font-size: 16px; color: #aaa; line-height: 1.5; margin: 0; z-index: 1; }
-        @media (min-width: 900px) {
-            .stack-card { top: 80px; height: 75vh; margin-bottom: 25vh; }
-            .card-info { flex-direction: row; align-items: center; justify-content: space-between; padding: 40px; text-align: left; }
-            .card-title { width: 40%; font-size: 32px; margin-bottom: 0; }
-            .card-desc { width: 50%; font-size: 18px; }
-            .card-num { top: -40px; }
-        }
+        .bp-card:hover { border-color: rgba(255,204,0,0.4); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .bp-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--yellow); }
+        .bp-num { position:absolute; top:10px; right:15px; font-size:40px; font-weight:900; color:rgba(255,255,255,0.03); line-height:1; font-family:'Playfair Display', serif; font-style:italic; pointer-events: none;}
+        .bp-title { font-size:16px; color:#fff; text-transform:uppercase; margin-bottom:20px; letter-spacing:1px; position:relative; z-index:2; display: flex; align-items: center; gap: 10px;}
+        .bp-title i { color: var(--yellow); }
+        .bp-list { list-style:none; padding:0; margin:0; position:relative; z-index:2;}
+        .bp-list li { font-size:14px; color:#aaa; margin-bottom:10px; padding-left:15px; position:relative; line-height:1.5;}
+        .bp-list li::before { content:'■'; position:absolute; left:0; top:6px; font-size:8px; color:var(--yellow);}
+        .bp-list li strong { color:#fff; font-weight:600;}
+
         .tech-box { background: var(--card); margin: 0 25px; padding: 40px 30px; border-radius: 25px; border: 1px solid var(--border); }
         .tech-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
         @media (min-width: 600px) { .tech-grid { grid-template-columns: 1fr 1fr; } }
@@ -233,6 +198,7 @@
                 <span class="hero-note">A 13m² architectural masterpiece installed in your garden in 24 hours.</span>
             </div>
         </header>
+        
         <section class="specs-grid">
             <div class="spec-item">
                 <span class="spec-val">13 m²</span>
@@ -251,6 +217,7 @@
                 <span class="spec-lbl">Install Time</span>
             </div>
         </section>
+
         <section>
             <div class="sec-head">
                 <h2>Visual Overview</h2>
@@ -259,8 +226,8 @@
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide"><video src="https://video.wixstatic.com/video/a04742_d3d1117587104852a7485e79c7b1a2df/720p/mp4/file.mp4" loop muted playsinline controls></video></div>
-                    <div class="swiper-slide"><h1 style="color: var(--text-main);">Scheme 1</h1><img src="../assets/greystone/scheme1.png"></div>
-                    <div class="swiper-slide"><h1 style="color: var(--text-main);">Scheme 2</h1><img src="../assets/greystone/scheme2.png"></div>
+                    <div class="swiper-slide"><h1 style="color: var(--text-main); margin: 20px;">Scheme 1</h1><img src="../assets/greystone/scheme1.png"></div>
+                    <div class="swiper-slide"><h1 style="color: var(--text-main); margin: 20px;">Scheme 2</h1><img src="../assets/greystone/scheme2.png"></div>
                     <div class="swiper-slide"><img src="../assets/greystone/1.png"></div>
                     <div class="swiper-slide"><img src="../assets/greystone/2.png"></div>
                     <div class="swiper-slide"><img src="../assets/greystone/3.png"></div>
@@ -269,6 +236,7 @@
                 </div>
             </div>
         </section>
+
         <section>
             <div class="sec-head"><h2>All-Inclusive</h2></div>
             <div class="included-sec">
@@ -281,6 +249,7 @@
                 </div>
             </div>
         </section>
+
         <section>
             <div class="sec-head"><h2>Packages</h2></div>
             <div class="packages-scroll">
@@ -315,65 +284,139 @@
                 </div>
             </div>
         </section>
-        <section class="stack-section">
-            <div class="stack-intro">
-                <span>X-Ray Vision</span>
-                <h2>Material Anatomy</h2>
-                <p style="color:#888; max-width: 500px; margin: 0 auto;">Scroll down to peel back the layers. See why Greystone is built to last 65+ years.</p>
+
+        <!-- === ТЕХНИЧЕСКАЯ СПЕЦИФИКАЦИЯ ВМЕСТО КАРТОЧЕК === -->
+        <section class="blueprint-section">
+            <div class="sec-head" style="position: relative; z-index: 2;">
+                <h2>Technical Specification</h2>
+                <p>Blueprint of the capsule home. Engineered for longevity.</p>
             </div>
-            <div class="stack-area">
-                <div class="stack-card">
-                    <div class="card-visual">
-                        <img src="../assets/alumineumPanel.png" alt="Ceiling Panel">
-                    </div>
-                    <div class="card-info">
-                        <span class="card-num">01</span>
-                        <h3 class="card-title">Aluminum Honeycomb</h3>
-                        <p class="card-desc">Aerospace-grade ceiling panel. 8mm thick, ultra-lightweight, and impossible to deform.</p>
-                    </div>
+            <div class="bp-grid">
+                
+                <div class="bp-card">
+                    <div class="bp-num">01</div>
+                    <h4 class="bp-title"><i class="fa-solid fa-cubes"></i> Steel Structure</h4>
+                    <ul class="bp-list">
+                        <li><strong>Frame:</strong> Galvanized Steel Structure</li>
+                        <li><strong>Properties:</strong> High corrosion resistance</li>
+                        <li><strong>Design:</strong> Engineered for lifting, safe transport, and long-term use</li>
+                    </ul>
                 </div>
-                <div class="stack-card">
-                    <div class="card-visual">
-                        <img src="../assets/LowEGlass.webp" alt="Low-E Glass">
-                    </div>
-                    <div class="card-info">
-                        <span class="card-num">02</span>
-                        <h3 class="card-title">LOW-E Mirror Glass</h3>
-                        <p class="card-desc">Reflects heat back inside during winter. Blocks 99% of UV rays. Absolute privacy from the outside.</p>
-                    </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">02</div>
+                    <h4 class="bp-title"><i class="fa-solid fa-arrow-up-right-dots"></i> Roof</h4>
+                    <ul class="bp-list">
+                        <li><strong>Exterior:</strong> Aluminum panel</li>
+                        <li><strong>Insulation:</strong> Foam Sandwich Panel</li>
+                        <li><strong>Structure:</strong> Light Steel Keel</li>
+                        <li><strong>Base:</strong> Plywood</li>
+                        <li><strong>Interior Finish:</strong> Bamboo fiberboard</li>
+                    </ul>
                 </div>
-                <div class="stack-card">
-                    <div class="card-visual">
-                        <img src="../assets/AviationAluminium.png" alt="Aluminum Facade">
-                    </div>
-                    <div class="card-info">
-                        <span class="card-num">06</span>
-                        <h3 class="card-title">Aviation Aluminum Façade</h3>
-                        <p class="card-desc">10–20mm thick exterior shell. Factory spray-coated to last 65 years without fading. Rust-proof, waterproof, and ultra-lightweight.</p>
-                    </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">03</div>
+                    <h4 class="bp-title"><i class="fa-solid fa-layer-group"></i> Wall</h4>
+                    <ul class="bp-list">
+                        <li><strong>Exterior Layer:</strong> Aluminum panel</li>
+                        <li><strong>Insulation:</strong> Rock Wool</li>
+                        <li><strong>Interior Finish:</strong> Impact-resistant board / Diamond plate</li>
+                        <li><strong>Back Wall:</strong> Rock wool base + Aluminum-plastic panel</li>
+                    </ul>
                 </div>
-                <div class="stack-card">
-                    <div class="card-visual">
-                        <img src="../assets/InsulationLayer.png" alt="Insulation">
-                    </div>
-                    <div class="card-info">
-                        <span class="card-num">04</span>
-                        <h3 class="card-title">Polyurethane Shield</h3>
-                        <p class="card-desc">100mm of high-density insulation. Keeps it warm in Irish winters and cool in summer.</p>
-                    </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">04</div>
+                    <h4 class="bp-title"><i class="fa-solid fa-bars"></i> Floor</h4>
+                    <ul class="bp-list">
+                        <li><strong>Base Layer:</strong> 18mm Cement Fiberboard</li>
+                        <li><strong>Finish:</strong> SPC (Stone Plastic Composite) flooring</li>
+                        <li><strong>Option:</strong> Graphene + SPC underfloor heating system</li>
+                    </ul>
                 </div>
-                <div class="stack-card">
-                    <div class="card-visual">
-                        <img src="../assets/FiberCementWall.png" alt="Internal Wall">
-                    </div>
-                    <div class="card-info">
-                        <span class="card-num">05</span>
-                        <h3 class="card-title">Fiber Cement Layer</h3>
-                        <p class="card-desc">Fireproof (Class A) and waterproof internal structural layer.</p>
-                    </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">05</div>
+                    <h4 class="bp-title"><i class="fa-regular fa-window-maximize"></i> Glass Wall</h4>
+                    <ul class="bp-list">
+                        <li><strong>Glazing:</strong> 5+9A+5 LOW-E</li>
+                        <li><strong>Material:</strong> Tempered safety glass</li>
+                        <li><strong>Feature:</strong> Energy-saving LOW-E coating for temperature control</li>
+                    </ul>
                 </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">06</div>
+                    <h4 class="bp-title"><i class="fa-solid fa-door-open"></i> Glass Door</h4>
+                    <ul class="bp-list">
+                        <li><strong>Glazing:</strong> 5+9A+5 LOW-E</li>
+                        <li><strong>Material:</strong> Tempered safety glass</li>
+                        <li><strong>Frame:</strong> High-grade aluminum profile</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">07</div>
+                    <h4 class="bp-title"><i class="fa-regular fa-lightbulb"></i> Lighting</h4>
+                    <ul class="bp-list">
+                        <li><strong>Primary:</strong> LED strip / LED light panel</li>
+                        <li><strong>Feature:</strong> Built-in ambient lighting system throughout the cabin</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">08</div>
+                    <h4 class="bp-title"><i class="fa-solid fa-plug"></i> Electrical</h4>
+                    <ul class="bp-list">
+                        <li><strong>System:</strong> Main distribution board included</li>
+                        <li><strong>Fittings:</strong> Modern switches and sockets</li>
+                        <li><strong>Standards:</strong> International connection standards met</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">09</div>
+                    <h4 class="bp-title"><i class="fa-solid fa-anchor"></i> Support Feet</h4>
+                    <ul class="bp-list">
+                        <li><strong>Material:</strong> Galvanized square tube</li>
+                        <li><strong>Base:</strong> Heavy-duty steel base plate for stability on uneven terrain</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">10</div>
+                    <h4 class="bp-title"><i class="fa-solid fa-shower"></i> Bathroom</h4>
+                    <ul class="bp-list">
+                        <li><strong>Shower:</strong> Matte black, 3 modes, copper heating body, ABS top spray</li>
+                        <li><strong>Vanity:</strong> 710×820×470mm unit with mirror, shelf, sink, and drainage</li>
+                        <li><strong>Toilet:</strong> Siphonic flush system</li>
+                        <li><strong>Ventilation:</strong> Built-in ceiling exhaust fan</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">11</div>
+                    <h4 class="bp-title"><i class="fa-solid fa-bed"></i> Furniture & Decor</h4>
+                    <ul class="bp-list">
+                        <li><strong>Bed:</strong> Pine/plywood frame, cotton/linen upholstery, 20cm mattress</li>
+                        <li><strong>Curtains:</strong> Installed throughout with manual track system</li>
+                    </ul>
+                </div>
+
+                <div class="bp-card">
+                    <div class="bp-num">12</div>
+                    <h4 class="bp-title"><i class="fa-solid fa-snowflake"></i> Climate Control</h4>
+                    <ul class="bp-list">
+                        <li><strong>A/C Unit:</strong> Midea brand (coverage 11–17 m²)</li>
+                        <li><strong>Water Heater:</strong> Smith 40–60 liters, storage type</li>
+                        <li><strong>Pipes:</strong> Electric anti-freeze protection for water and sewage</li>
+                    </ul>
+                </div>
+
             </div>
         </section>
+
         <section>
             <div class="sec-head"><h2>Engineering</h2></div>
             <div class="tech-box">
@@ -405,6 +448,7 @@
                 </div>
             </div>
         </section>
+
         <section>
             <div class="sec-head"><h2>Optional Upgrades</h2></div>
             <div class="upgrades-grid">
@@ -440,6 +484,7 @@
                 </div>
             </div>
         </section>
+
         <section>
             <div class="sec-head"><h2>Timeline</h2></div>
             <div class="timeline-box">
@@ -469,6 +514,7 @@
             </div>
         </section>
     </main>
+
     <footer>
         <span class="f-brand">CAPSULE<span style="color:var(--yellow)">HOMES</span></span>
         <div class="f-contact">
@@ -481,10 +527,12 @@
             </address>
         </div>
     </footer>
+
     <div class="sticky-bar">
         <div class="bar-price">€ 25k</div>
         <a href="https://wa.me/353892136215" class="bar-btn"><i class="fa-brands fa-whatsapp"></i> Chat</a>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
         var swiper = new Swiper(".mySwiper", {
@@ -498,34 +546,6 @@
                     if(active) active.play();
                 }
             }
-        });
-        document.addEventListener("DOMContentLoaded", () => {
-            const cards = document.querySelectorAll('.stack-card');
-            const handleScroll = () => {
-                const viewportHeight = window.innerHeight;
-                cards.forEach((card, index) => {
-                    if(index === cards.length - 1) return;
-                    const nextCard = cards[index + 1];
-                    const nextRect = nextCard.getBoundingClientRect();
-                    const nextTop = nextRect.top;
-                    const startFade = viewportHeight;
-                    const endFade = 100; 
-                    if (nextTop < startFade) {
-                        let progress = (nextTop - endFade) / (startFade - endFade);
-                        if (progress < 0) progress = 0;
-                        if (progress > 1) progress = 1;
-                        const effect = 1 - progress;
-                        const scale = 1 - (effect * 0.15);
-                        const brightness = 1 - (effect * 0.7); 
-                        card.style.transform = `scale(${scale})`;
-                        card.style.filter = `brightness(${brightness})`;
-                    } else {
-                        card.style.transform = `scale(1)`;
-                        card.style.filter = `brightness(1)`;
-                    }
-                });
-            };
-            window.addEventListener('scroll', handleScroll, { passive: true });
         });
     </script>
 </body>
