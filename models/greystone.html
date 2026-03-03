@@ -101,7 +101,7 @@
         .pkg-features li:last-child { border: none; }
         .pkg-features li i { color: var(--yellow); margin-top: 4px; font-size: 14px; }
         
-        /* === TECH SPECS BLUEPRINT CSS === */
+        /* === TECH SPECS BLUEPRINT CSS (ACCORDION) === */
         .blueprint-section {
             background: #000;
             border-top: 1px solid var(--border);
@@ -113,21 +113,48 @@
         }
         .bp-grid {
             display: grid; grid-template-columns: 1fr; gap: 20px; padding: 0 25px;
+            align-items: start;
         }
         @media (min-width: 768px) { .bp-grid { grid-template-columns: 1fr 1fr; } }
         @media (min-width: 1024px) { .bp-grid { grid-template-columns: 1fr 1fr 1fr; } }
+        
         .bp-card {
             background: #0a0a0a; border: 1px solid var(--border); border-radius: 12px;
             padding: 25px; position: relative; overflow: hidden;
-            transition: 0.3s;
+            cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .bp-card:hover { border-color: rgba(255,204,0,0.4); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .bp-card:hover { border-color: rgba(255,204,0,0.3); background: #111; }
+        .bp-card.active { border-color: var(--yellow); box-shadow: 0 10px 30px rgba(0,0,0,0.4); background: #0a0a0a; }
         .bp-card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--yellow); }
-        .bp-num { position:absolute; top:10px; right:15px; font-size:40px; font-weight:900; color:rgba(255,255,255,0.03); line-height:1; font-family:'Playfair Display', serif; font-style:italic; pointer-events: none;}
-        .bp-title { font-size:16px; color:#fff; text-transform:uppercase; margin-bottom:20px; letter-spacing:1px; position:relative; z-index:2; display: flex; align-items: center; gap: 10px;}
-        .bp-title i { color: var(--yellow); }
+        
+        .bp-num { 
+            position:absolute; top:10px; right:15px; font-size:40px; font-weight:900; 
+            color:rgba(255,255,255,0.03); line-height:1; font-family:'Playfair Display', serif; 
+            font-style:italic; pointer-events: none; transition: 0.4s;
+        }
+        .bp-card.active .bp-num { color:rgba(255,204,0,0.08); }
+        
+        .bp-header {
+            display: flex; justify-content: space-between; align-items: center;
+            position: relative; z-index: 2;
+        }
+        .bp-title { 
+            font-size:16px; color:#fff; text-transform:uppercase; margin:0; 
+            letter-spacing:1px; display: flex; align-items: center; gap: 10px;
+        }
+        .bp-title i { color: var(--yellow); width: 20px; text-align: center; }
+        .bp-toggle { color: var(--text-sec); font-size: 14px; transition: transform 0.4s ease; }
+        .bp-card.active .bp-toggle { transform: rotate(180deg); color: var(--yellow); }
+
+        .bp-content {
+            max-height: 0; opacity: 0; overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bp-card.active .bp-content { max-height: 300px; opacity: 1; margin-top: 20px; }
+
         .bp-list { list-style:none; padding:0; margin:0; position:relative; z-index:2;}
         .bp-list li { font-size:14px; color:#aaa; margin-bottom:10px; padding-left:15px; position:relative; line-height:1.5;}
+        .bp-list li:last-child { margin-bottom: 0; }
         .bp-list li::before { content:'■'; position:absolute; left:0; top:6px; font-size:8px; color:var(--yellow);}
         .bp-list li strong { color:#fff; font-weight:600;}
 
@@ -225,7 +252,7 @@
             </div>
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><video src="https://video.wixstatic.com/video/a04742_d3d1117587104852a7485e79c7b1a2df/720p/mp4/file.mp4" loop muted playsinline controls></video></div>
+                    <div class="swiper-slide"><video src="../assets/IMG_9229.MP4" loop muted playsinline controls></video></div>
                     <div class="swiper-slide"><h1 style="color: var(--text-main); margin: 20px;">Scheme 1</h1><img src="../assets/greystone/scheme1.jpeg"></div>
                     <div class="swiper-slide"><h1 style="color: var(--text-main); margin: 20px;">Scheme 2</h1><img src="../assets/greystone/scheme2.png"></div>
                     <div class="swiper-slide"><img src="../assets/greystone/1.png"></div>
@@ -288,129 +315,201 @@
         <section class="blueprint-section">
             <div class="sec-head" style="position: relative; z-index: 2;">
                 <h2>Technical Specification</h2>
-                <p>Blueprint of the capsule home. Engineered for longevity.</p>
+                <p>Blueprint of the capsule home. Engineered for longevity. Tap to expand.</p>
             </div>
             <div class="bp-grid">
                 
-                <div class="bp-card">
+                <!-- CARD 1 (Active by default to show functionality) -->
+                <div class="bp-card active" onclick="this.classList.toggle('active')">
                     <div class="bp-num">01</div>
-                    <h4 class="bp-title"><i class="fa-solid fa-cubes"></i> Steel Structure</h4>
-                    <ul class="bp-list">
-                        <li><strong>Frame:</strong> Galvanized Steel Structure</li>
-                        <li><strong>Properties:</strong> High corrosion resistance</li>
-                        <li><strong>Design:</strong> Engineered for lifting, safe transport, and long-term use</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-solid fa-cubes"></i> Steel Structure</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>Frame:</strong> Galvanized Steel Structure</li>
+                            <li><strong>Properties:</strong> High corrosion resistance</li>
+                            <li><strong>Design:</strong> Engineered for lifting, safe transport, and long-term use</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 2 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">02</div>
-                    <h4 class="bp-title"><i class="fa-solid fa-arrow-up-right-dots"></i> Roof</h4>
-                    <ul class="bp-list">
-                        <li><strong>Exterior:</strong> Aluminum panel</li>
-                        <li><strong>Insulation:</strong> Foam Sandwich Panel</li>
-                        <li><strong>Structure:</strong> Light Steel Keel</li>
-                        <li><strong>Base:</strong> Plywood</li>
-                        <li><strong>Interior Finish:</strong> Bamboo fiberboard</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-solid fa-arrow-up-right-dots"></i> Roof</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>Exterior:</strong> Aluminum panel</li>
+                            <li><strong>Insulation:</strong> Foam Sandwich Panel</li>
+                            <li><strong>Structure:</strong> Light Steel Keel</li>
+                            <li><strong>Base:</strong> Plywood</li>
+                            <li><strong>Interior Finish:</strong> Bamboo fiberboard</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 3 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">03</div>
-                    <h4 class="bp-title"><i class="fa-solid fa-layer-group"></i> Wall</h4>
-                    <ul class="bp-list">
-                        <li><strong>Exterior Layer:</strong> Aluminum panel</li>
-                        <li><strong>Insulation:</strong> Rock Wool</li>
-                        <li><strong>Interior Finish:</strong> Impact-resistant board / Diamond plate</li>
-                        <li><strong>Back Wall:</strong> Rock wool base + Aluminum-plastic panel</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-solid fa-layer-group"></i> Wall</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>Exterior Layer:</strong> Aluminum panel</li>
+                            <li><strong>Insulation:</strong> Rock Wool</li>
+                            <li><strong>Interior Finish:</strong> Impact-resistant board / Diamond plate</li>
+                            <li><strong>Back Wall:</strong> Rock wool base + Aluminum-plastic panel</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 4 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">04</div>
-                    <h4 class="bp-title"><i class="fa-solid fa-bars"></i> Floor</h4>
-                    <ul class="bp-list">
-                        <li><strong>Base Layer:</strong> 18mm Cement Fiberboard</li>
-                        <li><strong>Finish:</strong> SPC (Stone Plastic Composite) flooring</li>
-                        <li><strong>Option:</strong> Graphene + SPC underfloor heating system</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-solid fa-bars"></i> Floor</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>Base Layer:</strong> 18mm Cement Fiberboard</li>
+                            <li><strong>Finish:</strong> SPC (Stone Plastic Composite) flooring</li>
+                            <li><strong>Option:</strong> Graphene + SPC underfloor heating system</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 5 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">05</div>
-                    <h4 class="bp-title"><i class="fa-regular fa-window-maximize"></i> Glass Wall</h4>
-                    <ul class="bp-list">
-                        <li><strong>Glazing:</strong> 5+9A+5 LOW-E</li>
-                        <li><strong>Material:</strong> Tempered safety glass</li>
-                        <li><strong>Feature:</strong> Energy-saving LOW-E coating for temperature control</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-regular fa-window-maximize"></i> Glass Wall</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>Glazing:</strong> 5+9A+5 LOW-E</li>
+                            <li><strong>Material:</strong> Tempered safety glass</li>
+                            <li><strong>Feature:</strong> Energy-saving LOW-E coating for temperature control</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 6 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">06</div>
-                    <h4 class="bp-title"><i class="fa-solid fa-door-open"></i> Glass Door</h4>
-                    <ul class="bp-list">
-                        <li><strong>Glazing:</strong> 5+9A+5 LOW-E</li>
-                        <li><strong>Material:</strong> Tempered safety glass</li>
-                        <li><strong>Frame:</strong> High-grade aluminum profile</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-solid fa-door-open"></i> Glass Door</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>Glazing:</strong> 5+9A+5 LOW-E</li>
+                            <li><strong>Material:</strong> Tempered safety glass</li>
+                            <li><strong>Frame:</strong> High-grade aluminum profile</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 7 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">07</div>
-                    <h4 class="bp-title"><i class="fa-regular fa-lightbulb"></i> Lighting</h4>
-                    <ul class="bp-list">
-                        <li><strong>Primary:</strong> LED strip / LED light panel</li>
-                        <li><strong>Feature:</strong> Built-in ambient lighting system throughout the cabin</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-regular fa-lightbulb"></i> Lighting</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>Primary:</strong> LED strip / LED light panel</li>
+                            <li><strong>Feature:</strong> Built-in ambient lighting system throughout the cabin</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 8 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">08</div>
-                    <h4 class="bp-title"><i class="fa-solid fa-plug"></i> Electrical</h4>
-                    <ul class="bp-list">
-                        <li><strong>System:</strong> Main distribution board included</li>
-                        <li><strong>Fittings:</strong> Modern switches and sockets</li>
-                        <li><strong>Standards:</strong> International connection standards met</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-solid fa-plug"></i> Electrical</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>System:</strong> Main distribution board included</li>
+                            <li><strong>Fittings:</strong> Modern switches and sockets</li>
+                            <li><strong>Standards:</strong> International connection standards met</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 9 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">09</div>
-                    <h4 class="bp-title"><i class="fa-solid fa-anchor"></i> Support Feet</h4>
-                    <ul class="bp-list">
-                        <li><strong>Material:</strong> Galvanized square tube</li>
-                        <li><strong>Base:</strong> Heavy-duty steel base plate for stability on uneven terrain</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-solid fa-anchor"></i> Support Feet</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>Material:</strong> Galvanized square tube</li>
+                            <li><strong>Base:</strong> Heavy-duty steel base plate for stability on uneven terrain</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 10 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">10</div>
-                    <h4 class="bp-title"><i class="fa-solid fa-shower"></i> Bathroom</h4>
-                    <ul class="bp-list">
-                        <li><strong>Shower:</strong> Matte black, 3 modes, copper heating body, ABS top spray</li>
-                        <li><strong>Vanity:</strong> 710×820×470mm unit with mirror, shelf, sink, and drainage</li>
-                        <li><strong>Toilet:</strong> Siphonic flush system</li>
-                        <li><strong>Ventilation:</strong> Built-in ceiling exhaust fan</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-solid fa-shower"></i> Bathroom</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>Shower:</strong> Matte black, 3 modes, copper heating body, ABS top spray</li>
+                            <li><strong>Vanity:</strong> 710×820×470mm unit with mirror, shelf, sink, and drainage</li>
+                            <li><strong>Toilet:</strong> Siphonic flush system</li>
+                            <li><strong>Ventilation:</strong> Built-in ceiling exhaust fan</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 11 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">11</div>
-                    <h4 class="bp-title"><i class="fa-solid fa-bed"></i> Furniture & Decor</h4>
-                    <ul class="bp-list">
-                        <li><strong>Bed:</strong> Pine/plywood frame, cotton/linen upholstery, 20cm mattress</li>
-                        <li><strong>Curtains:</strong> Installed throughout with manual track system</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-solid fa-bed"></i> Furniture & Decor</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>Bed:</strong> Pine/plywood frame, cotton/linen upholstery, 20cm mattress</li>
+                            <li><strong>Curtains:</strong> Installed throughout with manual track system</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="bp-card">
+                <!-- CARD 12 -->
+                <div class="bp-card" onclick="this.classList.toggle('active')">
                     <div class="bp-num">12</div>
-                    <h4 class="bp-title"><i class="fa-solid fa-snowflake"></i> Climate Control</h4>
-                    <ul class="bp-list">
-                        <li><strong>A/C Unit:</strong> Midea brand (coverage 11–17 m²)</li>
-                        <li><strong>Water Heater:</strong> Smith 40–60 liters, storage type</li>
-                        <li><strong>Pipes:</strong> Electric anti-freeze protection for water and sewage</li>
-                    </ul>
+                    <div class="bp-header">
+                        <h4 class="bp-title"><i class="fa-solid fa-snowflake"></i> Climate Control</h4>
+                        <i class="fa-solid fa-chevron-down bp-toggle"></i>
+                    </div>
+                    <div class="bp-content">
+                        <ul class="bp-list">
+                            <li><strong>A/C Unit:</strong> Midea brand (coverage 11–17 m²)</li>
+                            <li><strong>Water Heater:</strong> Smith 40–60 liters, storage type</li>
+                            <li><strong>Pipes:</strong> Electric anti-freeze protection for water and sewage</li>
+                        </ul>
+                    </div>
                 </div>
 
             </div>
