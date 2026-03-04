@@ -5,52 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1F1F1F">
     
-    <!-- ================= SEO OPTIMIZATION ================= -->
     <title>Capsule Homes Ireland | Full Catalog & Pricing</title>
     <meta name="description" content="Explore our range of smart capsule homes in Ireland. From compact 13m² studios to spacious 2-bed modular homes. Turnkey installation in 1 day. Prices start from €25k.">
     <meta name="keywords" content="capsule homes catalog, modular homes price list, garden studios Ireland, turnkey prefab homes">
     <meta name="author" content="Capsule Homes Ireland">
     <link rel="canonical" href="https://yourwebsite.com/catalog">
 
-    <!-- Open Graph -->
     <meta property="og:title" content="Capsule Homes Ireland | Catalog">
     <meta property="og:description" content="Discover smart modular homes from €25k. Installed in 1 day.">
     <meta property="og:image" content="https://static.wixstatic.com/media/a04742_b78248285e754260b35f461272f7a7b3~mv2.jpg">
     <meta property="og:type" content="website">
 
-    <!-- Schema.org (ItemList) for Google Rich Snippets -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ItemList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "BlackRock", "url": "https://yourwebsite.com/models/blackrock.html" },
-        { "@type": "ListItem", "position": 2, "name": "Bray", "url": "https://yourwebsite.com/models/bray.html" },
-        { "@type": "ListItem", "position": 3, "name": "Foxrock", "url": "https://yourwebsite.com/models/foxrock.html" },
-        { "@type": "ListItem", "position": 4, "name": "Dalkey", "url": "https://yourwebsite.com/models/dalkey.html" },
-        { "@type": "ListItem", "position": 5, "name": "Wicklow", "url": "https://yourwebsite.com/models/wicklow.html" },
-        { "@type": "ListItem", "position": 6, "name": "Dublin", "url": "https://yourwebsite.com/models/dublin.html" },
-        { "@type": "ListItem", "position": 7, "name": "Monkstown Studio", "url": "https://yourwebsite.com/models/monkstown.html" },
-        { "@type": "ListItem", "position": 8, "name": "Greystone Studio", "url": "https://yourwebsite.com/models/greystone.html" }
+        { "@type": "ListItem", "position": 1, "name": "Greystone Studio", "url": "https://yourwebsite.com/models/greystone.html" },
+        { "@type": "ListItem", "position": 2, "name": "Monkstown Studio", "url": "https://yourwebsite.com/models/monkstown.html" },
+        { "@type": "ListItem", "position": 3, "name": "Dublin", "url": "https://yourwebsite.com/models/dublin.html" },
+        { "@type": "ListItem", "position": 4, "name": "Wicklow", "url": "https://yourwebsite.com/models/wicklow.html" },
+        { "@type": "ListItem", "position": 5, "name": "Dalkey", "url": "https://yourwebsite.com/models/dalkey.html" },
+        { "@type": "ListItem", "position": 6, "name": "Foxrock", "url": "https://yourwebsite.com/models/foxrock.html" },
+        { "@type": "ListItem", "position": 7, "name": "Bray", "url": "https://yourwebsite.com/models/bray.html" },
+        { "@type": "ListItem", "position": 8, "name": "BlackRock", "url": "https://yourwebsite.com/models/blackrock.html" }
       ]
     }
     </script>
 
-    <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
-    
-    <!-- ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- VARIABLES --- */
         :root {
             --bg: #1F1F1F;
-            --card: #292929; /* Чуть светлее фона для выделения */
+            --card: #292929;
             --yellow: #FFCC00;
             --text-main: #FFFFFF;
-            --text-sec: #E0E0E0; /* Высокий контраст для текста */
+            --text-sec: #E0E0E0;
             --border: rgba(255, 255, 255, 0.15);
         }
 
@@ -61,7 +54,7 @@
             color: var(--text-main);
             font-family: 'Inter', sans-serif;
             margin: 0; padding: 0;
-            font-size: 18px; /* Базовый крупный шрифт */
+            font-size: 18px;
             line-height: 1.5;
             overflow-x: hidden;
         }
@@ -72,7 +65,6 @@
         .serif-italic { font-family: 'Playfair Display', serif; font-style: italic; color: var(--yellow); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* HEADER */
         .page-header { padding: 40px 0 30px; border-bottom: 1px solid var(--border); margin-bottom: 40px; }
         
         .breadcrumbs {
@@ -84,16 +76,14 @@
         .main-title { font-size: 42px; line-height: 1.1; color: #fff; }
         @media (max-width: 600px) { .main-title { font-size: 34px; } }
 
-        /* CATALOG GRID */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 40px; /* Большие отступы */
+            gap: 40px;
             padding-bottom: 100px;
         }
         @media (max-width: 400px) { .catalog-grid { grid-template-columns: 1fr; } }
 
-        /* CARD STYLES */
         .card {
             background: var(--card);
             border: 1px solid var(--border);
@@ -106,7 +96,6 @@
         }
         .card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(255, 204, 0, 0.1); border-color: rgba(255, 204, 0, 0.3); }
 
-        /* Image */
         .card-img-container {
             position: relative;
             width: 100%;
@@ -120,7 +109,6 @@
         }
         .card:hover .card-img { transform: scale(1.05); }
         
-        /* Badge on Image */
         .card-badge {
             position: absolute; top: 15px; right: 15px;
             background: rgba(0,0,0,0.8); color: var(--yellow);
@@ -128,10 +116,8 @@
             border: 1px solid var(--yellow);
         }
 
-        /* Content */
         .card-body { padding: 25px; display: flex; flex-direction: column; height: 100%; }
 
-        /* Header Row */
         .card-top { margin-bottom: 15px; }
         .model-name {
             font-family: 'Playfair Display', serif; font-style: italic;
@@ -142,7 +128,6 @@
         }
         .model-sq i { color: var(--yellow); }
 
-        /* Features List */
         .card-mid { flex-grow: 1; margin-bottom: 25px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; }
         .feature-list { list-style: none; padding: 0; margin: 0; }
         .feature-list li {
@@ -150,7 +135,6 @@
         }
         .feature-list li i { color: var(--yellow); font-size: 14px; }
 
-        /* Price & Buttons */
         .price-tag {
             font-size: 32px; color: var(--yellow); font-weight: 800; display: block; margin-bottom: 15px;
         }
@@ -169,7 +153,6 @@
         .btn-outline { background: transparent; border: 2px solid #555; color: #fff; }
         .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
 
-        /* FOOTER */
         footer { background: #111; padding: 60px 0; margin-top: 40px; border-top: 1px solid var(--border); }
         .f-contact a { 
             color: #fff; text-decoration: none; font-size: 22px; font-weight: 700; 
@@ -182,7 +165,6 @@
 
     <div class="container">
         
-        <!-- HEADER -->
         <header class="page-header">
             <a href="./index.html" class="breadcrumbs"><i class="fa-solid fa-arrow-left"></i> Home</a>
             <h1 class="main-title">
@@ -191,13 +173,179 @@
             </h1>
         </header>
 
-        <!-- CATALOG GRID -->
         <div class="catalog-grid">
 
-            <!-- 1. BLACKROCK -->
+            <article class="card">
+                <a href="./models/greystone.html" class="card-img-container">
+                    <img src="./assets/greystone/greystone-overview.avif" class="card-img" alt="Greystone Studio">
+                </a>
+                <div class="card-body">
+                    <div class="card-top">
+                        <div class="model-name">Greystone</div>
+                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 13 m² &bull; Studio</div>
+                    </div>
+                    <div class="card-mid">
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i> Compact & Cozy</li>
+                            <li><i class="fa-solid fa-check"></i> Kitchen & Shower Included</li>
+                            <li><i class="fa-solid fa-check"></i> Best Value</li>
+                        </ul>
+                    </div>
+                    <span class="price-tag">€ 25k</span>
+                    <div class="card-buttons">
+                        <a href="./models/greystone.html" class="btn btn-outline">View Details</a>
+                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <a href="./models/monkstown.html" class="card-img-container">
+                    <img src="./assets/monkstown/monkstown-overview.avif" class="card-img" alt="Monkstown Studio">
+                </a>
+                <div class="card-body">
+                    <div class="card-top">
+                        <div class="model-name">Monkstown</div>
+                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 16 m² &bull; Studio</div>
+                    </div>
+                    <div class="card-mid">
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i> 5.6m x 2.8m</li>
+                            <li><i class="fa-solid fa-check"></i> Premium Office/Guest</li>
+                            <li><i class="fa-solid fa-check"></i> Full Bathroom</li>
+                        </ul>
+                    </div>
+                    <span class="price-tag">€ 28k</span>
+                    <div class="card-buttons">
+                        <a href="./models/monkstown.html" class="btn btn-outline">View Details</a>
+                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <a href="./models/dublin.html" class="card-img-container">
+                    <img src="./assets/dublin/dublin-overview.avif" class="card-img" alt="Dublin Capsule Home">
+                </a>
+                <div class="card-body">
+                    <div class="card-top">
+                        <div class="model-name">Dublin</div>
+                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 19 m² &bull; 1 Bed</div>
+                    </div>
+                    <div class="card-mid">
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i> 8.5m x 2.25m</li>
+                            <li><i class="fa-solid fa-check"></i> Ideal Garden Room</li>
+                            <li><i class="fa-solid fa-check"></i> Sleeps 3-4</li>
+                        </ul>
+                    </div>
+                    <span class="price-tag">€ 31k</span>
+                    <div class="card-buttons">
+                        <a href="./models/dublin.html" class="btn btn-outline">View Details</a>
+                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <a href="./models/wicklow.html" class="card-img-container">
+                    <img src="/assets/wicklow/wicklow-overview.avif" class="card-img" alt="Wicklow Modular Home">
+                </a>
+                <div class="card-body">
+                    <div class="card-top">
+                        <div class="model-name">Wicklow</div>
+                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 26 m² &bull; 2 Beds</div>
+                    </div>
+                    <div class="card-mid">
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i> 11.5m x 2.25m</li>
+                            <li><i class="fa-solid fa-check"></i> Flexible Layout</li>
+                            <li><i class="fa-solid fa-check"></i> High Efficiency</li>
+                        </ul>
+                    </div>
+                    <span class="price-tag">€ 38k</span>
+                    <div class="card-buttons">
+                        <a href="./models/wicklow.html" class="btn btn-outline">View Details</a>
+                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <a href="./models/dalkey.html" class="card-img-container">
+                    <img src="/assets/dalkey/dalkey-overeview.avif" class="card-img" alt="Dalkey Capsule Home">
+                </a>
+                <div class="card-body">
+                    <div class="card-top">
+                        <div class="model-name">Dalkey</div>
+                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 28 m² &bull; 1 Bed</div>
+                    </div>
+                    <div class="card-mid">
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i> 8.5m x 3.3m</li>
+                            <li><i class="fa-solid fa-check"></i> Compact Luxury</li>
+                            <li><i class="fa-solid fa-check"></i> Sleeps 2-4</li>
+                        </ul>
+                    </div>
+                    <span class="price-tag">€ 39k</span>
+                    <div class="card-buttons">
+                        <a href="./models/dalkey.html" class="btn btn-outline">View Details</a>
+                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <a href="./models/foxrock.html" class="card-img-container">
+                    <img src="/assets/foxrock/foxrock-overview.avif" class="card-img" alt="Foxrock Capsule Home">
+                </a>
+                <div class="card-body">
+                    <div class="card-top">
+                        <div class="model-name">Foxrock</div>
+                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 31 m² &bull; 1 Bed</div>
+                    </div>
+                    <div class="card-mid">
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i> 9.5m x 3.3m</li>
+                            <li><i class="fa-solid fa-check"></i> Spacious Layout</li>
+                            <li><i class="fa-solid fa-check"></i> Smart Home Ready</li>
+                        </ul>
+                    </div>
+                    <span class="price-tag">€ 40k</span>
+                    <div class="card-buttons">
+                        <a href="./models/foxrock.html" class="btn btn-outline">View Details</a>
+                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <a href="./models/bray.html" class="card-img-container">
+                    <img src="/assets/bray/bray-overview.avif" class="card-img" alt="Bray 1 Capsule Home">
+                </a>
+                <div class="card-body">
+                    <div class="card-top">
+                        <div class="model-name">Bray</div>
+                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 38 m² &bull; 2 Beds</div>
+                    </div>
+                    <div class="card-mid">
+                        <ul class="feature-list">
+                            <li><i class="fa-solid fa-check"></i> 11.5m x 3.3m</li>
+                            <li><i class="fa-solid fa-check"></i> Panoramic Views</li>
+                            <li><i class="fa-solid fa-check"></i> Turnkey Finish</li>
+                        </ul>
+                    </div>
+                    <span class="price-tag">€ 42k</span>
+                    <div class="card-buttons">
+                        <a href="./models/bray.html" class="btn btn-outline">View Details</a>
+                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+            </article>
+
             <article class="card">
                 <a href="./models/blackrock.html" class="card-img-container">
-                    <img src="https://static.wixstatic.com/media/a04742_b78248285e754260b35f461272f7a7b3~mv2.jpg/v1/fill/w_385,h_273,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2025-11-16%2000_38_35.jpg" class="card-img" alt="BlackRock 1 Capsule Home">
+                    <img src="/assets/blackrock/blackrock-overview.avif" class="card-img" alt="BlackRock 1 Capsule Home">
                     <span class="card-badge">Bestseller</span>
                 </a>
                 <div class="card-body">
@@ -220,185 +368,9 @@
                 </div>
             </article>
 
-            <!-- 2. BRAY -->
-            <article class="card">
-                <a href="./models/bray.html" class="card-img-container">
-                    <img src="https://static.wixstatic.com/media/a04742_c6fab615d30f4b77a0c68332afae4b8b~mv2.png/v1/fill/w_438,h_310,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/file_000000007ff8622fb0f06afb6646759d.png" class="card-img" alt="Bray 1 Capsule Home">
-                </a>
-                <div class="card-body">
-                    <div class="card-top">
-                        <div class="model-name">Bray</div>
-                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 38 m² &bull; 2 Beds</div>
-                    </div>
-                    <div class="card-mid">
-                        <ul class="feature-list">
-                            <li><i class="fa-solid fa-check"></i> 11.5m x 3.3m</li>
-                            <li><i class="fa-solid fa-check"></i> Panoramic Views</li>
-                            <li><i class="fa-solid fa-check"></i> Turnkey Finish</li>
-                        </ul>
-                    </div>
-                    <span class="price-tag">€ 42k</span>
-                    <div class="card-buttons">
-                        <a href="./models/bray.html" class="btn btn-outline">View Details</a>
-                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 3. FOXROCK -->
-            <article class="card">
-                <a href="./models/foxrock.html" class="card-img-container">
-                    <img src="https://static.wixstatic.com/media/a04742_49d61cd50f9b4a08a6884c3dbbc5a80c~mv2.jpg/v1/fill/w_224,h_179,fp_0.51_0.65,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2025-11-16%2000_38_38.jpg" class="card-img" alt="Foxrock Capsule Home">
-                </a>
-                <div class="card-body">
-                    <div class="card-top">
-                        <div class="model-name">Foxrock</div>
-                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 31 m² &bull; 1 Bed</div>
-                    </div>
-                    <div class="card-mid">
-                        <ul class="feature-list">
-                            <li><i class="fa-solid fa-check"></i> 9.5m x 3.3m</li>
-                            <li><i class="fa-solid fa-check"></i> Spacious Layout</li>
-                            <li><i class="fa-solid fa-check"></i> Smart Home Ready</li>
-                        </ul>
-                    </div>
-                    <span class="price-tag">€ 40k</span>
-                    <div class="card-buttons">
-                        <a href="./models/foxrock.html" class="btn btn-outline">View Details</a>
-                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 4. DALKEY -->
-            <article class="card">
-                <a href="./models/dalkey.html" class="card-img-container">
-                    <img src="https://static.wixstatic.com/media/a04742_cdddd76632b141d3a4c0026b1e0e650f~mv2.png/v1/fill/w_385,h_273,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ChatGPT%20Image%2016%20%D0%BE%D0%BA%D1%82_%202025%20%D0%B3_%2C%2016_55_40.png" class="card-img" alt="Dalkey Capsule Home">
-                </a>
-                <div class="card-body">
-                    <div class="card-top">
-                        <div class="model-name">Dalkey</div>
-                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 28 m² &bull; 1 Bed</div>
-                    </div>
-                    <div class="card-mid">
-                        <ul class="feature-list">
-                            <li><i class="fa-solid fa-check"></i> 8.5m x 3.3m</li>
-                            <li><i class="fa-solid fa-check"></i> Compact Luxury</li>
-                            <li><i class="fa-solid fa-check"></i> Sleeps 2-4</li>
-                        </ul>
-                    </div>
-                    <span class="price-tag">€ 39k</span>
-                    <div class="card-buttons">
-                        <a href="./models/dalkey.html" class="btn btn-outline">View Details</a>
-                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 5. WICKLOW -->
-            <article class="card">
-                <a href="./models/wicklow.html" class="card-img-container">
-                    <img src="https://static.wixstatic.com/media/a04742_e2e43f2f175a4c518320bb63a73cff8b~mv2.jpg/v1/fill/w_224,h_179,fp_0.51_0.65,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/photo_5442895725487848026_w.jpg" class="card-img" alt="Wicklow Modular Home">
-                </a>
-                <div class="card-body">
-                    <div class="card-top">
-                        <div class="model-name">Wicklow</div>
-                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 26 m² &bull; 2 Beds</div>
-                    </div>
-                    <div class="card-mid">
-                        <ul class="feature-list">
-                            <li><i class="fa-solid fa-check"></i> 11.5m x 2.25m</li>
-                            <li><i class="fa-solid fa-check"></i> Flexible Layout</li>
-                            <li><i class="fa-solid fa-check"></i> High Efficiency</li>
-                        </ul>
-                    </div>
-                    <span class="price-tag">€ 38k</span>
-                    <div class="card-buttons">
-                        <a href="./models/wicklow.html" class="btn btn-outline">View Details</a>
-                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 6. DUBLIN -->
-            <article class="card">
-                <a href="./models/dublin.html" class="card-img-container">
-                    <img src="https://static.wixstatic.com/media/a04742_b930b367c539489aa11f87824106df43~mv2.png/v1/fill/w_224,h_179,fp_0.51_0.65,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/ChatGPT%20Image%2016%20%D0%BE%D0%BA%D1%82_%202025%20%D0%B3_%2C%2017_05_10.png" class="card-img" alt="Dublin Capsule Home">
-                </a>
-                <div class="card-body">
-                    <div class="card-top">
-                        <div class="model-name">Dublin</div>
-                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 19 m² &bull; 1 Bed</div>
-                    </div>
-                    <div class="card-mid">
-                        <ul class="feature-list">
-                            <li><i class="fa-solid fa-check"></i> 8.5m x 2.25m</li>
-                            <li><i class="fa-solid fa-check"></i> Ideal Garden Room</li>
-                            <li><i class="fa-solid fa-check"></i> Sleeps 3-4</li>
-                        </ul>
-                    </div>
-                    <span class="price-tag">€ 31k</span>
-                    <div class="card-buttons">
-                        <a href="./models/dublin.html" class="btn btn-outline">View Details</a>
-                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 7. MONKSTOWN -->
-            <article class="card">
-                <a href="./models/monkstown.html" class="card-img-container">
-                    <img src="https://static.wixstatic.com/media/a04742_7c4e8efb142a4ab2b05ee2d5127f2481~mv2.jpg/v1/fill/w_224,h_179,fp_0.51_0.65,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2025-11-16%2000_38_edited.jpg" class="card-img" alt="Monkstown Studio">
-                </a>
-                <div class="card-body">
-                    <div class="card-top">
-                        <div class="model-name">Monkstown</div>
-                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 16 m² &bull; Studio</div>
-                    </div>
-                    <div class="card-mid">
-                        <ul class="feature-list">
-                            <li><i class="fa-solid fa-check"></i> 5.6m x 2.8m</li>
-                            <li><i class="fa-solid fa-check"></i> Premium Office/Guest</li>
-                            <li><i class="fa-solid fa-check"></i> Full Bathroom</li>
-                        </ul>
-                    </div>
-                    <span class="price-tag">€ 28k</span>
-                    <div class="card-buttons">
-                        <a href="./models/monkstown.html" class="btn btn-outline">View Details</a>
-                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 8. GREYSTONE -->
-            <article class="card">
-                <a href="./models/greystone.html" class="card-img-container">
-                    <img src="https://static.wixstatic.com/media/a04742_aecef95a0b7648039451f70340422e04~mv2.jpg/v1/fill/w_224,h_179,fp_0.51_0.65,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/ChatGPT%20Image%2016%20%D0%BE%D0%BA%D1%82_edited.jpg" class="card-img" alt="Greystone Studio">
-                </a>
-                <div class="card-body">
-                    <div class="card-top">
-                        <div class="model-name">Greystone</div>
-                        <div class="model-sq"><i class="fa-solid fa-ruler-combined"></i> 13 m² &bull; Studio</div>
-                    </div>
-                    <div class="card-mid">
-                        <ul class="feature-list">
-                            <li><i class="fa-solid fa-check"></i> Compact & Cozy</li>
-                            <li><i class="fa-solid fa-check"></i> Kitchen & Shower Included</li>
-                            <li><i class="fa-solid fa-check"></i> Best Value</li>
-                        </ul>
-                    </div>
-                    <span class="price-tag">€ 25k</span>
-                    <div class="card-buttons">
-                        <a href="./models/greystone.html" class="btn btn-outline">View Details</a>
-                        <a href="https://wa.me/353892136215" class="btn btn-yellow"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-                    </div>
-                </div>
-            </article>
-
         </div>
     </div>
 
-    <!-- FOOTER -->
     <footer>
         <div class="container f-contact">
             <span style="color: #fff; font-size: 28px; font-weight: 700;">CAPSULE<span style="color:var(--yellow)">HOMES</span></span>
