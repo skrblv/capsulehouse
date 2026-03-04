@@ -251,9 +251,9 @@
 </head>
 <body>
     <main>
-        <a href="../catalog.html" class="breadcrumbs"><i class="fa-solid fa-chevron-left"></i> Catalog</a>
+        <a href="/catalog.html" class="breadcrumbs"><i class="fa-solid fa-chevron-left"></i> Catalog</a>
         <header class="hero">
-            <img src="https://static.wixstatic.com/media/a04742_c6fab615d30f4b77a0c68332afae4b8b~mv2.png/v1/fill/w_1200,h_800,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/file_000000007ff8622fb0f06afb6646759d.png" class="hero-bg" alt="Bray 1 Capsule Home">
+            <img src="/assets/bray/bray-overview.avif" class="hero-bg" alt="Bray 1 Capsule Home">
             <div class="hero-content">
                 <span class="hero-label">Flagship Model</span>
                 <h1 class="hero-title">Bray</h1>
@@ -308,12 +308,10 @@
             </div>
         </section>
 
-        <!-- ОБНОВЛЕННАЯ СЕКЦИЯ PACKAGES (СВАЙПЕР COVERFLOW) -->
         <section>
             <div class="sec-head"><h2>Packages</h2></div>
             <div class="swiper packages-swiper">
                 <div class="swiper-wrapper">
-                    <!-- Standard -->
                     <div class="swiper-slide pkg-slide">
                         <span class="pkg-tag">Starter</span>
                         <span class="pkg-name">Standard</span>
@@ -324,7 +322,6 @@
                         </ul>
                     </div>
                     
-                    <!-- Premium -->
                     <div class="swiper-slide pkg-slide premium">
                         <span class="pkg-tag">Most Popular</span>
                         <span class="pkg-name">Premium</span>
@@ -336,7 +333,6 @@
                         </ul>
                     </div>
 
-                    <!-- Luxury -->
                     <div class="swiper-slide pkg-slide">
                         <span class="pkg-tag">Elite</span>
                         <span class="pkg-name">Luxury</span>
@@ -483,7 +479,6 @@
             </div>
         </section>
 
-        <!-- ОПЦИИ (ТЕПЕРЬ АККОРДЕОН ВМЕСТО СЕТКИ) -->
         <section>
             <div class="sec-head">
                 <h2>Optional Upgrades</h2>
@@ -635,7 +630,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        // Инициализация визуального слайдера
         var visualSwiper = new Swiper(".visual-swiper", {
             slidesPerView: "auto",
             centeredSlides: true,
@@ -649,13 +643,12 @@
             }
         });
 
-        // Инициализация слайдера Пакетов (Cover Flow эффект)
         var pkgSwiper = new Swiper(".packages-swiper", {
             effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: "auto",
-            initialSlide: 1, // Начинаем со 2-го слайда (Premium)
+            initialSlide: 1, 
             coverflowEffect: {
                 rotate: 0,
                 stretch: 0,
