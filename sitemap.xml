@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://yourwebsite.com/</loc>
+    <loc>https://capsulehomes.ie/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://yourwebsite.com/catalog.html</loc>
+    <loc>https://capsulehomes.ie/catalog.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://yourwebsite.com/models/greystone.html</loc>
+    <loc>https://capsulehomes.ie/models/greystone.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://yourwebsite.com/models/monkstown.html</loc>
+    <loc>https://capsulehomes.ie/models/monkstown.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://yourwebsite.com/models/dublin.html</loc>
+    <loc>https://capsulehomes.ie/models/dublin.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://yourwebsite.com/models/wicklow.html</loc>
+    <loc>https://capsulehomes.ie/models/wicklow.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://yourwebsite.com/models/dalkey.html</loc>
+    <loc>https://capsulehomes.ie/models/dalkey.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://yourwebsite.com/models/blackrock.html</loc>
+    <loc>https://capsulehomes.ie/models/blackrock.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://yourwebsite.com/models/foxrock.html</loc>
+    <loc>https://capsulehomes.ie/models/foxrock.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://yourwebsite.com/models/bray.html</loc>
+    <loc>https://capsulehomes.ie/models/bray.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
