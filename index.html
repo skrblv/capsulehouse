@@ -71,7 +71,16 @@
             --border: rgba(255, 255, 255, 0.1);
         }
 
-        html { scroll-behavior: smooth; }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html { 
+            scroll-behavior: smooth; 
+            overflow-x: hidden;
+            width: 100%;
+        }
+        
         body {
             background-color: var(--bg-body);
             color: var(--white);
@@ -79,6 +88,8 @@
             margin: 0; padding: 0;
             line-height: 1.6;
             overflow-x: hidden;
+            width: 100%;
+            position: relative;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -308,7 +319,7 @@
             display: flex; align-items: center; justify-content: center;
             border: 1px solid var(--border);
         }
-        .video-el { width: 100%; height: 100%; object-fit: contain; opacity: 0.6; }
+        .video-el { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
         .play-btn {
             width: 90px; height: 90px; background: var(--yellow); border-radius: 50%;
             cursor: pointer; display: flex; align-items: center; justify-content: center; 
@@ -570,7 +581,7 @@
     <section class="section" id="video" style="background: #191919;">
         <div class="container">
             <div class="video-wrapper fade-up" onclick="toggleVideo(this)">
-                <video src="/assets/main.mp4" class="video-el" poster="/assets/index-hero.jpeg"></video>
+                <video src="https://video.wixstatic.com/video/a04742_d3d1117587104852a7485e79c7b1a2df/720p/mp4/file.mp4" class="video-el" poster="https://static.wixstatic.com/media/a04742_b78248285e754260b35f461272f7a7b3~mv2.jpg"></video>
                 <div class="video-overlay-text" style="position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <h3 style="margin-top:20px; font-size: 26px;">Step inside a Capsule Home</h3>
