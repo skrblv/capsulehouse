@@ -11,7 +11,6 @@
     <link rel="canonical" href="https://capsulehomes.ie/">
     <link rel="icon" type="image/ico" href="/favicon.ico">
 
-    
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://capsulehomes.ie/">
     <meta property="og:title" content="Premium Modular Homes in Ireland | Capsule Homes">
@@ -303,25 +302,13 @@
         .life-icon { color: var(--yellow); font-size: 36px; margin-bottom: 20px; }
         .life-title { font-size: 22px; font-weight: 600; margin-bottom: 10px; }
 
-        .trend-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px;
-            counter-reset: trend-counter;
-        }
-        .trend-item { position: relative; padding-left: 20px; border-left: 1px solid var(--border); }
-        .trend-item::before {
-            counter-increment: trend-counter; content: "0" counter(trend-counter);
-            position: absolute; top: -25px; left: 0; font-family: 'Playfair Display'; 
-            font-size: 40px; color: rgba(255,255,255,0.1); font-weight: 700;
-        }
-        .trend-title { font-size: 22px; font-weight: 600; margin-bottom: 10px; color: var(--white); }
-
         .video-wrapper {
             position: relative; border-radius: 30px; overflow: hidden;
             width: 100%; aspect-ratio: 16/9; max-height: 600px;
             display: flex; align-items: center; justify-content: center;
             border: 1px solid var(--border);
         }
-        .video-el { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        .video-el { width: 100%; height: 100%; object-fit: contain; opacity: 0.6; }
         .play-btn {
             width: 90px; height: 90px; background: var(--yellow); border-radius: 50%;
             cursor: pointer; display: flex; align-items: center; justify-content: center; 
@@ -393,6 +380,18 @@
             .sec-title { font-size: 34px; }
             .quiz-container { padding: 30px 20px; }
         }
+
+        .faq-accordion { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .faq-item { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px; transition: all 0.3s ease; }
+        .faq-item.active { border-color: var(--yellow); background: #2a2a2a; }
+        .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 24px; background: none; border: none; color: var(--white); font-size: 20px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: color 0.3s ease; text-align: left; }
+        .faq-question:hover { color: var(--yellow); }
+        .faq-item.active .faq-question { color: var(--yellow); }
+        .faq-icon { width: 40px; height: 40px; border-radius: 50%; background: rgba(255, 204, 0, 0.1); color: var(--yellow); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.3s ease; font-size: 16px; }
+        .faq-item.active .faq-icon { background: var(--yellow); color: #000; transform: rotate(180deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: all 0.4s ease-in-out; opacity: 0; padding: 0 24px; }
+        .faq-item.active .faq-answer { max-height: 500px; opacity: 1; padding: 0 24px 24px 24px; }
+        .faq-answer p { font-size: 18px; color: var(--grey); line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -571,7 +570,7 @@
     <section class="section" id="video" style="background: #191919;">
         <div class="container">
             <div class="video-wrapper fade-up" onclick="toggleVideo(this)">
-                <video src="https://video.wixstatic.com/video/a04742_d3d1117587104852a7485e79c7b1a2df/720p/mp4/file.mp4" class="video-el" poster="https://static.wixstatic.com/media/a04742_b78248285e754260b35f461272f7a7b3~mv2.jpg"></video>
+                <video src="/assets/main.mp4" class="video-el" poster="/assets/index-hero.jpeg"></video>
                 <div class="video-overlay-text" style="position: absolute; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                     <div class="play-btn"><i class="fa-solid fa-play"></i></div>
                     <h3 style="margin-top:20px; font-size: 26px;">Step inside a Capsule Home</h3>
@@ -582,25 +581,45 @@
 
     <section class="section">
         <div class="container">
-            <div class="sec-head">
+            <div class="sec-head fade-up">
                 <h2 class="sec-title">Frequently Asked <span class="serif-italic">Questions</span></h2>
             </div>
-            <div class="trend-grid">
-                <div class="trend-item fade-up">
-                    <h4 class="trend-title" style="color:var(--yellow);">Do I need planning permission?</h4>
-                    <p style="font-size: 18px;">In Ireland, garden studios under 25 sq.m often qualify as exempt from planning permission, provided you meet standard garden space requirements.</p>
+            <div class="faq-accordion fade-up">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do I need planning permission?
+                        <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>In Ireland, garden studios under 25 sq.m often qualify as exempt from planning permission, provided you meet standard garden space requirements.</p>
+                    </div>
                 </div>
-                <div class="trend-item fade-up">
-                    <h4 class="trend-title" style="color:var(--yellow);">How is it delivered?</h4>
-                    <p style="font-size: 18px;">Your home is built at our facility, shipped directly to Dublin port, and delivered to your property via truck. We then use a crane to lift it safely into your garden.</p>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How is it delivered?
+                        <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Your home is built at our facility, shipped directly to Dublin port, and delivered to your property via truck. We then use a crane to lift it safely into your garden.</p>
+                    </div>
                 </div>
-                <div class="trend-item fade-up">
-                    <h4 class="trend-title" style="color:var(--yellow);">What foundation is required?</h4>
-                    <p style="font-size: 18px;">We recommend ground screws or a simple concrete pad depending on your soil. We will advise you on the best option during our initial consultation.</p>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What foundation is required?
+                        <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We recommend ground screws or a simple concrete pad depending on your soil. We will advise you on the best option during our initial consultation.</p>
+                    </div>
                 </div>
-                <div class="trend-item fade-up">
-                    <h4 class="trend-title" style="color:var(--yellow);">Is it insulated for winter?</h4>
-                    <p style="font-size: 18px;">Yes, fully climate-ready. It features high-grade structural insulation and double-glazed panoramic windows to keep you warm all year round in the Irish climate.</p>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Is it insulated for winter?
+                        <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, fully climate-ready. It features high-grade structural insulation and double-glazed panoramic windows to keep you warm all year round in the Irish climate.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -818,6 +837,15 @@
                 submitBtn.disabled = false;
             });
         }        
+
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.closest('.faq-item');
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
         
         window.dispatchEvent(new Event('scroll'));
     </script>
